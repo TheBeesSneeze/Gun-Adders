@@ -14,9 +14,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerControler : MonoBehaviour
 {
-    private Rigidbody rb;
+    private Rigidbody   rb;
     private PlayerStats stats;
-    private Transform cam;
+    private Transform   cam;
 
     private float xMovement;
     private float yMovement;
@@ -85,7 +85,6 @@ public class PlayerControler : MonoBehaviour
     private void AssignEventListeners()
     {
         InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
-        //InputEvents.Instance.MoveCanceled.AddListener( context => { rb})
         InputEvents.Instance.JumpStarted.AddListener( JumpStarted );
     }
 }
