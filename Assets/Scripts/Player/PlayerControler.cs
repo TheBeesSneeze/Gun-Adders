@@ -37,8 +37,6 @@ public class PlayerControler : MonoBehaviour
             force = Vector3.zero;
 
         rb.AddForce(force);
-
-        Debug.Log(force);
     }
 
     private void JumpStarted()
