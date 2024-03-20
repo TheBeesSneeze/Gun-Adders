@@ -25,7 +25,13 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (joint == null) return;
+        if (joint == null)
+        {
+            renderer.positionCount = 0;
+            return;
+        }
+
+        renderer.positionCount = 2;
         renderer.SetPosition(0, transform.position);
         renderer.SetPosition(1, hitPoint);
     }
@@ -41,12 +47,12 @@ public class GrapplingHook : MonoBehaviour
             float distanceFromPoint = Vector3.Distance(transform.position, hitPoint);
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = distanceFromPoint * 0.8f;
-            joint.minDistance = distanceFromPoint * 0.45f;
+            joint.maxDistance = distanceFromPoint * 0.35f;
+            joint.minDistance = distanceFromPoint * 0.25f;
 
             //Adjust these values to fit your game.
-            joint.spring = 4.5f;
-            joint.damper = 7f;
+            joint.spring = 100f;
+            joint.damper = 70f;
             joint.massScale = 4.5f;
         }
     }
