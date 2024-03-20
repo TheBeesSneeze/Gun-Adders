@@ -22,7 +22,7 @@ public class CharacterType : MonoBehaviour
 {
     [ReadOnly] public float CurrentHealth = 1;
     // Start is called before the first frame update
-    public virtual void Start()
+    protected virtual void Start()
     {
         
     }

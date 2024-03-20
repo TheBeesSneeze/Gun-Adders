@@ -5,6 +5,8 @@
  *
  * Brief Description : The player code that does NOT have to do with input. 
  * Health / collisions / whatever.
+ * 
+ * projectile collisions are handles in ProjectileType.cs
  *****************************************************************************/
 
 
@@ -15,15 +17,17 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerBehaviour : CharacterType
 {
+    private PlayerStats stats;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        SetStats();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetStats()
     {
-        
+        stats = GetComponent<PlayerStats>();
+
+        CurrentHealth = stats.DefaultHealth;
     }
 }

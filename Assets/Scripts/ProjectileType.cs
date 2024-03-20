@@ -23,7 +23,7 @@ public class ProjectileType : MonoBehaviour
     //[Tooltip("If characters will take damage when colliding with the effect")]
     //public bool DamageOnCollision = true;
 
-    [Tooltip("If true, the effect will be destroyed by colliders with the 'Wall' tag")]
+    [Tooltip("If true, the effect will be destroyed by collisions that arent player/enemy/projectiles")]
     public bool DestroyedByWalls = true;
 
     [Tooltip("If true, gameobject will be destroyed after attacking something")]
@@ -54,8 +54,9 @@ public class ProjectileType : MonoBehaviour
             StartCoroutine(DestroyAfterSeconds());
     }
 
-    protected virtual void OnPlayerCollision(Collider2D collision)
+    protected virtual void OnPlayerCollision(Collider collision)
     {
+        Debug.Log("player");
         if (AttackSource.Equals(_AttackSource.Enemy) || AttackSource.Equals(_AttackSource.General))
         {
             PlayerBehaviour player = collision.GetComponent<PlayerBehaviour>();
@@ -67,7 +68,7 @@ public class ProjectileType : MonoBehaviour
         }
     }
 
-    protected virtual void OnEnemyCollision(Collider2D collision)
+    protected virtual void OnEnemyCollision(Collider collision)
     {
         if (AttackSource.Equals(_AttackSource.Player) || AttackSource.Equals(_AttackSource.General))
         {
@@ -88,18 +89,10 @@ public class ProjectileType : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void OnGeneralCollision(Collider2D collision)
-    {
-        CharacterType character = collision.GetComponent<CharacterType>();
-
-        character.TakeDamage(Damage);
-
-        if (DestroyedAfterAttack)
-            Destroy(this.gameObject);
-    }
-
     protected virtual void OnProjectileCollision(ProjectileType attack)
     {
+        
+
         if (gameObject.tag == "Player Attack" && attack.gameObject.tag == "Player Attack")
             return;
 
@@ -114,9 +107,10 @@ public class ProjectileType : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter(Collider collision)
     {
         //string tag = collision.tag;
+        Debug.Log("collision");
 
         if (collision.GetComponent<PlayerBehaviour>() != null)
         {
@@ -138,7 +132,8 @@ public class ProjectileType : MonoBehaviour
             if (attack != null)
                 OnProjectileCollision(attack);
 
-            return;
+            if(GetDestroyedByOtherAttacks)
+                return;
         }
 
         if (DestroyedByWalls)
@@ -149,9 +144,9 @@ public class ProjectileType : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        OnTriggerEnter2D(collision.collider);
+        OnTriggerEnter(collision.collider);
     }
 
     protected virtual IEnumerator DestroyAfterSeconds()
