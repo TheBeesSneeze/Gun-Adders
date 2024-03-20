@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerStats))]
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : CharacterType
 {
     // Start is called before the first frame update
     void Start()
