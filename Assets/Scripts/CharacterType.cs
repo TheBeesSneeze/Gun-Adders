@@ -20,6 +20,8 @@ using UnityEngine;
 
 public class CharacterType : MonoBehaviour
 {
+    //public 
+
     [ReadOnly] public float CurrentHealth = 1;
     // Start is called before the first frame update
     protected virtual void Start()
@@ -42,4 +44,6 @@ public class CharacterType : MonoBehaviour
         Debug.LogWarning("no death code. override this function.");
         Destroy(this.gameObject);
     }
+
+    p
 }
