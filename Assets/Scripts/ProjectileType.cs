@@ -72,7 +72,7 @@ public class ProjectileType : MonoBehaviour
     {
         if (AttackSource.Equals(_AttackSource.Player) || AttackSource.Equals(_AttackSource.General))
         {
-            EnemyBehaviour enemy = collision.GetComponent<EnemyBehaviour>();
+            EnemyType enemy = collision.GetComponent<EnemyType>();
 
             enemy.TakeDamage(Damage);
 
@@ -118,7 +118,7 @@ public class ProjectileType : MonoBehaviour
             return;
         }
 
-        if (collision.GetComponent<EnemyBehaviour>() != null)
+        if (collision.GetComponent<EnemyType>() != null)
         {
             OnEnemyCollision(collision);
             return;

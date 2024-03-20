@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name :         EnemyBehaviour.cs
+* File Name :         EnemyType.cs
 * Author(s) :         Toby Schamberger
 * Creation Date :     3/20/2024
 *
@@ -10,6 +10,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : CharacterType
+public class EnemyType : CharacterType
 {
 }
