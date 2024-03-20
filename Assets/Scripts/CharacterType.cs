@@ -44,6 +44,4 @@ public class CharacterType : MonoBehaviour
         Debug.LogWarning("no death code. override this function.");
         Destroy(this.gameObject);
     }
-
-    p
 }
