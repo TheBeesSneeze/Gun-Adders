@@ -6,6 +6,7 @@
  * Brief Description : responds to input events. 
  *****************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
@@ -16,7 +17,7 @@ public class PlayerControler : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerStats stats;
-    private Transform cam;
+    public Transform cam;
 
     private float xMovement;
     private float yMovement;
@@ -44,9 +45,14 @@ public class PlayerControler : MonoBehaviour
         rb.AddForce(0, stats.JumpForce, 0,ForceMode.Impulse);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         UpdateCamera();
+    }
+
+    private void FixedUpdate()
+    {
+        ManageMovement();
     }
 
     private void UpdateCamera()
@@ -66,8 +72,8 @@ public class PlayerControler : MonoBehaviour
         Debug.Log(lookRotation.x);
         */
 
-        yMovement += InputEvents.Instance.LookDelta.y * stats.Sensitivity * Time.fixedDeltaTime;
-        xMovement += InputEvents.Instance.LookDelta.x * stats.Sensitivity * Time.fixedDeltaTime;
+        yMovement += InputEvents.Instance.LookDelta.y * stats.Sensitivity * Time.deltaTime;
+        xMovement += InputEvents.Instance.LookDelta.x * stats.Sensitivity * Time.deltaTime;
         yMovement = Mathf.Clamp(yMovement, -90, 90);
         cam.transform.localEulerAngles = new Vector3(-yMovement, xMovement, 0f);
     }
@@ -79,12 +85,14 @@ public class PlayerControler : MonoBehaviour
         stats = GetComponent<PlayerStats>();
         cam = Camera.main.transform;
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         AssignEventListeners();
     }
     
     private void AssignEventListeners()
     {
-        InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
+        //InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
         //InputEvents.Instance.MoveCanceled.AddListener( context => { rb})
         InputEvents.Instance.JumpStarted.AddListener( JumpStarted );
     }
