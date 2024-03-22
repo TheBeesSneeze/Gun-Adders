@@ -17,7 +17,7 @@ public class ShootingMode : ScriptableObject
     [Tooltip("# of bullets shot at one time (imagine a shotgun)")]
     public int BulletsPerShot=1; 
     [Tooltip("(angle) How much to randomize angle (0 is perfect precision)")]
-    public float BulletAccuracyOffset=0; //@TODO
+    public float BulletAccuracyOffset=0; 
     //public bool HoldFire=true; //@TODO
     [Tooltip("Speed of the projectile itself (units/second)")]
     public float BulletSpeed=10; //@TODO
