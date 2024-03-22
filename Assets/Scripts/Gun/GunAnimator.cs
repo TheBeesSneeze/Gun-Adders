@@ -13,11 +13,11 @@ using NaughtyAttributes;
 
 public class GunAnimator : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
         InputEvents.Instance.MoveStarted.AddListener(MoveStart);
         InputEvents.Instance.MoveCanceled.AddListener(MoveEnd);
@@ -37,12 +37,12 @@ public class GunAnimator : MonoBehaviour
 
     private void ShootStart()
     {
-        animator.SetBool("Shooting", true);
+        animator.SetTrigger("Shoot");
     }
 
     private void ShootEnd()
     {
-        animator.SetBool("Shooting", false);
+        //animator.SetBool("Shooting", false);
     }
 
     /*
