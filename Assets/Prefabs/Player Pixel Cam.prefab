@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 533644169729596943}
   - component: {fileID: 6888475280479492071}
+  - component: {fileID: 1750741956018133970}
   - component: {fileID: 167815564817428575}
   - component: {fileID: 6528990664794945027}
   - component: {fileID: 6567814080975899724}
@@ -57,6 +58,21 @@ MonoBehaviour:
   JumpForce: 3
   NormalGravitySpeed: 0
   JumpingGravitySpeed: 0
+--- !u!114 &1750741956018133970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334479710990617890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceedb9896c6fa6b47a8bd5ca60e64579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultShootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6,
+    type: 2}
+  bulletSpawnPoint: {fileID: 7533370447666590071}
 --- !u!114 &167815564817428575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +208,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1118475676457770899}
   - component: {fileID: 7024278328620318609}
-  - component: {fileID: 2432668650969680181}
   - component: {fileID: 1366563063438994821}
   m_Layer: 0
   m_Name: Depth Camera
@@ -267,14 +282,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2432668650969680181
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3247582011175692830}
-  m_Enabled: 1
 --- !u!114 &1366563063438994821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +326,37 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &3885873752205009714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7533370447666590071}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7533370447666590071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3885873752205009714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0.76}
+  m_LocalScale: {x: 3.4406567, y: 3.3506763, z: 1.7214351}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4532600544602286655}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5475386949161361993
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +509,7 @@ GameObject:
   - component: {fileID: 21350472008633748}
   - component: {fileID: 2737159127951327787}
   - component: {fileID: 6162529152335492244}
+  - component: {fileID: 7875933258481239794}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -489,7 +528,8 @@ Transform:
   m_LocalPosition: {x: 0.55, y: -0.35999995, z: 0.87}
   m_LocalScale: {x: 0.29, y: 0.29, z: 0.59000003}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7533370447666590071}
   m_Father: {fileID: 4246944182689504440}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -9.66, y: -2.69, z: 4.19}
@@ -564,6 +604,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7875933258481239794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6092710195097383770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5628e787059807641a08351351ca829b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobHeightMultiplier: 0.05
+  bobSpeed: 7
+  bobbingGun: 0
 --- !u!1 &7695845747558673500
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +629,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3882710093008679526}
   - component: {fileID: 5844181020548480626}
-  - component: {fileID: 6200293354410608276}
   - component: {fileID: 3908591390806423084}
   m_Layer: 0
   m_Name: Pixel Camera
@@ -649,14 +703,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6200293354410608276
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7695845747558673500}
-  m_Enabled: 1
 --- !u!114 &3908591390806423084
 MonoBehaviour:
   m_ObjectHideFlags: 0

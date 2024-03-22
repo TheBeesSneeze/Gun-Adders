@@ -41,9 +41,9 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
     [HideInInspector] public Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
     [HideInInspector] public Vector2 InputDirection2D { get { return Move.ReadValue<Vector2>(); } }
-    [HideInInspector] public bool MovePressed;
-    [HideInInspector] public bool JumpPressed;
-    [HideInInspector] public bool ShootPressed;
+    [HideInInspector] public static bool MovePressed;
+    [HideInInspector] public static bool JumpPressed;
+    [HideInInspector] public static bool ShootPressed;
 
     //actions
     private PlayerInput playerInput;

@@ -33,6 +33,8 @@ public class GunOscillator : MonoBehaviour
     {
         if (!bobbingGun) return;
 
+        if (InputEvents.ShootPressed) return;
+
         float offset = Mathf.Sin((Time.time - bobbingStartTime)* bobSpeed) * bobHeightMultiplier;
         Vector3 p = transform.localPosition;
         p.y = startY + offset;

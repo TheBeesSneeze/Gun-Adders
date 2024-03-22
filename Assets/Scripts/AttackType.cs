@@ -91,8 +91,6 @@ public class AttackType : MonoBehaviour
 
     protected virtual void OnProjectileCollision(AttackType attack)
     {
-        
-
         if (gameObject.tag == "Player Attack" && attack.gameObject.tag == "Player Attack")
             return;
 

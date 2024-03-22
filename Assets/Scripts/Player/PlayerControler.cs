@@ -26,7 +26,7 @@ public class PlayerControler : MonoBehaviour
     /// </summary>
     private void ManageMovement()
     {
-        if (!InputEvents.Instance.MovePressed) return;
+        if (!InputEvents.MovePressed) return;
 
         Vector3 targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed;
         targetV.y = rb.velocity.y;
