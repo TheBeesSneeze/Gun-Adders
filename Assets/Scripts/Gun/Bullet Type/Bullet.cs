@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject hitImpactEffectPrefab;
     [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
     [SerializeField] private float damageAmount = 10f;
+    [SerializeField] private BulletEffect bulletEffect;
     private Rigidbody rb;
     private Vector3 lastPosition;
     private float lastTime;
@@ -52,6 +53,10 @@ public class Bullet : MonoBehaviour
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
                 {
                     enemy.TakeDamage(damageAmount);
+                    if (bulletEffect != null)
+                    {
+                        bulletEffect.OnEnemyHit(enemy);
+                    }
                 }
                 Destroy(gameObject);
             }
