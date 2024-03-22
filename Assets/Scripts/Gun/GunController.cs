@@ -12,7 +12,7 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public BulletEffect bulletEffect;
+    public ShootingMode bulletEffect;
     public void ShootBullet()
     {
 
