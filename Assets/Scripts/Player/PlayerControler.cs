@@ -26,9 +26,9 @@ public class PlayerControler : MonoBehaviour
     /// </summary>
     private void ManageMovement()
     {
-        if (!InputEvents.Instance.MovePressed) return;
+        if (!InputEvents.MovePressed) return;
 
-        Vector3 targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed;
+        Vector3 targetV = InputEvents.InputDirection.normalized * stats.Speed;
         targetV.y = rb.velocity.y;
 
         Vector3 force = targetV - rb.velocity;
@@ -66,8 +66,8 @@ public class PlayerControler : MonoBehaviour
         Debug.Log(lookRotation.x);
         */
 
-        yMovement += InputEvents.Instance.LookDelta.y * stats.Sensitivity * Time.fixedDeltaTime;
-        xMovement += InputEvents.Instance.LookDelta.x * stats.Sensitivity * Time.fixedDeltaTime;
+        yMovement += InputEvents.LookDelta.y * stats.Sensitivity * Time.fixedDeltaTime;
+        xMovement += InputEvents.LookDelta.x * stats.Sensitivity * Time.fixedDeltaTime;
         yMovement = Mathf.Clamp(yMovement, -90, 90);
         cam.transform.localEulerAngles = new Vector3(-yMovement, xMovement, 0f);
     }

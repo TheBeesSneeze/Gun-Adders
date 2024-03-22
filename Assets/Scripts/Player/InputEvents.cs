@@ -38,22 +38,22 @@ public class InputEvents : Singleton<InputEvents>
     public UnityEvent PauseStarted; //@TODO
     public UnityEvent RestartStarted; //@TODO //re start start ed
 
-    [HideInInspector] public Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
-    [HideInInspector] public Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
-    [HideInInspector] public Vector2 InputDirection2D { get { return Move.ReadValue<Vector2>(); } }
-    [HideInInspector] public bool MovePressed;
-    [HideInInspector] public bool JumpPressed;
-    [HideInInspector] public bool ShootPressed;
+    [HideInInspector] public static Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
+    [HideInInspector] public static Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
+    [HideInInspector] public static Vector2 InputDirection2D { get { return Move.ReadValue<Vector2>(); } }
+    [HideInInspector] public static bool MovePressed;
+    [HideInInspector] public static bool JumpPressed;
+    [HideInInspector] public static bool ShootPressed;
 
     //actions
-    private PlayerInput playerInput;
-    private InputAction Move;
-    private InputAction Shoot;
-    private InputAction Jump;
-    private InputAction Look;
+    private static PlayerInput playerInput;
+    private static InputAction Move;
+    private static InputAction Shoot;
+    private static InputAction Jump;
+    private static InputAction Look;
 
     //stuff and things
-    private Transform movementOrigin; // camera.main
+    private static Transform movementOrigin; // camera.main
 
     private void Start()
     {

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name :         GunOscillator.cs
+* File Name :         GunAnimator.cs
 * Author(s) :         Toby Schamberger
 * Creation Date :     3/21/2024
 *
@@ -11,8 +11,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class GunOscillator : MonoBehaviour
+public class GunAnimator : MonoBehaviour
 {
+    public Animator animator;
+
+    private void Start()
+    {
+        //animator = GetComponent<Animator>();
+
+        InputEvents.Instance.MoveStarted.AddListener(MoveStart);
+        InputEvents.Instance.MoveCanceled.AddListener(MoveEnd);
+        InputEvents.Instance.ShootStarted.AddListener(ShootStart);
+        InputEvents.Instance.ShootCanceled.AddListener(ShootEnd);
+    }
+
+    private void MoveStart()
+    {
+        animator.SetBool("Walking", true);
+    }
+
+    private void MoveEnd()
+    {
+        animator.SetBool("Walking", false);
+    }
+
+    private void ShootStart()
+    {
+        animator.SetTrigger("Shoot");
+    }
+
+    private void ShootEnd()
+    {
+        //animator.SetBool("Shooting", false);
+    }
+
+    /*
     public float bobHeightMultiplier = 0.5f;
     public float bobSpeed = 10;
 
@@ -20,6 +53,9 @@ public class GunOscillator : MonoBehaviour
     private float bobbingStartTime;
     private float startY;
 
+
+
+    
     // Update is called once per frame
     void Start()
     {
@@ -32,6 +68,8 @@ public class GunOscillator : MonoBehaviour
     void Update()
     {
         if (!bobbingGun) return;
+
+        if (InputEvents.ShootPressed) return;
 
         float offset = Mathf.Sin((Time.time - bobbingStartTime)* bobSpeed) * bobHeightMultiplier;
         Vector3 p = transform.localPosition;
@@ -52,4 +90,5 @@ public class GunOscillator : MonoBehaviour
 
         transform.localPosition = new Vector3(transform.localPosition.x, startY, transform.localPosition.z);
     }
+    */
 }
