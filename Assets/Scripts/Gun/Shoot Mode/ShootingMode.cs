@@ -8,4 +8,5 @@ public class ShootingMode : MonoBehaviour
     public int BulletsPerShot;
     public float BulletAccuracy;
     public float BulletSpeed;
+    public float BulletDamage;
 }
