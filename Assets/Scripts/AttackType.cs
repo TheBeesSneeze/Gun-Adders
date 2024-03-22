@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name :         ProjectileType.cs
+* File Name :         AttackType.cs
 * Author(s) :         Toby Schamberger
 * Creation Date :     9/7/2023
 *
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ProjectileType : MonoBehaviour
+public class AttackType : MonoBehaviour
 {
     [Header("Settings")]
 
@@ -89,7 +89,7 @@ public class ProjectileType : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void OnProjectileCollision(ProjectileType attack)
+    protected virtual void OnProjectileCollision(AttackType attack)
     {
         
 
@@ -125,9 +125,9 @@ public class ProjectileType : MonoBehaviour
         }
 
         //hit other attack
-        if (collision.GetComponent<ProjectileType>() != null)
+        if (collision.GetComponent<AttackType>() != null)
         {
-            ProjectileType attack = collision.GetComponent<ProjectileType>();
+            AttackType attack = collision.GetComponent<AttackType>();
 
             if (attack != null)
                 OnProjectileCollision(attack);

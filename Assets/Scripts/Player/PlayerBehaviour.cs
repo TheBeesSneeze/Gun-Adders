@@ -6,7 +6,7 @@
  * Brief Description : The player code that does NOT have to do with input. 
  * Health / collisions / whatever.
  * 
- * projectile collisions are handles in ProjectileType.cs
+ * projectile collisions are handles in AttackType.cs
  *****************************************************************************/
 
 
