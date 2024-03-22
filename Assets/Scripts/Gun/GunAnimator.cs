@@ -19,10 +19,10 @@ public class GunAnimator : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        InputEvents.MoveStarted.AddListener(MoveStart);
-        InputEvents.MoveCanceled.AddListener(MoveEnd);
-        InputEvents.ShootStarted.AddListener(ShootStart);
-        InputEvents.ShootCanceled.AddListener(ShootEnd);
+        InputEvents.Instance.MoveStarted.AddListener(MoveStart);
+        InputEvents.Instance.MoveCanceled.AddListener(MoveEnd);
+        InputEvents.Instance.ShootStarted.AddListener(ShootStart);
+        InputEvents.Instance.ShootCanceled.AddListener(ShootEnd);
     }
 
     private void MoveStart()

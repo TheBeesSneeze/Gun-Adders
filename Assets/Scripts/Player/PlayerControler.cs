@@ -84,7 +84,7 @@ public class PlayerControler : MonoBehaviour
     
     private void AssignEventListeners()
     {
-        InputEvents.MoveHeld.AddListener( ManageMovement );
-        InputEvents.JumpStarted.AddListener( JumpStarted );
+        InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
+        InputEvents.Instance.JumpStarted.AddListener( JumpStarted );
     }
 }

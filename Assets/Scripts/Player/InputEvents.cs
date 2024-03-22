@@ -23,20 +23,20 @@ using UnityEngine.InputSystem;
 public class InputEvents : Singleton<InputEvents>
 {
     //most of these wont get used haha
-    public static UnityEvent MoveStarted;
-    public static UnityEvent MoveHeld;
-    public static UnityEvent MoveCanceled;
+    public UnityEvent MoveStarted;
+    public UnityEvent MoveHeld;
+    public UnityEvent MoveCanceled;
 
-    public static UnityEvent ShootStarted;
-    public static UnityEvent ShootHeld;
-    public static UnityEvent ShootCanceled;
+    public UnityEvent ShootStarted;
+    public UnityEvent ShootHeld;
+    public UnityEvent ShootCanceled;
 
-    public static UnityEvent JumpStarted;
-    public static UnityEvent JumpHeld;
-    public static UnityEvent JumpCanceled; 
+    public UnityEvent JumpStarted;
+    public UnityEvent JumpHeld;
+    public UnityEvent JumpCanceled; 
 
-    public static UnityEvent PauseStarted; //@TODO
-    public static UnityEvent RestartStarted; //@TODO //re start start ed
+    public UnityEvent PauseStarted; //@TODO
+    public UnityEvent RestartStarted; //@TODO //re start start ed
 
     [HideInInspector] public static Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
     [HideInInspector] public static Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
