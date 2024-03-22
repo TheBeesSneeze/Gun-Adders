@@ -16,7 +16,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float DefaultHealth; //@TODO
+    public float DefaultHealth; 
 
     public float Sensitivity = 100;
 
