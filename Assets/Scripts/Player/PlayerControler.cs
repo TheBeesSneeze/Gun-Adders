@@ -1,11 +1,12 @@
 /*******************************************************************************
  * File Name :         PlayerControler.cs
- * Author(s) :         Toby
+ * Author(s) :         Toby, Tyler
  * Creation Date :     3/18/2024
  *
  * Brief Description : responds to input events. 
  *****************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
@@ -26,24 +27,21 @@ public class PlayerControler : MonoBehaviour
     /// </summary>
     private void ManageMovement()
     {
-        if (!InputEvents.Instance.MovePressed) return;
-
-        Vector3 targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed;
+        Vector3 targetV;
+        if (InputEvents.Instance.SprintPressed){
+            targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed * stats.SprintSpeed;
+        }
+        else {
+            targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed;
+        }
         targetV.y = rb.velocity.y;
-
         Vector3 force = targetV - rb.velocity;
-
-        if (float.IsNaN(force.x) || float.IsNaN(force.y) || float.IsNaN(force.z))
-            force = Vector3.zero;
-
         rb.AddForce(force);
     }
-
     private void JumpStarted()
     {
         rb.AddForce(0, stats.JumpForce, 0,ForceMode.Impulse);
     }
-
     private void FixedUpdate()
     {
         UpdateCamera();

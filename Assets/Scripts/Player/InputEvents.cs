@@ -33,7 +33,10 @@ public class InputEvents : Singleton<InputEvents>
 
     public UnityEvent JumpStarted;
     public UnityEvent JumpHeld;
-    public UnityEvent JumpCanceled; 
+    public UnityEvent JumpCanceled;
+
+    public UnityEvent SprintStarted;
+    public UnityEvent SprintHeld;
 
     public UnityEvent PauseStarted; //@TODO
     public UnityEvent RestartStarted; //@TODO //re start start ed
@@ -44,6 +47,7 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public bool MovePressed;
     [HideInInspector] public bool JumpPressed;
     [HideInInspector] public bool ShootPressed;
+    [HideInInspector] public bool SprintPressed;
 
     //actions
     private PlayerInput playerInput;
@@ -51,6 +55,7 @@ public class InputEvents : Singleton<InputEvents>
     private InputAction Shoot;
     private InputAction Jump;
     private InputAction Look;
+    private InputAction Sprint;
 
     //stuff and things
     private Transform movementOrigin; // camera.main
@@ -66,27 +71,23 @@ public class InputEvents : Singleton<InputEvents>
         Jump = playerInput.currentActionMap.FindAction("Jump");
         Shoot = playerInput.currentActionMap.FindAction("Shoot");
         Look = playerInput.currentActionMap.FindAction("Look");
+        Sprint = playerInput.currentActionMap.FindAction("Sprint");
 
         Move .started += context => { MovePressed = true;  MoveStarted.Invoke();  };
         Jump .started += context => { JumpPressed = true;  JumpStarted.Invoke();  };
         Shoot.started += context => { ShootPressed = true; ShootStarted.Invoke(); };
-
+        Sprint.started += context => { SprintPressed = true; };
         /*
         Move.performed += context => { MoveHeld.Invoke(); };
         Jump.performed += context => { JumpHeld.Invoke(); };
         Shoot.performed += context => { ShootHeld.Invoke(); };
+        Sprint.performed += context => { SprintPressed = true; };
         */
-
         Move .canceled += context => { MovePressed = false;  MoveCanceled.Invoke();  };
         Jump .canceled += context => { JumpPressed = false;  JumpCanceled.Invoke();  };
         Shoot.canceled += context => { ShootPressed = false; ShootCanceled.Invoke(); };
+        Sprint.canceled += context => { SprintPressed = false; };
     }
-
-    private void OnDisable()
-    {
-        //Debug.LogWarning("i got lazy and didnt make an ondisable function hopefully nothing bad happens");
-    }
-
     /// <summary>
     /// im ashamed of this code but i couldnt get [input].performed to work so HERE WE ARE
     /// </summary>
@@ -100,5 +101,9 @@ public class InputEvents : Singleton<InputEvents>
 
         if (ShootPressed)
             ShootHeld.Invoke();
+    }
+    private void OnDisable()
+    {
+        //Debug.LogWarning("i got lazy and didnt make an ondisable function hopefully nothing bad happens");
     }
 }

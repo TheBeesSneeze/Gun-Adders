@@ -1168,6 +1168,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4839773283336281262, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
+        type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5603351182358813624, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
         type: 3}
       propertyPath: near clip plane
@@ -1177,6 +1182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312545447236190095, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
+        type: 3}
+      propertyPath: SprintSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9177316904666862019, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
         type: 3}
