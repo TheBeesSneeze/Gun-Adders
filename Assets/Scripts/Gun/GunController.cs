@@ -17,6 +17,7 @@ public class GunController : MonoBehaviour
     public ShootingMode defaultShootingMode;
     public Transform bulletSpawnPoint;
     public GameObject CurrentBulletPrefab;
+    public Transform Gun;
 
     private ShootingMode currentShootMode;
     private float secondsSinceLastShoot;
@@ -36,6 +37,11 @@ public class GunController : MonoBehaviour
         }
 
         currentShootMode = shootMode;
+        
+        //change color
+
+        Gun.GetComponent<Renderer>().material.color = shootMode.GunColor;
+
         //maybe put a sound effect here or something
     }
 
@@ -77,7 +83,7 @@ public class GunController : MonoBehaviour
     {
         secondsSinceLastShoot += Time.deltaTime;
 
-        if (!InputEvents.ShootPressed) return;
+        //if (!InputEvents.ShootPressed) return;
 
         if (secondsSinceLastShoot < currentShootMode.SecondsBetweenShots) return;
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
+  GunColor: {r: 0.34901962, g: 0.3764706, b: 0.35686275, a: 1}
   SecondsBetweenShots: 0.5
   BulletsPerShot: 1
   BulletAccuracyOffset: 0
