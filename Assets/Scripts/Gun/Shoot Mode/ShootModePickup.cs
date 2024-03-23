@@ -1,17 +1,20 @@
+/*******************************************************************************
+ * File Name :         ShootModePickup.cs
+ * Author(s) :         Toby
+ * Creation Date :     3/23/2024
+ *
+ * Brief Description : 
+ *****************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootModePickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ShootingMode ShootMode;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
         
     }
