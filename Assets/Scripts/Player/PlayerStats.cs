@@ -22,7 +22,8 @@ public class PlayerStats : MonoBehaviour
 
     [Tooltip ("Movement speed. legs.")]
     public float Speed;
-
+    [Tooltip("speed MULTIPLIER while sprinting")]
+    public float SprintSpeed;
     //[Tooltip("how much velocity is carried over from one frame to another")]
     //public float PlayerSlipperyness; //@TODO
 

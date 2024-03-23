@@ -33,27 +33,32 @@ public class InputEvents : Singleton<InputEvents>
 
     public UnityEvent JumpStarted;
     public UnityEvent JumpHeld;
-    public UnityEvent JumpCanceled; 
+    public UnityEvent JumpCanceled;
+
+    public UnityEvent SprintStarted;
+    public UnityEvent SprintHeld;
 
     public UnityEvent PauseStarted; //@TODO
     public UnityEvent RestartStarted; //@TODO //re start start ed
 
-    [HideInInspector] public static Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
-    [HideInInspector] public static Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
-    [HideInInspector] public static Vector2 InputDirection2D { get { return Move.ReadValue<Vector2>(); } }
-    [HideInInspector] public static bool MovePressed;
-    [HideInInspector] public static bool JumpPressed;
-    [HideInInspector] public static bool ShootPressed;
+    [HideInInspector] public Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
+    [HideInInspector] public Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
+    [HideInInspector] public Vector2 InputDirection2D { get { return Move.ReadValue<Vector2>(); } }
+    [HideInInspector] public bool MovePressed;
+    [HideInInspector] public bool JumpPressed;
+    [HideInInspector] public bool ShootPressed;
+    [HideInInspector] public bool SprintPressed;
 
     //actions
-    private static PlayerInput playerInput;
-    private static InputAction Move;
-    private static InputAction Shoot;
-    private static InputAction Jump;
-    private static InputAction Look;
+    private PlayerInput playerInput;
+    private InputAction Move;
+    private InputAction Shoot;
+    private InputAction Jump;
+    private InputAction Look;
+    private InputAction Sprint;
 
     //stuff and things
-    private static Transform movementOrigin; // camera.main
+    private Transform movementOrigin; // camera.main
 
     private void Start()
     {
@@ -66,27 +71,23 @@ public class InputEvents : Singleton<InputEvents>
         Jump = playerInput.currentActionMap.FindAction("Jump");
         Shoot = playerInput.currentActionMap.FindAction("Shoot");
         Look = playerInput.currentActionMap.FindAction("Look");
+        Sprint = playerInput.currentActionMap.FindAction("Sprint");
 
         Move .started += context => { MovePressed = true;  MoveStarted.Invoke();  };
         Jump .started += context => { JumpPressed = true;  JumpStarted.Invoke();  };
         Shoot.started += context => { ShootPressed = true; ShootStarted.Invoke(); };
-
+        Sprint.started += context => { SprintPressed = true; };
         /*
         Move.performed += context => { MoveHeld.Invoke(); };
         Jump.performed += context => { JumpHeld.Invoke(); };
         Shoot.performed += context => { ShootHeld.Invoke(); };
+        Sprint.performed += context => { SprintPressed = true; };
         */
-
         Move .canceled += context => { MovePressed = false;  MoveCanceled.Invoke();  };
         Jump .canceled += context => { JumpPressed = false;  JumpCanceled.Invoke();  };
         Shoot.canceled += context => { ShootPressed = false; ShootCanceled.Invoke(); };
+        Sprint.canceled += context => { SprintPressed = false; };
     }
-
-    private void OnDisable()
-    {
-        //Debug.LogWarning("i got lazy and didnt make an ondisable function hopefully nothing bad happens");
-    }
-
     /// <summary>
     /// im ashamed of this code but i couldnt get [input].performed to work so HERE WE ARE
     /// </summary>
@@ -100,5 +101,9 @@ public class InputEvents : Singleton<InputEvents>
 
         if (ShootPressed)
             ShootHeld.Invoke();
+    }
+    private void OnDisable()
+    {
+        //Debug.LogWarning("i got lazy and didnt make an ondisable function hopefully nothing bad happens");
     }
 }
