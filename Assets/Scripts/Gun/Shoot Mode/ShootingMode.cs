@@ -13,6 +13,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ShootingMode", menuName = "ShootingMode")]
 public class ShootingMode : ScriptableObject
 {
+    public Color GunColor;
     public float SecondsBetweenShots=0.01f;
     [Tooltip("# of bullets shot at one time (imagine a shotgun)")]
     public int BulletsPerShot=1; 
