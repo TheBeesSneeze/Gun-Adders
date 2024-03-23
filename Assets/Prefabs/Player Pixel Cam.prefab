@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b777ecac6ded914782c5e4300cb16aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultHealth: 0
+  DefaultHealth: 5
   Sensitivity: 30
   Speed: 20
   SprintSpeed: 1.5
@@ -77,7 +77,7 @@ MonoBehaviour:
   defaultShootingMode: {fileID: 11400000, guid: c9e027354a58141408ec58a6101b45f9,
     type: 2}
   bulletSpawnPoint: {fileID: 7533370447666590071}
-  Gun: {fileID: 0}
+  Gun: {fileID: 4532600544602286655}
 --- !u!114 &167815564817428575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5628e787059807641a08351351ca829b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 8162339477801571298}
 --- !u!1 &6958940511115153612
 GameObject:
   m_ObjectHideFlags: 0
