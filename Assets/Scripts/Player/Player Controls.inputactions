@@ -60,9 +60,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Respawn",
+                    "name": "Sprint",
                     "type": "Button",
-                    "id": "35045cfe-6e83-45a9-a10f-da28b3788198",
+                    "id": "5f576a84-db5e-4802-a817-d89e63ca0499",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -215,12 +215,12 @@
                 },
                 {
                     "name": "",
-                    "id": "dd2c6867-47cf-4358-baa6-5fa2274c54ae",
-                    "path": "<Keyboard>/f",
+                    "id": "2cb5ec54-c211-4176-b2d1-cc974ae8667a",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Respawn",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
