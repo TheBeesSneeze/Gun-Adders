@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4841941193543511118}
   - component: {fileID: 562047037873011998}
   - component: {fileID: 3525244839604161409}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2004738192472320812
 Rigidbody:
@@ -74,12 +74,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236f4b29a10a6f947959f4fdbf648201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 5
-  despawnTime: 5
+  bulletForce: 20
+  despawnTime: 0.25
   hitRigidbodyImpactForce: 10
   hitLayers:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 307
   hitImpactEffectPrefab: {fileID: 0}
   impactEffectPrefabDespawnTime: 0.2
   damageAmount: 10
@@ -149,7 +149,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.05
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -171,7 +171,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.56824964, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -188,7 +188,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65150
+      atime1: 65535
       atime2: 0
       atime3: 0
       atime4: 0
@@ -206,7 +206,7 @@ TrailRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.05
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1

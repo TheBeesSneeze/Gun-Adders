@@ -8,15 +8,20 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
 {
     public ShootingMode defaultShootingMode;
     public Transform bulletSpawnPoint;
+    public GameObject CurrentBulletPrefab;
 
     private ShootingMode currentShootMode;
     private float secondsSinceLastShoot;
+    private Rigidbody playerRB;
+    private Transform camera;
 
     /// <summary>
     /// call this in from those little pickup guys
@@ -40,6 +45,7 @@ public class GunController : MonoBehaviour
     private void ShootBullet(Vector3 direction)
     {
         //alec put ur code here
+        var bullet = Instantiate(CurrentBulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction.normalized));
         Debug.Log("pew");
         Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);
     }
@@ -83,14 +89,15 @@ public class GunController : MonoBehaviour
             ShootBullet(angle);
         }
 
-        GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * -1 * currentShootMode.RecoilForce, ForceMode.Impulse);
+       playerRB.AddForce(camera.forward * -1 * currentShootMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
     {
         //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
         //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
-
+        playerRB = GetComponent<Rigidbody>();
+        camera = Camera.main.transform;
         LoadShootingMode(defaultShootingMode);
     }
 

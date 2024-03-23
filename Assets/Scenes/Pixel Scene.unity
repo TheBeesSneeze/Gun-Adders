@@ -661,6 +661,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 334479710990617890, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 533644169729596943, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_RootOrder
@@ -715,6 +720,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750741956018133970, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: CurrentBulletPrefab
+      value: 
+      objectReference: {fileID: 7340202116886174177, guid: bb98eaf02be1e9e44939ac0716429f99,
+        type: 3}
+    - target: {fileID: 6888475280479492071, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: Speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7875933258481239794, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}

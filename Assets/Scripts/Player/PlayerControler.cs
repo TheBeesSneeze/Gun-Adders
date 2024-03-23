@@ -24,9 +24,9 @@ public class PlayerControler : MonoBehaviour
     /// <summary>
     /// every frame while move is held
     /// </summary>
-    private void ManageMovement()
+    private void FixedUpdate()
     {
-        if (!InputEvents.MovePressed) return;
+        //if (!InputEvents.MovePressed) return;
 
         Vector3 targetV = InputEvents.InputDirection.normalized * stats.Speed;
         targetV.y = rb.velocity.y;
@@ -36,7 +36,7 @@ public class PlayerControler : MonoBehaviour
         if (float.IsNaN(force.x) || float.IsNaN(force.y) || float.IsNaN(force.z))
             force = Vector3.zero;
 
-        rb.AddForce(force);
+        rb.AddForce(force, ForceMode.VelocityChange);
     }
 
     private void JumpStarted()
@@ -44,7 +44,7 @@ public class PlayerControler : MonoBehaviour
         rb.AddForce(0, stats.JumpForce, 0,ForceMode.Impulse);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         UpdateCamera();
     }
@@ -78,13 +78,15 @@ public class PlayerControler : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         stats = GetComponent<PlayerStats>();
         cam = Camera.main.transform;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         AssignEventListeners();
     }
     
     private void AssignEventListeners()
     {
-        InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
+       // InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
         InputEvents.Instance.JumpStarted.AddListener( JumpStarted );
     }
 }

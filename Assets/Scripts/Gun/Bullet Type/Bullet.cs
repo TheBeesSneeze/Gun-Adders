@@ -41,6 +41,7 @@ public class Bullet : MonoBehaviour
             if (Physics.Raycast(lastPosition, transform.forward, out RaycastHit hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
                     QueryTriggerInteraction.Ignore))
             {
+                print(hit.collider);
                 if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForceAtPosition(hit.normal * hitRigidbodyImpactForce, hit.point, ForceMode.Impulse);
