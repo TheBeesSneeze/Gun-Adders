@@ -41,6 +41,8 @@ public class InputEvents : Singleton<InputEvents>
     public UnityEvent PauseStarted; //@TODO
     public UnityEvent RestartStarted; //@TODO //re start start ed
 
+    public UnityEvent RespawnStarted; 
+
     [HideInInspector] public Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
     [HideInInspector] public Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
     [HideInInspector] public Vector2 InputDirection2D { get { return Move.ReadValue<Vector2>(); } }
@@ -49,6 +51,8 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public bool ShootPressed;
     [HideInInspector] public bool SprintPressed;
 
+    [HideInInspector] public static bool RespawnPressed; 
+
     //actions
     private PlayerInput playerInput;
     private InputAction Move;
@@ -56,6 +60,7 @@ public class InputEvents : Singleton<InputEvents>
     private InputAction Jump;
     private InputAction Look;
     private InputAction Sprint;
+    private InputAction Respawn; 
 
     //stuff and things
     private Transform movementOrigin; // camera.main
@@ -72,11 +77,13 @@ public class InputEvents : Singleton<InputEvents>
         Shoot = playerInput.currentActionMap.FindAction("Shoot");
         Look = playerInput.currentActionMap.FindAction("Look");
         Sprint = playerInput.currentActionMap.FindAction("Sprint");
+        Respawn = playerInput.currentActionMap.FindAction("Respawn");
 
         Move .started += context => { MovePressed = true;  MoveStarted.Invoke();  };
         Jump .started += context => { JumpPressed = true;  JumpStarted.Invoke();  };
         Shoot.started += context => { ShootPressed = true; ShootStarted.Invoke(); };
         Sprint.started += context => { SprintPressed = true; };
+        Respawn.started += context => { RespawnPressed = true; RespawnStarted.Invoke(); };
         /*
         Move.performed += context => { MoveHeld.Invoke(); };
         Jump.performed += context => { JumpHeld.Invoke(); };
@@ -101,6 +108,8 @@ public class InputEvents : Singleton<InputEvents>
 
         if (ShootPressed)
             ShootHeld.Invoke();
+
+        
     }
     private void OnDisable()
     {
