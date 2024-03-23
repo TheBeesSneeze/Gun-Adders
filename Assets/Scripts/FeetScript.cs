@@ -6,13 +6,13 @@ public class FeetScript : MonoBehaviour
 {
     public bool touchingGround = false;
     private void OnTriggerEnter(Collider other){
-        if (other.tag == "Ground") {
+        //if (other.tag == "Ground") {
             touchingGround = true;
-        }
+        //}
     }
     private void OnTriggerExit(Collider other){
-        if (other.tag == "Ground"){
+        //if (other.tag == "Ground"){
             touchingGround = false;
-        }
+        //}
     }
 }
