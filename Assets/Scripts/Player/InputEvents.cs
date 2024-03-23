@@ -37,6 +37,10 @@ public class InputEvents : Singleton<InputEvents>
 
     public UnityEvent PauseStarted; //@TODO
     public UnityEvent RestartStarted; //@TODO //re start start ed
+   
+    public UnityEvent RespawnEnemiesStarted;
+    
+
 
     [HideInInspector] public static Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
     [HideInInspector] public static Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
@@ -44,6 +48,8 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public static bool MovePressed;
     [HideInInspector] public static bool JumpPressed;
     [HideInInspector] public static bool ShootPressed;
+    [HideInInspector] public static bool RespawnPressed;
+    
 
     //actions
     private static PlayerInput playerInput;
@@ -51,7 +57,9 @@ public class InputEvents : Singleton<InputEvents>
     private static InputAction Shoot;
     private static InputAction Jump;
     private static InputAction Look;
+    private static InputAction Respawn; 
 
+    
     //stuff and things
     private static Transform movementOrigin; // camera.main
 
@@ -66,10 +74,14 @@ public class InputEvents : Singleton<InputEvents>
         Jump = playerInput.currentActionMap.FindAction("Jump");
         Shoot = playerInput.currentActionMap.FindAction("Shoot");
         Look = playerInput.currentActionMap.FindAction("Look");
+        Respawn = playerInput.currentActionMap.FindAction("Respawn");
+        
 
         Move .started += context => { MovePressed = true;  MoveStarted.Invoke();  };
         Jump .started += context => { JumpPressed = true;  JumpStarted.Invoke();  };
         Shoot.started += context => { ShootPressed = true; ShootStarted.Invoke(); };
+        Respawn.started += context => { RespawnPressed = true; RespawnEnemiesStarted.Invoke(); };
+        
 
         /*
         Move.performed += context => { MoveHeld.Invoke(); };
@@ -78,8 +90,11 @@ public class InputEvents : Singleton<InputEvents>
         */
 
         Move .canceled += context => { MovePressed = false;  MoveCanceled.Invoke();  };
-        Jump .canceled += context => { JumpPressed = false;  JumpCanceled.Invoke();  };
+        Jump .canceled += context => { JumpPressed = false;  JumpCanceled.Invoke(); };
         Shoot.canceled += context => { ShootPressed = false; ShootCanceled.Invoke(); };
+        
+
+       
     }
 
     private void OnDisable()
@@ -100,5 +115,10 @@ public class InputEvents : Singleton<InputEvents>
 
         if (ShootPressed)
             ShootHeld.Invoke();
+
+        if(RespawnPressed)
+            RespawnEnemiesStarted.Invoke();
+        
+
     }
 }
