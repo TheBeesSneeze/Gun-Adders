@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 1218920809}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1171,7 +1171,7 @@ PrefabInstance:
     - target: {fileID: 4839773283336281262, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
         type: 3}
       propertyPath: m_Drag
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5603351182358813624, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
         type: 3}
@@ -1182,6 +1182,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585037478058547727, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312545447236190095, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
+        type: 3}
+      propertyPath: JumpForce
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8312545447236190095, guid: 8c5732bf2895a5643a2cf88cfa0bea73,
         type: 3}

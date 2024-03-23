@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 2200321756499408232}
   - component: {fileID: 3234975378561436483}
   - component: {fileID: 6585037478058547727}
+  - component: {fileID: 3119632512494921856}
   m_Layer: 0
   m_Name: Feet
   m_TagString: Untagged
@@ -242,6 +243,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0.00000047683716, z: -0.00000008940697}
+--- !u!114 &3119632512494921856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7966878636224755668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ae309571447974a8cb01c249647e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchingGround: 0
 --- !u!1 &9177316904666862019
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598fc3a6160b794428ba4b37c401c7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feet: {fileID: 3119632512494921856}
+  airJumps: 1
 --- !u!33 &4353119250642878249
 MeshFilter:
   m_ObjectHideFlags: 0

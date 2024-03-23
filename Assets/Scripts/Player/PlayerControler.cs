@@ -22,6 +22,11 @@ public class PlayerControler : MonoBehaviour
     private float xMovement;
     private float yMovement;
 
+    [Tooltip("The player prefabs feet script")]
+    public FeetScript feet;
+
+    public int airJumps = 1;
+    private int airJumpCounter;
     /// <summary>
     /// every frame while move is held
     /// </summary>
@@ -40,13 +45,19 @@ public class PlayerControler : MonoBehaviour
     }
     private void JumpStarted()
     {
-        rb.AddForce(0, stats.JumpForce, 0,ForceMode.Impulse);
+        if (feet.touchingGround)
+        {
+            rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
+            airJumpCounter = airJumps;
+        }else if(airJumpCounter > 0) {
+            rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
+            airJumpCounter--;
+        }
     }
     private void FixedUpdate()
     {
         UpdateCamera();
     }
-
     private void UpdateCamera()
     {
         /*
@@ -69,17 +80,15 @@ public class PlayerControler : MonoBehaviour
         yMovement = Mathf.Clamp(yMovement, -90, 90);
         cam.transform.localEulerAngles = new Vector3(-yMovement, xMovement, 0f);
     }
-
     // Start is called every frame
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         stats = GetComponent<PlayerStats>();
         cam = Camera.main.transform;
-
+        airJumpCounter = airJumps;
         AssignEventListeners();
-    }
-    
+    } 
     private void AssignEventListeners()
     {
         InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
