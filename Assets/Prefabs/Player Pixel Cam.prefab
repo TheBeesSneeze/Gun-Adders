@@ -77,6 +77,8 @@ MonoBehaviour:
   defaultShootingMode: {fileID: 11400000, guid: c9e027354a58141408ec58a6101b45f9,
     type: 2}
   bulletSpawnPoint: {fileID: 7533370447666590071}
+  CurrentBulletPrefab: {fileID: 7340202116886174177, guid: bb98eaf02be1e9e44939ac0716429f99,
+    type: 3}
   Gun: {fileID: 4532600544602286655}
 --- !u!114 &167815564817428575
 MonoBehaviour:
@@ -963,7 +965,7 @@ GameObject:
   - component: {fileID: 7647289689146297053}
   - component: {fileID: 3507587354962495125}
   - component: {fileID: 8573732047299625785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

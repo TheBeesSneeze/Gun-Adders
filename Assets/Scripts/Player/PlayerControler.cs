@@ -33,8 +33,6 @@ public class PlayerControler : MonoBehaviour
     private void FixedUpdate()
     {
         //if (!InputEvents.MovePressed) return;
-
-        Vector3 targetV = InputEvents.InputDirection.normalized * stats.Speed;
         Vector3 targetV;
         if (InputEvents.Instance.SprintPressed){
             targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed * stats.SprintSpeed;
