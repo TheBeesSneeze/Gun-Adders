@@ -20,7 +20,6 @@ using UnityEngine;
 
 public class CharacterType : MonoBehaviour
 {
-    //public 
 
     [ReadOnly] public float CurrentHealth = 1;
     // Start is called before the first frame update
