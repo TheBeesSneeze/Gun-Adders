@@ -20,7 +20,7 @@ public class EnemyType : CharacterType
     {
         base.Start();
         CurrentHealth = DefaultHealth;
-        slider = GetComponent<Slider>();
+        slider = GetComponentInChildren<Slider>();
     }
 
     public override void TakeDamage(float damage)
