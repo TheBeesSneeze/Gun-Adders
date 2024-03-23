@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * File Name :         InputEvents.cs
+ * Author(s) :         Clare
+ * Creation Date :     3/23/2024
+ *
+ * Brief Description : 
+ * Made up of an array of empty transforms that represent the spawn points
+ * When the player hits F it will spawn in enemies at every spawn point 
+ * 
+ *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
