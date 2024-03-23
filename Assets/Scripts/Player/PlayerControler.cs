@@ -30,8 +30,9 @@ public class PlayerControler : MonoBehaviour
     /// <summary>
     /// every frame while move is held
     /// </summary>
-    private void ManageMovement()
+    private void FixedUpdate()
     {
+        //if (!InputEvents.MovePressed) return;
         Vector3 targetV;
         if (InputEvents.Instance.SprintPressed){
             targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed * stats.SprintSpeed;
@@ -41,7 +42,11 @@ public class PlayerControler : MonoBehaviour
         }
         targetV.y = rb.velocity.y;
         Vector3 force = targetV - rb.velocity;
-        rb.AddForce(force);
+
+        if (float.IsNaN(force.x) || float.IsNaN(force.y) || float.IsNaN(force.z))
+            force = Vector3.zero;
+
+        rb.AddForce(force, ForceMode.VelocityChange);
     }
     private void JumpStarted()
     {
@@ -54,7 +59,8 @@ public class PlayerControler : MonoBehaviour
             airJumpCounter--;
         }
     }
-    private void FixedUpdate()
+
+    private void Update()
     {
         UpdateCamera();
     }
@@ -86,12 +92,15 @@ public class PlayerControler : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         stats = GetComponent<PlayerStats>();
         cam = Camera.main.transform;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         airJumpCounter = airJumps;
         AssignEventListeners();
     } 
     private void AssignEventListeners()
     {
-        InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
+       // InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
         InputEvents.Instance.JumpStarted.AddListener( JumpStarted );
     }
 }
