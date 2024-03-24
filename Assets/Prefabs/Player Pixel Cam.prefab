@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7370436624252173987}
   - component: {fileID: 2444357040561499693}
   - component: {fileID: 8162339477801571298}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Pixel Cam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ Transform:
   - {fileID: 4246944182689504440}
   - {fileID: 2867974096579210779}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6888475280479492071
 MonoBehaviour:

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 562047037873011998}
   - component: {fileID: 3525244839604161409}
   m_Layer: 6
-  m_Name: Bullet
+  m_Name: SlowBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
     type: 3}
   impactEffectPrefabDespawnTime: 2
   damageAmount: 10
-  bulletEffect: {fileID: 0}
+  bulletEffect: {fileID: 11400000, guid: d6fd1cfedeae7594f98ddaba60c6cfbd, type: 2}
   bulletEffect2: {fileID: 0}
 --- !u!136 &562047037873011998
 CapsuleCollider:
