@@ -54,9 +54,13 @@ public class PlayerControler : MonoBehaviour
         {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter = airJumps;
-        }else if(airJumpCounter > 0) {
+            return;
+        }
+        if(airJumpCounter > 0) 
+        {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter--;
+            return;
         }
     }
 
