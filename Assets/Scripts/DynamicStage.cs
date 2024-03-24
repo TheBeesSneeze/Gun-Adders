@@ -23,7 +23,15 @@ public class DynamicStage : MonoBehaviour
 
     public void ChangeStage()
     {
-        stageAnimator.SetTrigger("A");
+        if(Random.value > 0.5f)
+        {
+            stageAnimator.SetTrigger("A");
+        }
+        else
+        {
+            stageAnimator.SetTrigger("B");
+        }
+        
     }
 
     [Button]
