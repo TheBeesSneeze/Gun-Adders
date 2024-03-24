@@ -36,6 +36,8 @@ public class CharacterType : MonoBehaviour
         {
             Die();
         }
+
+        Debug.Log("grah");
     }
 
     protected virtual void Die()

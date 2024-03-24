@@ -48,7 +48,8 @@ public class Bullet : MonoBehaviour
                 }
                 if (hitImpactEffectPrefab != null)
                 {
-                    Destroy(Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal)), impactEffectPrefabDespawnTime);
+                    var obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(obj, impactEffectPrefabDespawnTime);
                 }
 
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
