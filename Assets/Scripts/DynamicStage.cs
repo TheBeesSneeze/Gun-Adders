@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class DynamicStage : MonoBehaviour
 {
+    public int NumberOfStages=1;
     private Animator stageAnimator;
 
     [Header("Debug Stuff")]
@@ -23,14 +24,8 @@ public class DynamicStage : MonoBehaviour
 
     public void ChangeStage()
     {
-        if(Random.value > 0.5f)
-        {
-            stageAnimator.SetTrigger("A");
-        }
-        else
-        {
-            stageAnimator.SetTrigger("B");
-        }
+        stageAnimator.SetInteger("Stage", Random.Range(1, NumberOfStages+1));
+        stageAnimator.SetTrigger("New Stage");
         
     }
 

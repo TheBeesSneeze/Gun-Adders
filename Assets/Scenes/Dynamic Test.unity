@@ -1061,6 +1061,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.0061
       objectReference: {fileID: 0}
+    - target: {fileID: 6888475280479492071, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: JumpForce
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9237,6 +9242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Height
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648846947699114292, guid: 4525acae889943744921bb5caa470b28,
+        type: 3}
+      propertyPath: NumberOfStages
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7747527949061746075, guid: 4525acae889943744921bb5caa470b28,
         type: 3}
