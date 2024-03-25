@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
+  GunName: 
   GunColor: {r: 0.34901962, g: 0.3764706, b: 0.35686275, a: 1}
-  RPM: 120
+  gunIcon: {fileID: 0}
+  SecondsBetweenShots: 0.5
   BulletsPerShot: 1
   BulletAccuracyOffset: 0
   BulletSpeed: 10
   BulletDamage: 1
-  RecoilForce: 1
+  RecoilForce: 100
