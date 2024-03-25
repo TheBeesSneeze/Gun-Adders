@@ -18,9 +18,10 @@ public class UpgradePickupType : MonoBehaviour
     public float DisabledOpacity;
     public AudioClip PickUpSound;
     public TMP_Text UpgradeText;
-    public Image BackgroundImage;
+    public RectTransform BackgroundImage;
 
     private Color defaultColor;
+    private PlayerBehaviour player;
 
     //debug only
     [ReadOnly] public bool Disabled;
@@ -71,5 +72,11 @@ public class UpgradePickupType : MonoBehaviour
     {
         defaultColor = GetComponent<Renderer>().material.color;
         LoadNewUpgrade();
+        player = GameObject.FindObjectOfType<PlayerBehaviour>();
+    }
+
+    private void Update()
+    {
+        BackgroundImage.transform.LookAt(player.transform.position);
     }
 }

@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         BulletEffectPickup.cs
-* Author(s) :         Alec, Toby
+* Author(s) :         Alec, Toby, SKy
 * Creation Date :     
 *
 * Brief Description : 
@@ -21,11 +21,12 @@ public class BulletEffectPickup : UpgradePickupType
 
     private Vector3 initPosition;
 
-    private PlayerBehaviour player;
+    
     protected override void Start()
     {
         base.Start();
         initPosition = transform.position;
+        
     }
 
     /// <summary>
@@ -33,6 +34,7 @@ public class BulletEffectPickup : UpgradePickupType
     /// </summary>
     private void LateUpdate()
     {
+        
         var pos = transform.position;
         pos.y = initPosition.y + Mathf.Sin(Time.time * 1.5f) * .25f;
         transform.position = pos;
@@ -40,12 +42,9 @@ public class BulletEffectPickup : UpgradePickupType
         var rot = transform.eulerAngles;
         rot.y += 25f * Time.deltaTime;
         transform.eulerAngles = rot;
-    }
-    private void FixedUpdate()
-    {
-        UpgradeText.transform.LookAt(player.transform.position);
-        BackgroundImage.transform.LookAt(player.transform.position);
-    }
+        
+   }
+    
 
     protected override void PickUp(GunController gun)
     {
