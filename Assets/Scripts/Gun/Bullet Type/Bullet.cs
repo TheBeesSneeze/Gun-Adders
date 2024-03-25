@@ -16,7 +16,6 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private float bulletForce = 200f;
     [SerializeField] private float despawnTime = 5f;
-    [SerializeField] private float hitRigidbodyImpactForce = 10f;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
     [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
@@ -43,10 +42,6 @@ public class Bullet : MonoBehaviour
                     QueryTriggerInteraction.Ignore))
             {
                 print(hit.collider);
-                if (hit.rigidbody != null)
-                {
-                    hit.rigidbody.AddForceAtPosition(hit.normal * hitRigidbodyImpactForce, hit.point, ForceMode.Impulse);
-                }
                 if (hitImpactEffectPrefab != null)
                 {
                     var obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
