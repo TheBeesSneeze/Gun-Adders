@@ -85,7 +85,7 @@ public class GunController : MonoBehaviour
 
         if (!InputEvents.Instance.ShootPressed) return;
 
-        if (secondsSinceLastShoot < currentShootMode.SecondsBetweenShots) return;
+        if (secondsSinceLastShoot < (60f / currentShootMode.RPM)) return;
 
         //shootin time
         secondsSinceLastShoot = 0;
@@ -95,7 +95,7 @@ public class GunController : MonoBehaviour
             ShootBullet(angle);
         }
 
-       playerRB.AddForce(camera.forward * -1 * currentShootMode.RecoilForce, ForceMode.Impulse);
+       playerRB.AddForce(-camera.forward * currentShootMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
