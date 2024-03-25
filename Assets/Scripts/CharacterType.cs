@@ -17,6 +17,7 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterType : MonoBehaviour
 {
@@ -42,7 +43,6 @@ public class CharacterType : MonoBehaviour
 
     protected virtual void Die()
     {
-        Debug.LogWarning("no death code. override this function.");
-        Destroy(this.gameObject);
+        SceneManager.LoadScene("Arena Scene");
     }
 }
