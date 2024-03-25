@@ -166,7 +166,6 @@ GameObject:
   - component: {fileID: 1503637654318619720}
   - component: {fileID: 5844086795473256532}
   - component: {fileID: 5124234784880764874}
-  - component: {fileID: 5903047752998831629}
   - component: {fileID: 4790329206841041940}
   m_Layer: 0
   m_Name: EnemyGround
@@ -276,6 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 1
   DefaultHealth: 5
+  iFrameSeconds: 1
+  enemyDamage: 1
 --- !u!114 &5124234784880764874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,26 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
---- !u!114 &5903047752998831629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651905046631748458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad250803ccac29c429b674262bbbcdb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 1
-  DestroyedByWalls: 0
-  DestroyedAfterAttack: 0
-  DestroyOtherAttacks: 1
-  GetDestroyedByOtherAttacks: 0
-  DestroyAttackAfterSeconds: -1
-  SoundWhenDestroyed: {fileID: 0}
-  AttackSource: 1
+  SlowedSpeed: 0.5
 --- !u!54 &4790329206841041940
 Rigidbody:
   m_ObjectHideFlags: 0

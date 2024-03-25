@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/blue test.mat.meta
+guid: 8c71fc8b6ee63864b8749422f792c049
+NativeFormatImporter:
+========
+guid: d998df427d0700640b6128722a437ab1
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> main:Assets/Gun Upgrades/Bullet Effects.meta
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
