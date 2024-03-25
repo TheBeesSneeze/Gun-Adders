@@ -20,8 +20,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
     [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
-    [SerializeField, ReadOnly] private BulletEffect _bulletEffect1;
-    [SerializeField, ReadOnly] private BulletEffect _bulletEffect2;
+    [HideInInspector] public BulletEffect _bulletEffect1 { get { return _bulletEffect1; } set { _bulletEffect1 = value; SetColorGradient(); } }
+    [HideInInspector] public BulletEffect _bulletEffect2 { get { return _bulletEffect2; } set { _bulletEffect2 = value; SetColorGradient(); } }
     private Rigidbody rb;
     private Vector3 lastPosition;
     private float lastTime;
