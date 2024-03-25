@@ -95,7 +95,7 @@ public class GunController : MonoBehaviour
             ShootBullet(angle);
         }
 
-       playerRB.AddForce(camera.forward * -1 * currentShootMode.RecoilForce, ForceMode.Impulse);
+       playerRB.AddForce(-camera.forward * currentShootMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
