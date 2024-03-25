@@ -131,6 +131,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 77938983610899891, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 77938983610899891, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 334479710990617890, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_Name
@@ -201,6 +211,26 @@ PrefabInstance:
         type: 3}
       propertyPath: Speed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720351262012301187, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720351262012301187, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720351262012301187, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878237862127877313, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -633,7 +663,8 @@ GameObject:
   - component: {fileID: 1550193317}
   - component: {fileID: 1550193316}
   - component: {fileID: 1550193315}
-  m_Layer: 0
+  - component: {fileID: 1550193319}
+  m_Layer: 4
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,6 +757,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1550193319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550193314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8589155c69489944f95491ab1953082b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 1
+  DefaultHealth: 1
 --- !u!1001 &3212820689494590405
 PrefabInstance:
   m_ObjectHideFlags: 0
