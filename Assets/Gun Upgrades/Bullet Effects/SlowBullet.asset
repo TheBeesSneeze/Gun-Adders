@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SlowBullet
   m_EditorClassIdentifier: 
   TrailColor: {r: 0, g: 1, b: 0.9693396, a: 1}
-  UpgradeName: 
+  UpgradeName: Slow
   <SlowTime>k__BackingField: 2
