@@ -13,12 +13,10 @@ using UnityEngine;
 public class ShootModePickup : UpgradePickupType
 {
     public ShootingMode[] ShootModes;
+    private ShootingMode loadedShootMode;
     
     protected override void PickUp(GunController gun)
     {
-        int randomIndex = Random.Range(0, ShootModes.Length);
-        gun.LoadShootingMode(ShootModes[randomIndex]);
-
         base.PickUp(gun);
     }
 
@@ -30,5 +28,19 @@ public class ShootModePickup : UpgradePickupType
             Debug.LogWarning(gameObject.name + " doesnt have shoot modes");
             Destroy (gameObject);
         }
+    }
+
+    protected override void LoadNewUpgrade()
+    {
+        ShootingMode newUpgrade;
+
+        //make sure new upgrade isnt same as last time
+        do
+        {
+            newUpgrade = ShootModes[UnityEngine.Random.Range(0, ShootModes.Length)];
+        }
+        while (newUpgrade == loadedShootMode); //DO WHILE DO WHILE DO WHILE
+
+        loadedShootMode = newUpgrade;
     }
 }

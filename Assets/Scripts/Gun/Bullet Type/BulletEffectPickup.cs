@@ -1,18 +1,34 @@
+/*******************************************************************************
+* File Name :         BulletEffectPickup.cs
+* Author(s) :         Alec, Toby
+* Creation Date :     
+*
+* Brief Description : 
+ *****************************************************************************/
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletEffectPickup : MonoBehaviour
+public class BulletEffectPickup : UpgradePickupType
 {
-    public GameObject BulletPrefab;
-    public AudioClip PickupSound;
+    //public GameObject BulletPrefab;
+    public BulletEffect[] UpgradePool;
+
+    private BulletEffect loadedUpgrade;
+
     private Vector3 initPosition;
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         initPosition = transform.position;
     }
 
+    /// <summary>
+    /// bruh moment
+    /// </summary>
     private void LateUpdate()
     {
         var pos = transform.position;
@@ -24,17 +40,45 @@ public class BulletEffectPickup : MonoBehaviour
         transform.eulerAngles = rot;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void PickUp(GunController gun)
     {
-        GunController gun = other.GetComponent<GunController>();
-        if (gun == null) return;
-        gun.CurrentBulletPrefab = BulletPrefab;
+        base.PickUp(gun);
 
-        if (PickupSound != null)
+        Debug.Log("loaded " + loadedUpgrade.name);
+
+        if (gun.bulletEffect1 == null)
         {
-            AudioSource.PlayClipAtPoint(PickupSound, transform.position);
+            gun.bulletEffect1 = loadedUpgrade;
+            return;
         }
-        
-        Destroy(gameObject);
+
+        if (gun.bulletEffect2 == null)
+        {
+            gun.bulletEffect2 = loadedUpgrade;
+            return;
+        }
+
+        if( UnityEngine.Random.value > 0.5f)
+        {
+            gun.bulletEffect1 = loadedUpgrade;
+        }
+        else
+        {
+            gun.bulletEffect2 = loadedUpgrade;
+        }
+    }
+
+    protected override void LoadNewUpgrade()
+    {
+        BulletEffect newUpgrade;
+
+        //make sure new upgrade isnt same as last time
+        do
+        {
+            newUpgrade = UpgradePool[UnityEngine.Random.Range(0, UpgradePool.Length)];
+        }
+        while (newUpgrade == loadedUpgrade); //DO WHILE DO WHILE DO WHILE
+
+        loadedUpgrade = newUpgrade;
     }
 }

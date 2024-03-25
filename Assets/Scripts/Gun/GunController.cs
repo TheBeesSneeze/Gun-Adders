@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         GunController.cs
-* Author(s) :         Toby Schamberger
+* Author(s) :         Toby, Alec
 * Creation Date :     3/20/2024
 *
 * Brief Description : 
@@ -16,8 +16,11 @@ public class GunController : MonoBehaviour
 {
     public ShootingMode defaultShootingMode;
     public Transform bulletSpawnPoint;
-    public GameObject CurrentBulletPrefab;
+    [SerializeField] private GameObject BulletPrefab;
     public Transform Gun;
+
+    [HideInInspector] public BulletEffect bulletEffect1;
+    [HideInInspector] public BulletEffect bulletEffect2;
 
     private ShootingMode currentShootMode;
     private float secondsSinceLastShoot;
@@ -52,10 +55,10 @@ public class GunController : MonoBehaviour
     {
         //alec put code here
 
-        var bullet = Instantiate(CurrentBulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction.normalized));
+        var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction.normalized));
         bullet.GetComponent<Bullet>().damageAmount = currentShootMode.BulletDamage;
         bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
-        bullet.GetComponent<Bullet>().Initialize();
+        bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2);
 
         Debug.Log("pew");
         Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);

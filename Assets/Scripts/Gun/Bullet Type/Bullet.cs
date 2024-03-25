@@ -1,10 +1,11 @@
 /*******************************************************************************
 * File Name :         Bullet.cs
-* Author(s) :        Alec Pizziferro
+* Author(s) :         Alec Pizziferro
 * Creation Date :     3/22/2024
 *
 * Brief Description : Projectile Bullet Physics
  *****************************************************************************/
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
     [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
-    [SerializeField] private BulletEffect bulletEffect;
-    [SerializeField] private BulletEffect bulletEffect2;
+    [SerializeField, ReadOnly] private BulletEffect _bulletEffect1;
+    [SerializeField, ReadOnly] private BulletEffect _bulletEffect2;
     private Rigidbody rb;
     private Vector3 lastPosition;
     private float lastTime;
@@ -31,11 +32,16 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
-    public void Initialize()
+    public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2)
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
+
+        _bulletEffect1 = bulletEffect1;
+        _bulletEffect2 = bulletEffect2;
+
+        SetColorGradient();
     }
 
     private void FixedUpdate()
@@ -57,14 +63,14 @@ public class Bullet : MonoBehaviour
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
                 {
                     enemy.TakeDamage(damageAmount);
-                    if (bulletEffect != null)
+                    if (_bulletEffect1 != null)
                     {
-                        bulletEffect.OnEnemyHit(enemy);
+                        _bulletEffect1.OnEnemyHit(enemy);
                     }
 
-                    if (bulletEffect2 != null)
+                    if (_bulletEffect2 != null)
                     {
-                        bulletEffect2.OnEnemyHit(enemy);
+                        _bulletEffect2.OnEnemyHit(enemy);
                     }
                 }
                 Destroy(gameObject);
@@ -76,5 +82,49 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void SetColorGradient()
+    {
+        TrailRenderer tr = GetComponent<TrailRenderer>();
+        tr.enabled = true;
+
+        tr.startColor = Color.white;
+        tr.endColor = Color.white;
+
+        if (_bulletEffect1 != null)
+        {
+            tr.startColor = _bulletEffect1.TrailColor;
+        }
+        if (_bulletEffect2 != null)
+        {
+            tr.endColor = _bulletEffect2.TrailColor;
+        }
+    }
+
+    /// <summary>
+    /// averages the colors from both bullet effects.
+    /// returns white if no upgrades are loaded
+    /// </summary>
+    /// <returns></returns>
+    private Color GetBulletColor()
+    {
+        if(_bulletEffect1 == null && _bulletEffect2 == null)
+        {
+            return Color.white;
+        }
+
+        if(_bulletEffect1 == null)
+        {
+            return _bulletEffect2.TrailColor;
+        }
+
+        if (_bulletEffect2 == null)
+        {
+            return _bulletEffect1.TrailColor;
+        }
+
+        //average them
+        return (_bulletEffect1.TrailColor / 2) + (_bulletEffect2.TrailColor / 2);
     }
 }

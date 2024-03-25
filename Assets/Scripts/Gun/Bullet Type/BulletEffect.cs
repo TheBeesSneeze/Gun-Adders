@@ -14,5 +14,6 @@ using UnityEngine;
 
 public abstract class BulletEffect : ScriptableObject
 {
+    public Color TrailColor= Color.white;
     public abstract void OnEnemyHit(EnemyType type);
 }

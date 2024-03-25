@@ -1,9 +1,14 @@
-using JetBrains.Annotations;
+/*******************************************************************************
+* File Name :         UpgradePickupType.cs
+* Author(s) :         Toby
+* Creation Date :     3/25/2024
+*
+* Brief Description : base class for those little upgrade pickup guys
+ *****************************************************************************/
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 
 public class UpgradePickupType : MonoBehaviour
 {
@@ -35,6 +40,11 @@ public class UpgradePickupType : MonoBehaviour
         PickUp(gun);
     }
 
+    protected virtual void LoadNewUpgrade()
+    {
+        Debug.LogWarning("override this function");
+    }
+
     protected IEnumerator DisablePickup()
     {
         Color c = defaultColor;
@@ -48,11 +58,14 @@ public class UpgradePickupType : MonoBehaviour
 
         GetComponent<Renderer>().material.color = defaultColor;
         GetComponent<Collider>().enabled = true;
+        LoadNewUpgrade();
+
         Disabled = false;
     }
 
     protected virtual void Start()
     {
         defaultColor = GetComponent<Renderer>().material.color;
+        LoadNewUpgrade();
     }
 }
