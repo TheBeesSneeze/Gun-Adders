@@ -6,6 +6,7 @@
 * Brief Description : 
  *****************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,9 @@ public class EnemyType : CharacterType
 {
     public float DefaultHealth=1;
     private Slider slider;
-
+    internal bool slowed { get; private set; }
+    private float slowTimer = 0f;
+    private float slowTimeRef = 0f;
     protected override void Start()
     {
         base.Start();
@@ -32,5 +35,28 @@ public class EnemyType : CharacterType
             slider.value = t;
         }
 
+    }
+
+    public void ApplySlow(float slowTime)
+    {
+        slowed = true;
+        slowTimer = 0f;
+        slowTimeRef = slowTime;
+    }
+    
+    private void Update()
+    {
+        if (slowed)
+        {
+            if (slowTimer < slowTimeRef)
+            {
+                slowTimer += Time.deltaTime;
+            }
+            else
+            {
+                slowTimer = 0f;
+                slowed = false;
+            }
+        }
     }
 }

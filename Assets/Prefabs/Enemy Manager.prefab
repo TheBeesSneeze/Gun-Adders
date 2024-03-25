@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 2346694357331903082}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4076308475334361730
 MonoBehaviour:
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - {fileID: 2346694357331903082}
-  enemey: {fileID: 0}
+  enemey: {fileID: 1651905046631748458, guid: 2627cc951982cb645bf4e16039f3deef, type: 3}
 --- !u!1 &6917430615640812274
 GameObject:
   m_ObjectHideFlags: 0

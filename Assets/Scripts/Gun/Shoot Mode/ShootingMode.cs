@@ -9,12 +9,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "ShootingMode", menuName = "ShootingMode")]
 public class ShootingMode : ScriptableObject
 {
+    [Header("Display")]
+    public string GunName;
     public Color GunColor = Color.white;
-    public float SecondsBetweenShots=0.01f;
+    public Sprite gunIcon;
+    [Tooltip("RPM of bullets shot")] public float RPM = 120f;
     [Tooltip("# of bullets shot at one time (imagine a shotgun)")]
     public int BulletsPerShot=1; 
     [Tooltip("(angle) How much to randomize angle (0 is perfect precision)")]
@@ -24,4 +28,5 @@ public class ShootingMode : ScriptableObject
     public float BulletSpeed=10; //@TODO
     public float BulletDamage=1; //@TODO
     public float RecoilForce;
+
 }

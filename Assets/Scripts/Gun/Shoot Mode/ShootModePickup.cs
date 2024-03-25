@@ -10,29 +10,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootModePickup : MonoBehaviour
+public class ShootModePickup : UpgradePickupType
 {
-    public ShootingMode ShootMode;
-    public AudioClip PickUpSound;
-
-    private void OnTriggerEnter(Collider other)
+    public ShootingMode[] ShootModes;
+    
+    protected override void PickUp(GunController gun)
     {
-        GunController gun = other.GetComponent<GunController>();
+        int randomIndex = Random.Range(0, ShootModes.Length);
+        gun.LoadShootingMode(ShootModes[randomIndex]);
 
-        if (gun == null) return;
-
-        if(PickUpSound != null)
-            AudioSource.PlayClipAtPoint(PickUpSound, gun.transform.position);
-
-        gun.LoadShootingMode(ShootMode);
-        Destroy(gameObject);
+        base.PickUp(gun);
     }
 
-    void Start()
+    protected override void Start()
     {
-        if(ShootMode == null)
+        base.Start(); 
+        if(ShootModes.Length < 1)
         {
-            Debug.LogWarning(gameObject.name + " doesnt have a shoot mode");
+            Debug.LogWarning(gameObject.name + " doesnt have shoot modes");
             Destroy (gameObject);
         }
     }
