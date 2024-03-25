@@ -20,6 +20,8 @@ public class BulletEffectPickup : UpgradePickupType
     private BulletEffect loadedUpgrade;
 
     private Vector3 initPosition;
+
+    private PlayerBehaviour player;
     protected override void Start()
     {
         base.Start();
@@ -38,6 +40,11 @@ public class BulletEffectPickup : UpgradePickupType
         var rot = transform.eulerAngles;
         rot.y += 25f * Time.deltaTime;
         transform.eulerAngles = rot;
+    }
+    private void FixedUpdate()
+    {
+        UpgradeText.transform.LookAt(player.transform.position);
+        BackgroundImage.transform.LookAt(player.transform.position);
     }
 
     protected override void PickUp(GunController gun)
@@ -80,5 +87,8 @@ public class BulletEffectPickup : UpgradePickupType
         while (newUpgrade == loadedUpgrade); //DO WHILE DO WHILE DO WHILE
 
         loadedUpgrade = newUpgrade;
+
+        UpgradeText.enabled = true;
+        UpgradeText.text = loadedUpgrade.UpgradeName;
     }
 }
