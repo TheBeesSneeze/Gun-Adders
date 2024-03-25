@@ -20,8 +20,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
     [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
-    [HideInInspector] public BulletEffect _bulletEffect1 { get { return _bulletEffect1; } set { _bulletEffect1 = value; SetColorGradient(); } }
-    [HideInInspector] public BulletEffect _bulletEffect2 { get { return _bulletEffect2; } set { _bulletEffect2 = value; SetColorGradient(); } }
+
+    [HideInInspector] public BulletEffect _bulletEffect1;
+    [HideInInspector] public BulletEffect _bulletEffect2;
+
     private Rigidbody rb;
     private Vector3 lastPosition;
     private float lastTime;
@@ -40,6 +42,16 @@ public class Bullet : MonoBehaviour
 
         _bulletEffect1 = bulletEffect1;
         _bulletEffect2 = bulletEffect2;
+
+
+        GetComponent<TrailRenderer>().enabled = true;
+
+        /*
+        GetComponent<TrailRenderer>().startColor = GetBulletColor();
+        GetComponent<TrailRenderer>().endColor = GetBulletColor();
+
+        GetComponent<Material>().color = GetBulletColor();
+        */
 
         SetColorGradient();
     }
@@ -84,6 +96,10 @@ public class Bullet : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// this code does not work
+    /// </summary>
     private void SetColorGradient()
     {
         TrailRenderer tr = GetComponent<TrailRenderer>();
@@ -124,7 +140,7 @@ public class Bullet : MonoBehaviour
             return _bulletEffect1.TrailColor;
         }
 
-        //average them
+        //weird way of averaging them but colors get weird when you add their parts to numbers above 1
         return (_bulletEffect1.TrailColor / 2) + (_bulletEffect2.TrailColor / 2);
     }
 }

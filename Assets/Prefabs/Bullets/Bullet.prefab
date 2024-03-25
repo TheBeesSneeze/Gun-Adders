@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7335014191224061694}
   - component: {fileID: 2004738192472320812}
   - component: {fileID: 4841941193543511118}
-  - component: {fileID: 562047037873011998}
   - component: {fileID: 3525244839604161409}
+  - component: {fileID: 562047037873011998}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
@@ -81,33 +81,10 @@ MonoBehaviour:
   hitImpactEffectPrefab: {fileID: 6289759660943968910, guid: b4ca01bbd78ddaa468ec026ab0612db3,
     type: 3}
   impactEffectPrefabDespawnTime: 2
-  bulletEffect: {fileID: 11400000, guid: 814977880fbe26a47a3c930460f777a9, type: 2}
-  bulletEffect2: {fileID: 0}
+  _bulletEffect1: {fileID: 0}
+  _bulletEffect2: {fileID: 0}
   damageAmount: 10
   bulletForce: 2000
---- !u!136 &562047037873011998
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7340202116886174177}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.01
-  m_Height: 0.05
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &3525244839604161409
 TrailRenderer:
   serializedVersion: 3
@@ -129,7 +106,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73d639f75e5dd824b9b7560f628a5967, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,3 +189,26 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!136 &562047037873011998
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7340202116886174177}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Height: 0.05
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}

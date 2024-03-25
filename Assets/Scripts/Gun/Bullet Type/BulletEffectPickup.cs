@@ -44,7 +44,7 @@ public class BulletEffectPickup : UpgradePickupType
     {
         base.PickUp(gun);
 
-        Debug.Log("loaded " + loadedUpgrade.name);
+        Debug.Log("loaded " + loadedUpgrade.UpgradeName);
 
         if (gun.bulletEffect1 == null)
         {
