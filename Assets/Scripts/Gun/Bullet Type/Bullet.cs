@@ -85,6 +85,20 @@ public class Bullet : MonoBehaviour
                         _bulletEffect2.OnEnemyHit(enemy);
                     }
                 }
+                //if hit something that isnt enemy
+                else
+                {
+                    Debug.Log("hit other");
+                    if (_bulletEffect1 != null)
+                    {
+                        _bulletEffect1.OnHitOther(hit.point);
+                    }
+
+                    if (_bulletEffect2 != null)
+                    {
+                        _bulletEffect2.OnHitOther(hit.point);
+                    }
+                }
                 Destroy(gameObject);
             }
 

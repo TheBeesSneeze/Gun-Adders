@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
  * File Name :         BulletEffect.cs
- * Author(s) :        Alec Pizziferro
+ * Author(s) :        Alec, Toby, Sky
  * Creation Date :     3/22/2024
  *
  * Brief Description : Scriptable Object base for handling Enemy Logic
