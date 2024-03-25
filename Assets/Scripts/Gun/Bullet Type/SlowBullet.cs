@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*******************************************************************************
+* File Name :         DefaultNamespace.cs
+* Author(s) :         Alec
+* Creation Date :     
+*
+* Brief Description : 
+ *****************************************************************************/
+
+using UnityEngine;
 
 namespace DefaultNamespace
 {

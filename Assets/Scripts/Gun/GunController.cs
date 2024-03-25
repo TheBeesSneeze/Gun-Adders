@@ -50,8 +50,13 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void ShootBullet(Vector3 direction)
     {
-        //alec put ur code here
+        //alec put code here
+
         var bullet = Instantiate(CurrentBulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction.normalized));
+        bullet.GetComponent<Bullet>().damageAmount = currentShootMode.BulletDamage;
+        bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
+        bullet.GetComponent<Bullet>().Initialize();
+
         Debug.Log("pew");
         Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);
     }
