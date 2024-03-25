@@ -14,18 +14,24 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float bulletForce = 200f;
+   
     [SerializeField] private float despawnTime = 5f;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
     [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
-    [SerializeField] private float damageAmount = 10f;
     [SerializeField] private BulletEffect bulletEffect;
     [SerializeField] private BulletEffect bulletEffect2;
     private Rigidbody rb;
     private Vector3 lastPosition;
     private float lastTime;
-    void Start()
+
+    [HideInInspector] public float damageAmount = 10f;
+    [HideInInspector] public float bulletForce = 200f;
+
+    /// <summary>
+    /// was previously start function, changed to get called in GunController
+    /// </summary>
+    public void Initialize()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
