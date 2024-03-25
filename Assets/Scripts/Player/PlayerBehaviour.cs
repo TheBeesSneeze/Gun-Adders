@@ -18,6 +18,9 @@ using UnityEngine;
 public class PlayerBehaviour : CharacterType
 {
     private PlayerStats stats;
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private GameObject damageCanvas;
+    [SerializeField] private float visualDamageSeconds = 0.5f;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -29,5 +32,23 @@ public class PlayerBehaviour : CharacterType
         stats = GetComponent<PlayerStats>();
 
         CurrentHealth = stats.DefaultHealth;
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (hurtSound != null)
+        {
+            AudioSource.PlayClipAtPoint(hurtSound, gameObject.transform.position);
+        }
+
+        damageCanvas.SetActive(true);
+        StartCoroutine(TakeDamageVisual());
+    }
+
+    public IEnumerator TakeDamageVisual()
+    {
+        yield return new WaitForSeconds(visualDamageSeconds);
+        damageCanvas.SetActive(false);
     }
 }

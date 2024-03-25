@@ -19,6 +19,12 @@ public class EnemyType : CharacterType
     internal bool slowed { get; private set; }
     private float slowTimer = 0f;
     private float slowTimeRef = 0f;
+    private bool canDamage = false;
+    [SerializeField] private float iFrameSeconds = 1;
+    [SerializeField] private int enemyDamage = 1;
+    private PlayerBehaviour player;
+    private Coroutine iFrames;
+
     protected override void Start()
     {
         base.Start();
@@ -58,5 +64,35 @@ public class EnemyType : CharacterType
                 slowed = false;
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.GetComponent<PlayerBehaviour>() != null)
+        {
+            player = collision.gameObject.GetComponent<PlayerBehaviour>();
+            iFrames = StartCoroutine(IFrames());
+        }
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        canDamage = false;
+        StopCoroutine(iFrames);
+    }
+
+    public IEnumerator IFrames()
+    {
+        canDamage = true;
+        do
+        {
+            player.TakeDamage(enemyDamage);
+            Debug.Log("doin damage!");
+            yield return new WaitForSeconds(iFrameSeconds);
+        }
+        while (canDamage);
+        
     }
 }
