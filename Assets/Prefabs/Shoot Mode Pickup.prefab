@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3894923257791370871
 MonoBehaviour:
@@ -48,7 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96acdbcff50b0c04aa838ef22cb79dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootMode: {fileID: 0}
+  DisabledSeconds: 3
+  DisabledOpacity: 0.5
+  PickUpSound: {fileID: 0}
+  Disabled: 0
+  ShootModes:
+  - {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
+  - {fileID: 11400000, guid: c9e027354a58141408ec58a6101b45f9, type: 2}
 --- !u!33 &761223276192664944
 MeshFilter:
   m_ObjectHideFlags: 0

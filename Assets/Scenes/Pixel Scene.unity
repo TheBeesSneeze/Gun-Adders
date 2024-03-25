@@ -401,6 +401,39 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootMode
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6,
+        type: 2}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: DisabledOpacity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: DisabledSeconds
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootModes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootModes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6,
+        type: 2}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootModes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c9e027354a58141408ec58a6101b45f9,
+        type: 2}
     - target: {fileID: 5942065246957760255, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
         type: 3}
       propertyPath: m_Name
@@ -810,7 +843,7 @@ PrefabInstance:
     - target: {fileID: 5549413377905767353, guid: b4ca01bbd78ddaa468ec026ab0612db3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5549413377905767353, guid: b4ca01bbd78ddaa468ec026ab0612db3,
         type: 3}
