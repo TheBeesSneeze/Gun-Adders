@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   GunColor: {r: 0.6313726, g: 0, b: 0, a: 1}
-  SecondsBetweenShots: 1
+  RPM: 60
   BulletsPerShot: 10
   BulletAccuracyOffset: 30
   BulletSpeed: 10

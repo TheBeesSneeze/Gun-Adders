@@ -19,6 +19,7 @@ public class ShootingMode : ScriptableObject
     public Color GunColor = Color.white;
     public Sprite gunIcon;
     public float SecondsBetweenShots=0.01f;
+    public float RPM = 120f;
     [Tooltip("# of bullets shot at one time (imagine a shotgun)")]
     public int BulletsPerShot=1; 
     [Tooltip("(angle) How much to randomize angle (0 is perfect precision)")]
