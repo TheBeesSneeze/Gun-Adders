@@ -4746,6 +4746,13 @@ MonoBehaviour:
 
     Jumps: Space
 
+    Sprint: Shift
+
+    Modules: Pick up
+    to change
+
+    your gun type and effect
+
     Freeze: Slows enemies
 
     Explosion,
