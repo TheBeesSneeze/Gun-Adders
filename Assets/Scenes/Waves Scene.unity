@@ -123,6 +123,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &56262501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56262502}
+  m_Layer: 0
+  m_Name: Spawn Point 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &56262502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56262501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.08, z: -5.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141998260}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &119463900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119463901}
+  m_Layer: 0
+  m_Name: Spawn Point 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &119463901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119463900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141998260}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &548463245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +258,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 584bb12fffb6c834baf39d3290500c25, type: 3}
+--- !u!4 &1141998260 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5853494585692702995, guid: 0d91bc4da2f28bd479327116936175b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8002007582190508424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1355410974
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +605,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1651905046631748458, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
+    - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      propertyPath: roundExtraSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      propertyPath: spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 56262502}
+    - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      propertyPath: spawnPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 119463901}
     - target: {fileID: 5360082600437120453, guid: 0d91bc4da2f28bd479327116936175b2,
         type: 3}
       propertyPath: m_Name
@@ -599,6 +687,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5853494585692702995, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 56262502}
+    - targetCorrespondingSourceObject: {fileID: 5853494585692702995, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 119463901}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d91bc4da2f28bd479327116936175b2, type: 3}
