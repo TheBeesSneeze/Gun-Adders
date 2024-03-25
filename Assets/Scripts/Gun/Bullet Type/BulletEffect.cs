@@ -10,11 +10,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 
 public abstract class BulletEffect : ScriptableObject
 {
     public Color TrailColor= Color.white;
-    public String UpgradeName;
+    public string UpgradeName;
     public abstract void OnEnemyHit(EnemyType type);
 }

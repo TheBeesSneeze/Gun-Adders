@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d6e3cae0dc45b08c589354a46c0986, type: 3}
   m_Name: SlowBullet
   m_EditorClassIdentifier: 
+  TrailColor: {r: 1, g: 1, b: 1, a: 1}
+  UpgradeName: Slow
+  <SlowTime>k__BackingField: 2

@@ -9,12 +9,16 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class UpgradePickupType : MonoBehaviour
 {
     public float DisabledSeconds;
     public float DisabledOpacity;
     public AudioClip PickUpSound;
+    public TMP_Text UpgradeText;
+    public Image BackgroundImage;
 
     private Color defaultColor;
 
@@ -27,7 +31,7 @@ public class UpgradePickupType : MonoBehaviour
             AudioSource.PlayClipAtPoint(PickUpSound, gun.transform.position);
 
         //Destroy(gameObject);
-
+        UpgradeText.enabled = false;
         StartCoroutine(DisablePickup());
     }
 
