@@ -18,7 +18,7 @@ public class UpgradePickupType : MonoBehaviour
     public float DisabledOpacity;
     public AudioClip PickUpSound;
     public TMP_Text UpgradeText;
-    public RectTransform BackgroundImage;
+    public Transform BackgroundImage;
 
     private Color defaultColor;
     private PlayerBehaviour player;
@@ -77,6 +77,8 @@ public class UpgradePickupType : MonoBehaviour
 
     private void Update()
     {
+        if (BackgroundImage == null) return;
+
         BackgroundImage.transform.LookAt(player.transform.position);
         BackgroundImage.transform.eulerAngles *= -1;
     }

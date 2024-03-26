@@ -42,7 +42,7 @@ Transform:
   - {fileID: 2867974096579210779}
   - {fileID: 7538958685983245488}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6888475280479492071
 MonoBehaviour:
@@ -78,9 +78,11 @@ MonoBehaviour:
   defaultShootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6,
     type: 2}
   bulletSpawnPoint: {fileID: 7533370447666590071}
-  CurrentBulletPrefab: {fileID: 7340202116886174177, guid: bb98eaf02be1e9e44939ac0716429f99,
+  BulletPrefab: {fileID: 7340202116886174177, guid: bb98eaf02be1e9e44939ac0716429f99,
     type: 3}
   Gun: {fileID: 4532600544602286655}
+  bulletEffect1: {fileID: 0}
+  bulletEffect2: {fileID: 0}
 --- !u!114 &167815564817428575
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,9 +15,9 @@ MonoBehaviour:
   GunName: 
   GunColor: {r: 0.34901962, g: 0.3764706, b: 0.35686275, a: 1}
   gunIcon: {fileID: 0}
-  SecondsBetweenShots: 0.5
+  RPM: 120
   BulletsPerShot: 1
   BulletAccuracyOffset: 0
   BulletSpeed: 10
   BulletDamage: 1
-  RecoilForce: 100
+  RecoilForce: 1
