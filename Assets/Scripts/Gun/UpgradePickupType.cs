@@ -78,5 +78,6 @@ public class UpgradePickupType : MonoBehaviour
     private void Update()
     {
         BackgroundImage.transform.LookAt(player.transform.position);
+        BackgroundImage.transform.eulerAngles *= -1;
     }
 }

@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3489419514677977541
 MeshFilter:
@@ -118,6 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ee3eac14be74c47bfc2f460012ab30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 7340202116886174177, guid: c91e1444c65de9e449089f42590fdbca,
-    type: 3}
-  PickupSound: {fileID: 0}
+  DisabledSeconds: 0
+  DisabledOpacity: 0
+  PickUpSound: {fileID: 0}
+  UpgradeText: {fileID: 0}
+  BackgroundImage: {fileID: 0}
+  Disabled: 0
+  UpgradePool:
+  - {fileID: 11400000, guid: 814977880fbe26a47a3c930460f777a9, type: 2}
+  - {fileID: 11400000, guid: d6fd1cfedeae7594f98ddaba60c6cfbd, type: 2}
