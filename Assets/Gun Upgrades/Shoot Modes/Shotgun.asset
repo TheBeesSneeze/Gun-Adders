@@ -18,6 +18,6 @@ MonoBehaviour:
   RPM: 60
   BulletsPerShot: 10
   BulletAccuracyOffset: 30
-  BulletSpeed: 10
-  BulletDamage: 1
+  BulletSpeed: 15
+  BulletDamage: 10
   RecoilForce: 5

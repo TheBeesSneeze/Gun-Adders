@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 1
-  DefaultHealth: 5
-  iFrameSeconds: 1
+  DefaultHealth: 100
+  iFrameSeconds: 0.1
   enemyDamage: 1
 --- !u!114 &5124234784880764874
 MonoBehaviour:
