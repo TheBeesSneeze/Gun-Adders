@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
   m_Name: Gattling Gun
   m_EditorClassIdentifier: 
-  GunName: 
+  GunName: Gattling
   GunColor: {r: 0, g: 0.6886792, b: 0.19307038, a: 1}
   gunIcon: {fileID: 0}
   RPM: 120
-  BulletsPerShot: 1
+  BulletsPerShot: 2
   BulletAccuracyOffset: 0
-  BulletSpeed: 10
-  BulletDamage: 1
+  BulletSpeed: 15
+  BulletDamage: 0.2
   RecoilForce: 0.01
