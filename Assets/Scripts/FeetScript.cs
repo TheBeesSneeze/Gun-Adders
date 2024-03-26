@@ -15,8 +15,8 @@ public class FeetScript : MonoBehaviour
     public bool touchingGround = false;
     private void OnTriggerEnter(Collider other){
         //if (other.tag == "Ground") {
-        SoundManager.Play(SoundManager.LoadFromGroup("Land"));
-            touchingGround = true;
+        AudioManager.instance.Play("Land");
+        touchingGround = true;
         //}
     }
     private void OnTriggerExit(Collider other){

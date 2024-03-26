@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using static AudioManager;
 
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerControler : MonoBehaviour
@@ -58,14 +59,14 @@ public class PlayerControler : MonoBehaviour
         {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter = airJumps;
-            SoundManager.Play(SoundManager.LoadFromGroup("Jump"));
+            instance.Play("Jump");
             return;
         }
         if(airJumpCounter > 0) 
         {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter--;
-            SoundManager.Play(SoundManager.LoadFromGroup("Jump"));
+            instance.Play("Jump");
             return;
         }
     }
@@ -81,9 +82,7 @@ public class PlayerControler : MonoBehaviour
         if (Time.time - timeSinceLastFootstep >= Mathf.Max(1f - (rb.velocity.magnitude / 40.0f), 0.25f))
         {
             // Play a random footstep sound from the array
-            AudioClip footstepSound = SoundManager.LoadFromGroup("Footsteps");
-            source.clip = footstepSound;
-            source.Play();
+            instance.PlayFromGroup("Footsteps");
 
             timeSinceLastFootstep = Time.time;
         }

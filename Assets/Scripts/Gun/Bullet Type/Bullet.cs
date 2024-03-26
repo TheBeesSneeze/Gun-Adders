@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
@@ -74,14 +75,9 @@ public class Bullet : MonoBehaviour
                 catch { Debug.LogWarning("Missing hitImpactEffectPrefab in Bullet, please add that :3"); }
                 AudioSource audio = obj.AddComponent<AudioSource>();
 
-                if (hitImpactEffectPrefab != null)
-                {
-
-                }
-
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
                 {
-                    audio.clip = SoundManager.LoadFromGroup("Hit Enemy");
+                    audio.clip = instance.LoadFromGroup("Hit Enemy");
                     enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
@@ -96,7 +92,7 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
-                    audio.clip = SoundManager.LoadFromGroup("Hit Wall");
+                    audio.clip = instance.LoadFromGroup("Hit Wall");
 
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
