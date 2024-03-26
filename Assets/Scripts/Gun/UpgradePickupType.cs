@@ -21,7 +21,7 @@ public class UpgradePickupType : MonoBehaviour
     public Transform BackgroundImage;
 
     private Color defaultColor;
-    private PlayerBehaviour player;
+    private Transform playerPoint;
 
     //debug only
     [ReadOnly] public bool Disabled;
@@ -32,7 +32,6 @@ public class UpgradePickupType : MonoBehaviour
             AudioSource.PlayClipAtPoint(PickUpSound, gun.transform.position);
 
         //Destroy(gameObject);
-        UpgradeText.enabled = false;
         StartCoroutine(DisablePickup());
     }
 
@@ -57,12 +56,14 @@ public class UpgradePickupType : MonoBehaviour
         c.a = DisabledOpacity;
         GetComponent<Renderer>().material.color = c;
         GetComponent<Collider>().enabled = false;
+        BackgroundImage.gameObject.SetActive(false);
         Disabled = true;
 
         yield return new WaitForSeconds(DisabledSeconds);
 
         GetComponent<Renderer>().material.color = defaultColor;
         GetComponent<Collider>().enabled = true;
+        BackgroundImage.gameObject.SetActive(true);
         LoadNewUpgrade();
 
         Disabled = false;
@@ -72,14 +73,14 @@ public class UpgradePickupType : MonoBehaviour
     {
         defaultColor = GetComponent<Renderer>().material.color;
         LoadNewUpgrade();
-        player = GameObject.FindObjectOfType<PlayerBehaviour>();
+        playerPoint = Camera.main.transform;
     }
 
     private void Update()
     {
         if (BackgroundImage == null) return;
 
-        BackgroundImage.transform.LookAt(player.transform.position);
-        BackgroundImage.transform.eulerAngles *= -1;
+        BackgroundImage.transform.LookAt(playerPoint.position);
+        BackgroundImage.transform.Rotate(0, 180, 0);
     }
 }
