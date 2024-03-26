@@ -39,8 +39,8 @@ public class CharacterType : MonoBehaviour
         }
     }
 
-    protected virtual void Die()
+    public virtual void Die()
     {
-        SceneManager.LoadScene("Arena Scene");
+        Destroy(gameObject);
     }
 }

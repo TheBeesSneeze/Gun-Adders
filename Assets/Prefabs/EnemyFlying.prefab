@@ -125,5 +125,5 @@ MonoBehaviour:
   Speed: 5
   SlowedSpeed: 0.5
   PlayerSightDistance: 15
-  RequirePlayerSightToMove: 1
+  RequirePlayerSightToMove: 0
   MoveEnemy: 0

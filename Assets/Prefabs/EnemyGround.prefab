@@ -221,7 +221,7 @@ MonoBehaviour:
   Speed: 4
   SlowedSpeed: 0.5
   PlayerSightDistance: 15
-  RequirePlayerSightToMove: 1
+  RequirePlayerSightToMove: 0
   MoveEnemy: 0
 --- !u!33 &5290609480795805529
 MeshFilter:

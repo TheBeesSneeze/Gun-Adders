@@ -79,7 +79,11 @@ public class EnemyType : CharacterType
     private void OnCollisionExit(Collision collision)
     {
         canDamage = false;
-        StopCoroutine(iFrames);
+        if (iFrames != null)
+        {
+            StopCoroutine(iFrames); 
+        }
+        
     }
 
     public IEnumerator IFrames()
