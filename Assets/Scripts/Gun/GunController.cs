@@ -6,6 +6,7 @@
 * Brief Description : 
  *****************************************************************************/
 
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -19,8 +20,8 @@ public class GunController : MonoBehaviour
     [SerializeField] private GameObject BulletPrefab;
     public Transform Gun;
 
-    [HideInInspector] public BulletEffect bulletEffect1;
-    [HideInInspector] public BulletEffect bulletEffect2;
+    [ReadOnly] public BulletEffect bulletEffect1;
+    [ReadOnly] public BulletEffect bulletEffect2;
 
     private ShootingMode currentShootMode;
     private float secondsSinceLastShoot;

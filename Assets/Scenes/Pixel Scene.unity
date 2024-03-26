@@ -619,33 +619,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
-        type: 3}
-      propertyPath: DisabledOpacity
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
-        type: 3}
-      propertyPath: DisabledSeconds
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
-        type: 3}
-      propertyPath: UpgradePool.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
-        type: 3}
-      propertyPath: UpgradePool.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 814977880fbe26a47a3c930460f777a9,
-        type: 2}
-    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
-        type: 3}
-      propertyPath: UpgradePool.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: d6fd1cfedeae7594f98ddaba60c6cfbd,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -877,6 +850,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 1
   DefaultHealth: 1
+  iFrameSeconds: 1
+  enemyDamage: 1
 --- !u!1001 &3212820689494590405
 PrefabInstance:
   m_ObjectHideFlags: 0
