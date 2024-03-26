@@ -27,19 +27,23 @@ public class PlayerControler : MonoBehaviour
 
     public int airJumps = 1;
     private int airJumpCounter;
+    private Vector3 cameraPos;
+    public Transform cameraHolder;
+    public Transform cameraTrackPoint;
+    public Transform orientationTracker;
     /// <summary>
     /// every frame while move is held
     /// </summary>
     private void FixedUpdate()
     {
         //if (!InputEvents.MovePressed) return;
-        Vector3 targetV;
-        if (InputEvents.Instance.SprintPressed){
-            targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed * stats.SprintSpeed;
-        }
-        else {
-            targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed;
-        }
+        var input = InputEvents.Instance.InputDirection.normalized;
+        float goalSpeed = InputEvents.Instance.SprintPressed ? stats.SprintSpeed : stats.Speed;
+
+        bool grounded = feet.touchingGround;
+        float airMod = grounded ? 1f : 0.5f;
+        
+        Vector3 targetV = input * (goalSpeed * airMod);
         targetV.y = rb.velocity.y;
         Vector3 force = targetV - rb.velocity;
 
@@ -48,6 +52,7 @@ public class PlayerControler : MonoBehaviour
 
         rb.AddForce(force, ForceMode.VelocityChange);
     }
+    
     private void JumpStarted()
     {
         if (feet.touchingGround)
@@ -84,11 +89,16 @@ public class PlayerControler : MonoBehaviour
 
         Debug.Log(lookRotation.x);
         */
-
-        yMovement += InputEvents.Instance.LookDelta.y * stats.Sensitivity * Time.fixedDeltaTime;
-        xMovement += InputEvents.Instance.LookDelta.x * stats.Sensitivity * Time.fixedDeltaTime;
-        yMovement = Mathf.Clamp(yMovement, -90, 90);
-        cam.transform.localEulerAngles = new Vector3(-yMovement, xMovement, 0f);
+        Vector2 mouse = InputEvents.Instance.LookDelta;
+        float mouseX = mouse.x * stats.Sensitivity * Time.fixedDeltaTime;
+        float mouseY = mouse.y * stats.Sensitivity * Time.fixedDeltaTime;
+        Vector3 rot = cameraHolder.transform.localRotation.eulerAngles;
+        xMovement = rot.y + mouseX;
+        yMovement -= mouseY;
+        yMovement = Mathf.Clamp(yMovement, -90f, 90f);
+        cameraHolder.localRotation = Quaternion.Euler(yMovement,xMovement , 0f);
+        orientationTracker.localRotation = Quaternion.Euler(0f, yMovement, 0f);
+        cameraHolder.transform.position = cameraTrackPoint.position;
     }
     // Start is called every frame
     void Start()
@@ -98,7 +108,8 @@ public class PlayerControler : MonoBehaviour
         cam = Camera.main.transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        cameraPos = cam.transform.localPosition;
+        cameraHolder.transform.parent = null;
         airJumpCounter = airJumps;
         AssignEventListeners();
     } 
