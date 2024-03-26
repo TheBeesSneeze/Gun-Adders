@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * File Name :         Sound.cs
+ * Author(s) :         Clare
+ * Creation Date :     3/24/2024
+ *
+ * Brief Description : 
+ *****************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

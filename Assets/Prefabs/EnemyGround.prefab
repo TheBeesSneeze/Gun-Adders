@@ -161,11 +161,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5310092065288185306}
+  - component: {fileID: 5844086795473256532}
+  - component: {fileID: 5124234784880764874}
   - component: {fileID: 5290609480795805529}
   - component: {fileID: 9024483359748195293}
   - component: {fileID: 1503637654318619720}
-  - component: {fileID: 5844086795473256532}
-  - component: {fileID: 5124234784880764874}
   - component: {fileID: 4790329206841041940}
   m_Layer: 0
   m_Name: EnemyGround
@@ -190,6 +190,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5844086795473256532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651905046631748458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8589155c69489944f95491ab1953082b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 1
+  DefaultHealth: 5
+  iFrameSeconds: 1
+  enemyDamage: 1
+--- !u!114 &5124234784880764874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651905046631748458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89911e708aaddbe458b496cebf5bf500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  SlowedSpeed: 0.5
 --- !u!33 &5290609480795805529
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -261,36 +291,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5844086795473256532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651905046631748458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8589155c69489944f95491ab1953082b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 1
-  DefaultHealth: 5
-  iFrameSeconds: 1
-  enemyDamage: 1
---- !u!114 &5124234784880764874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651905046631748458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89911e708aaddbe458b496cebf5bf500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 10
-  SlowedSpeed: 0.5
 --- !u!54 &4790329206841041940
 Rigidbody:
   m_ObjectHideFlags: 0

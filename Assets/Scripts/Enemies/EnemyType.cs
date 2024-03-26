@@ -74,7 +74,6 @@ public class EnemyType : CharacterType
             player = collision.gameObject.GetComponent<PlayerBehaviour>();
             iFrames = StartCoroutine(IFrames());
         }
-
     }
 
     private void OnCollisionExit(Collision collision)
