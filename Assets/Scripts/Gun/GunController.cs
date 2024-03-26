@@ -61,6 +61,8 @@ public class GunController : MonoBehaviour
         bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
         bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2);
 
+        SoundManager.Play(SoundManager.LoadFromGroup("Laser Gun"));
+
         Debug.Log("pew");
         Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);
     }

@@ -66,14 +66,22 @@ public class Bullet : MonoBehaviour
                     QueryTriggerInteraction.Ignore))
             {
                 print(hit.collider);
+                GameObject obj = null;
+                try
+                {
+                    obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                }
+                catch { Debug.LogWarning("Missing hitImpactEffectPrefab in Bullet, please add that :3"); }
+                AudioSource audio = obj.AddComponent<AudioSource>();
+
                 if (hitImpactEffectPrefab != null)
                 {
-                    var obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(obj, impactEffectPrefabDespawnTime);
+
                 }
 
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
                 {
+                    audio.clip = SoundManager.LoadFromGroup("Hit Enemy");
                     enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
@@ -88,6 +96,8 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
+                    audio.clip = SoundManager.LoadFromGroup("Hit Wall");
+
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
                     {
@@ -99,6 +109,11 @@ public class Bullet : MonoBehaviour
                         _bulletEffect2.OnHitOther(hit.point);
                     }
                 }
+                audio.spatialBlend = 1;
+                audio.maxDistance = 50;
+                audio.rolloffMode = AudioRolloffMode.Linear;
+                audio.Play();
+                Destroy(obj, impactEffectPrefabDespawnTime);
                 Destroy(gameObject);
             }
 

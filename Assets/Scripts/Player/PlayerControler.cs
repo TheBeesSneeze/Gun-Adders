@@ -27,6 +27,10 @@ public class PlayerControler : MonoBehaviour
 
     public int airJumps = 1;
     private int airJumpCounter;
+
+    private float timeSinceLastFootstep = 0;
+    private AudioSource source;
+
     /// <summary>
     /// every frame while move is held
     /// </summary>
@@ -54,12 +58,14 @@ public class PlayerControler : MonoBehaviour
         {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter = airJumps;
+            SoundManager.Play(SoundManager.LoadFromGroup("Jump"));
             return;
         }
         if(airJumpCounter > 0) 
         {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter--;
+            SoundManager.Play(SoundManager.LoadFromGroup("Jump"));
             return;
         }
     }
@@ -67,6 +73,20 @@ public class PlayerControler : MonoBehaviour
     private void Update()
     {
         UpdateCamera();
+
+        //footstep code
+        if (!feet.touchingGround || rb.velocity.magnitude < 0.1f)
+            return;
+
+        if (Time.time - timeSinceLastFootstep >= Mathf.Max(1f - (rb.velocity.magnitude / 40.0f), 0.25f))
+        {
+            // Play a random footstep sound from the array
+            AudioClip footstepSound = SoundManager.LoadFromGroup("Footsteps");
+            source.clip = footstepSound;
+            source.Play();
+
+            timeSinceLastFootstep = Time.time;
+        }
     }
     private void UpdateCamera()
     {
@@ -95,6 +115,8 @@ public class PlayerControler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         stats = GetComponent<PlayerStats>();
+        source = gameObject.AddComponent<AudioSource>();
+        source.volume = 0.15f;
         cam = Camera.main.transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
