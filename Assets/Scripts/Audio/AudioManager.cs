@@ -52,6 +52,7 @@ public class AudioManager : MonoBehaviour
                 s.source.clip = s.clip;
                 s.source.volume = g.groupVolume;
                 s.source.spatialBlend = g.groupSpatialBlend;
+                s.source.outputAudioMixerGroup = soundMixer;
             }
         }
     }
