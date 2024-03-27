@@ -40,13 +40,22 @@ public class PlayerControler : MonoBehaviour
         else {
             targetV = InputEvents.Instance.InputDirection.normalized * stats.Speed;
         }
-        targetV.y = rb.velocity.y;
+        targetV.y = 0f;
         Vector3 force = targetV - rb.velocity;
+        force.y = 0f;
 
         if (float.IsNaN(force.x) || float.IsNaN(force.y) || float.IsNaN(force.z))
             force = Vector3.zero;
 
-        rb.AddForce(force, ForceMode.VelocityChange);
+        if (feet.touchingGround)
+        {
+            rb.AddForce(force * 10f);
+        }
+        else
+        {
+            //targetV.y = 0f;
+            rb.AddForce(targetV * .5f);
+        }
     }
     private void JumpStarted()
     {

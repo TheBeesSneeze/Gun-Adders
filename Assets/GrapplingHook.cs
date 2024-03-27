@@ -11,15 +11,18 @@ public class GrapplingHook : MonoBehaviour
     private float maxDist = 100f;
     private PlayerControler playerControler;
     private LineRenderer renderer;
+    private Transform cam;
+
     void Start()
     {
-        InputEvents.Instance.ShootStarted.AddListener(StartGrapple);
-        InputEvents.Instance.ShootCanceled.AddListener(StopGrapple);
+        InputEvents.Instance.SecondaryStarted.AddListener(StartGrapple);
+        InputEvents.Instance.SecondaryCanceled.AddListener(StopGrapple);
         playerControler = GetComponent<PlayerControler>();
         renderer = gameObject.AddComponent<LineRenderer>();
         renderer.endWidth = 0.05f;
         renderer.startWidth = 0.05f;
         renderer.positionCount = 2;
+        cam = Camera.main.transform;
     }
 
     // Update is called once per frame
@@ -38,7 +41,8 @@ public class GrapplingHook : MonoBehaviour
 
     private void StartGrapple()
     {
-        if (Physics.Raycast(playerControler.cam.position, playerControler.cam.forward, out RaycastHit hit, maxDist, shootLayers)) {
+        if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, maxDist, shootLayers))
+        {
             hitPoint = hit.point;
             joint = gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -47,12 +51,12 @@ public class GrapplingHook : MonoBehaviour
             float distanceFromPoint = Vector3.Distance(transform.position, hitPoint);
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = distanceFromPoint * 0.35f;
+            joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
 
             //Adjust these values to fit your game.
-            joint.spring = 100f;
-            joint.damper = 70f;
+            joint.spring = 4.5f;
+            joint.damper = 7f;
             joint.massScale = 4.5f;
         }
     }

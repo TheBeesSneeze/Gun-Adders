@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7370436624252173987}
   - component: {fileID: 2444357040561499693}
   - component: {fileID: 8162339477801571298}
+  - component: {fileID: 2616906911819539490}
   m_Layer: 3
   m_Name: Player Pixel Cam
   m_TagString: Untagged
@@ -83,6 +84,9 @@ MonoBehaviour:
   Gun: {fileID: 4532600544602286655}
   bulletEffect1: {fileID: 0}
   bulletEffect2: {fileID: 0}
+  scanMask:
+    serializedVersion: 2
+    m_Bits: 51
 --- !u!114 &167815564817428575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +238,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2616906911819539490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334479710990617890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4069bc6f6492a3843a0a61c12a661694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootLayers:
+    serializedVersion: 2
+    m_Bits: 51
 --- !u!1 &3247582011175692830
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,11 +405,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3885873752205009714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -0, z: 0.552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4246944182689504440}
+  m_Father: {fileID: 4532600544602286655}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5475386949161361993
@@ -427,7 +446,6 @@ Transform:
   m_Children:
   - {fileID: 3882710093008679526}
   - {fileID: 1118475676457770899}
-  - {fileID: 7533370447666590071}
   - {fileID: 4532600544602286655}
   m_Father: {fileID: 533644169729596943}
   m_RootOrder: -1
@@ -583,7 +601,8 @@ Transform:
   m_LocalPosition: {x: 0.55, y: -0.35999995, z: 0.87}
   m_LocalScale: {x: 0.29, y: 0.29, z: 0.59000003}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7533370447666590071}
   m_Father: {fileID: 4246944182689504440}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -9.66, y: -2.69, z: 4.19}
@@ -1330,6 +1349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ae309571447974a8cb01c249647e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 275
   touchingGround: 0
 --- !u!1 &8683969771477153558
 GameObject:
