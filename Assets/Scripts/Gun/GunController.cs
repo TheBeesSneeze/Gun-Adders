@@ -62,7 +62,8 @@ public class GunController : MonoBehaviour
         bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
         bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2);
 
-        instance.Play("Shoot Default");
+        if(instance != null)
+            instance.Play("Shoot Default");
 
         Debug.Log("pew");
         Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);
@@ -70,14 +71,32 @@ public class GunController : MonoBehaviour
 
     private Vector3 GetRandomizedAngle()
     {
+        //tobys old code (doesnt work)
+
         float a = currentShootMode.BulletAccuracyOffset / 90;
         float x = Random.Range(-a, a);
         float y = Random.Range(-a, a);
 
         Vector3 angle = bulletSpawnPoint.forward;
-        angle = new Vector3 (angle.x + x, angle.y + y, angle.z);
+        angle = new Vector3(angle.x + x, angle.y + y, angle.z);
 
         return angle;
+
+        //tobys new code (didnt work)
+        /*
+        float radius = Random.Range(0, currentShootMode.BulletAccuracyOffset);
+        float angle = Random.Range(0, 360);
+
+        float x = Random.Range(-1, 1);
+        float y = Random.Range(-1, 1);
+
+        Vector3 spread = new Vector3(x, y, 0.0f).normalized * currentShootMode.BulletAccuracyOffset;
+        Quaternion rotatio = Quaternion.Euler(spread) * bulletSpawnPoint.rotation;
+
+        return rotatio.eulerAngles;
+        */
+
+
     }
     /*
     private void ShootHeld()

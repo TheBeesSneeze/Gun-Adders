@@ -59,14 +59,18 @@ public class PlayerControler : MonoBehaviour
         {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter = airJumps;
-            instance.Play("Jump");
+
+            if (instance != null)
+                instance.Play("Jump");
             return;
         }
         if(airJumpCounter > 0) 
         {
             rb.AddForce(0, stats.JumpForce, 0, ForceMode.Impulse);
             airJumpCounter--;
-            instance.Play("Jump");
+
+            if(instance != null)
+                instance.Play("Jump");
             return;
         }
     }
@@ -82,7 +86,9 @@ public class PlayerControler : MonoBehaviour
         if (Time.time - timeSinceLastFootstep >= Mathf.Max(1f - (rb.velocity.magnitude / 40.0f), 0.25f))
         {
             // Play a random footstep sound from the array
-            instance.PlayFromGroup("Footsteps");
+
+            if (instance != null)
+                instance.PlayFromGroup("Footsteps");
 
             timeSinceLastFootstep = Time.time;
         }
@@ -127,5 +133,12 @@ public class PlayerControler : MonoBehaviour
     {
        // InputEvents.Instance.MoveHeld.AddListener( ManageMovement );
         InputEvents.Instance.JumpStarted.AddListener( JumpStarted );
+
+        InputEvents.Instance.PauseStarted.AddListener(Pause); 
+    }
+
+    private void Pause()
+    {
+        Debug.Break(); //lol
     }
 }

@@ -66,7 +66,6 @@ public class Bullet : MonoBehaviour
             if (Physics.Raycast(lastPosition, transform.forward, out RaycastHit hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
                     QueryTriggerInteraction.Ignore))
             {
-                print(hit.collider);
                 GameObject obj = null;
                 try
                 {
@@ -92,7 +91,8 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
-                    audio.clip = instance.LoadFromGroup("Hit Wall");
+                    if(instance != null)
+                        audio.clip = instance.LoadFromGroup("Hit Wall");
 
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
@@ -105,12 +105,19 @@ public class Bullet : MonoBehaviour
                         _bulletEffect2.OnHitOther(hit.point);
                     }
                 }
-                audio.spatialBlend = 1;
-                audio.maxDistance = 50;
-                audio.rolloffMode = AudioRolloffMode.Linear;
-                audio.Play();
+
+                if (instance != null)
+                {
+                    audio.spatialBlend = 1;
+                    audio.maxDistance = 50;
+                    audio.rolloffMode = AudioRolloffMode.Linear;
+                    audio.Play();
+                }
+
                 Destroy(obj, impactEffectPrefabDespawnTime);
                 Destroy(gameObject);
+
+                
             }
 
             lastPosition = transform.position;
