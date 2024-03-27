@@ -53,7 +53,7 @@ public class GunController : MonoBehaviour
     /// <summary>
     /// direction is (get this) the direction the bullet goes
     /// </summary>
-    private void ShootBullet(Vector3 direction)
+    private void ShootBullet()
     {
         //alec put code here
         Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
@@ -67,17 +67,20 @@ public class GunController : MonoBehaviour
             destination = ray.GetPoint(1000f);
         }
 
+        destination += new Vector3(
+            Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset),
+            Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset),
+            Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset));
+        
+
         Vector3 dir = destination - bulletSpawnPoint.position;
         var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.transform.forward = dir.normalized;
         bullet.GetComponent<Bullet>().damageAmount = currentShootMode.BulletDamage;
         bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
         bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2, dir);
-
-        Debug.Log("pew");
-        Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);
     }
-
+    
     private Vector3 GetRandomizedAngle()
     {
         float a = currentShootMode.BulletAccuracyOffset / 90;
@@ -125,8 +128,7 @@ public class GunController : MonoBehaviour
         secondsSinceLastShoot = 0;
         for(int i = 0; i< currentShootMode.BulletsPerShot; i++)
         {
-            Vector3 angle = GetRandomizedAngle();
-            ShootBullet(angle);
+            ShootBullet();
         }
 
        playerRB.AddForce(-camera.transform.forward * currentShootMode.RecoilForce, ForceMode.Impulse);
