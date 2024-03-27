@@ -19,32 +19,15 @@ public class BulletEffectPickup : UpgradePickupType
 
     private BulletEffect loadedUpgrade;
 
-    private Vector3 initPosition;
+    
 
     
     protected override void Start()
     {
         base.Start();
-        initPosition = transform.position;
         
-    }
-
-    /// <summary>
-    /// bruh moment
-    /// </summary>
-    private void LateUpdate()
-    {
         
-        var pos = transform.position;
-        pos.y = initPosition.y + Mathf.Sin(Time.time * 1.5f) * .25f;
-        transform.position = pos;
-
-        var rot = transform.eulerAngles;
-        rot.y += 25f * Time.deltaTime;
-        transform.eulerAngles = rot;
-        
-   }
-    
+    }    
 
     protected override void PickUp(GunController gun)
     {
@@ -72,6 +55,8 @@ public class BulletEffectPickup : UpgradePickupType
         {
             gun.bulletEffect2 = loadedUpgrade;
         }
+
+        UpgradeText.text = loadedUpgrade.UpgradeName;
     }
 
     protected override void LoadNewUpgrade()
