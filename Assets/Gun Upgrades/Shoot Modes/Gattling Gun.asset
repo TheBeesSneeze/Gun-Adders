@@ -19,5 +19,5 @@ MonoBehaviour:
   BulletsPerShot: 1
   BulletAccuracyOffset: 4
   BulletSpeed: 15
-  BulletDamage: 7
+  BulletDamage: 9
   RecoilForce: 0.01
