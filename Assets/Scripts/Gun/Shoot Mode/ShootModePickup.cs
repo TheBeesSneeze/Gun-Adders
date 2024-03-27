@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 
 public class ShootModePickup : UpgradePickupType
 {
@@ -18,6 +19,7 @@ public class ShootModePickup : UpgradePickupType
     
     protected override void PickUp(GunController gun)
     {
+        gun.LoadShootingMode(loadedShootMode);
         base.PickUp(gun);
     }
 
@@ -43,5 +45,7 @@ public class ShootModePickup : UpgradePickupType
         while (newUpgrade == loadedShootMode); //DO WHILE DO WHILE DO WHILE
 
         loadedShootMode = newUpgrade;
+
+        UpgradeText.text = newUpgrade.GunName;
     }
 }
