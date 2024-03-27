@@ -25,6 +25,8 @@ public class EnemyType : CharacterType
     private PlayerBehaviour player;
     private Coroutine iFrames;
 
+    public Transform playerLocation;
+
     protected override void Start()
     {
         base.Start();
@@ -51,7 +53,7 @@ public class EnemyType : CharacterType
     }
     
     private void Update()
-    {
+    {   
         if (slowed)
         {
             if (slowTimer < slowTimeRef)
@@ -64,6 +66,8 @@ public class EnemyType : CharacterType
                 slowed = false;
             }
         }
+
+        LookForPlayer();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -97,5 +101,10 @@ public class EnemyType : CharacterType
         }
         while (canDamage);
         
+    }
+
+    private void LookForPlayer()
+    {
+        transform.LookAt(playerLocation);
     }
 }
