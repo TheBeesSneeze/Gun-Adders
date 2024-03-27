@@ -19,5 +19,10 @@ namespace DefaultNamespace
             //slow down the enemy some how
             type.ApplySlow(SlowTime);
         }
+
+        public override void OnHitOther(Vector3 point)
+        {
+            
+        }
     }
 }

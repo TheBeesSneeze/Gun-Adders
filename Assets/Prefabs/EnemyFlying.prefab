@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
@@ -31,12 +31,12 @@ PrefabInstance:
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.97
       objectReference: {fileID: 0}
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.94
       objectReference: {fileID: 0}
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
@@ -122,4 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4868cda417bf8314a8522933c8e284af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 5
+  SlowedSpeed: 0.5
+  PlayerSightDistance: 15
+  RequirePlayerSightToMove: 0
+  MoveEnemy: 0

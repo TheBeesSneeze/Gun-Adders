@@ -1,14 +1,16 @@
 /*******************************************************************************
 * File Name :         Bullet.cs
-* Author(s) :        Alec Pizziferro
+* Author(s) :         Alec Pizziferro
 * Creation Date :     3/22/2024
 *
 * Brief Description : Projectile Bullet Physics
  *****************************************************************************/
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
@@ -19,8 +21,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
     [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
-    [SerializeField] private BulletEffect bulletEffect;
-    [SerializeField] private BulletEffect bulletEffect2;
+
+    [HideInInspector] public BulletEffect _bulletEffect1;
+    [HideInInspector] public BulletEffect _bulletEffect2;
+
     private Rigidbody rb;
     private Vector3 lastPosition;
     private float lastTime;
@@ -31,11 +35,26 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
-    public void Initialize()
+    public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2)
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
+
+        _bulletEffect1 = bulletEffect1;
+        _bulletEffect2 = bulletEffect2;
+
+
+        GetComponent<TrailRenderer>().enabled = true;
+
+        /*
+        GetComponent<TrailRenderer>().startColor = GetBulletColor();
+        GetComponent<TrailRenderer>().endColor = GetBulletColor();
+
+        GetComponent<Material>().color = GetBulletColor();
+        */
+
+        SetColorGradient();
     }
 
     private void FixedUpdate()
@@ -48,25 +67,49 @@ public class Bullet : MonoBehaviour
                     QueryTriggerInteraction.Ignore))
             {
                 print(hit.collider);
-                if (hitImpactEffectPrefab != null)
+                GameObject obj = null;
+                try
                 {
-                    var obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(obj, impactEffectPrefabDespawnTime);
+                    obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 }
+                catch { Debug.LogWarning("Missing hitImpactEffectPrefab in Bullet, please add that :3"); }
+                AudioSource audio = obj.AddComponent<AudioSource>();
 
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
                 {
+                    audio.clip = instance.LoadFromGroup("Hit Enemy");
                     enemy.TakeDamage(damageAmount);
-                    if (bulletEffect != null)
+                    if (_bulletEffect1 != null)
                     {
-                        bulletEffect.OnEnemyHit(enemy);
+                        _bulletEffect1.OnEnemyHit(enemy);
                     }
 
-                    if (bulletEffect2 != null)
+                    if (_bulletEffect2 != null)
                     {
-                        bulletEffect2.OnEnemyHit(enemy);
+                        _bulletEffect2.OnEnemyHit(enemy);
                     }
                 }
+                //if hit something that isnt enemy
+                else
+                {
+                    audio.clip = instance.LoadFromGroup("Hit Wall");
+
+                    Debug.Log("hit other");
+                    if (_bulletEffect1 != null)
+                    {
+                        _bulletEffect1.OnHitOther(hit.point);
+                    }
+
+                    if (_bulletEffect2 != null)
+                    {
+                        _bulletEffect2.OnHitOther(hit.point);
+                    }
+                }
+                audio.spatialBlend = 1;
+                audio.maxDistance = 50;
+                audio.rolloffMode = AudioRolloffMode.Linear;
+                audio.Play();
+                Destroy(obj, impactEffectPrefabDespawnTime);
                 Destroy(gameObject);
             }
 
@@ -76,5 +119,53 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+
+    /// <summary>
+    /// this code does not work
+    /// </summary>
+    private void SetColorGradient()
+    {
+        TrailRenderer tr = GetComponent<TrailRenderer>();
+        tr.enabled = true;
+
+        tr.startColor = Color.white;
+        tr.endColor = Color.white;
+
+        if (_bulletEffect1 != null)
+        {
+            tr.startColor = _bulletEffect1.TrailColor;
+        }
+        if (_bulletEffect2 != null)
+        {
+            tr.endColor = _bulletEffect2.TrailColor;
+        }
+    }
+
+    /// <summary>
+    /// averages the colors from both bullet effects.
+    /// returns white if no upgrades are loaded
+    /// </summary>
+    /// <returns></returns>
+    private Color GetBulletColor()
+    {
+        if(_bulletEffect1 == null && _bulletEffect2 == null)
+        {
+            return Color.white;
+        }
+
+        if(_bulletEffect1 == null)
+        {
+            return _bulletEffect2.TrailColor;
+        }
+
+        if (_bulletEffect2 == null)
+        {
+            return _bulletEffect1.TrailColor;
+        }
+
+        //weird way of averaging them but colors get weird when you add their parts to numbers above 1
+        return (_bulletEffect1.TrailColor / 2) + (_bulletEffect2.TrailColor / 2);
     }
 }

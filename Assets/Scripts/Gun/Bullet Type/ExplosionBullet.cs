@@ -20,5 +20,11 @@ namespace DefaultNamespace
         {
             Instantiate(ExplosionPrefab, type.transform.position, ExplosionPrefab.transform.rotation);
         }
+
+        public override void OnHitOther(Vector3 point)
+        {
+            
+            Instantiate(ExplosionPrefab, point, ExplosionPrefab.transform.rotation);
+        }
     }
 }
