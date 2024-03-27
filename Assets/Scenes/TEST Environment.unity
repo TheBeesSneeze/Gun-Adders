@@ -23695,11 +23695,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGround
       objectReference: {fileID: 0}
-    - target: {fileID: 5124234784880764874, guid: 2627cc951982cb645bf4e16039f3deef,
-        type: 3}
-      propertyPath: RequirePlayerSightToMove
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
       propertyPath: m_RootOrder
@@ -29404,11 +29399,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1162250068435681809, guid: f6a2f010e70809046ad44204e7abbcb1,
-        type: 3}
-      propertyPath: RequirePlayerSightToMove
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1509916674876430565, guid: f6a2f010e70809046ad44204e7abbcb1,
         type: 3}
       propertyPath: m_RootOrder

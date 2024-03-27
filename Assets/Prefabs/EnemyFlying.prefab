@@ -122,8 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4868cda417bf8314a8522933c8e284af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  Speed: 1
   SlowedSpeed: 0.5
   PlayerSightDistance: 15
-  RequirePlayerSightToMove: 0
+  RequirePlayerSightToMove: 1
   MoveEnemy: 0
+  MihDistanceOffGround: 2

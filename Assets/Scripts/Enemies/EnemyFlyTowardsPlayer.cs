@@ -14,13 +14,14 @@ using UnityEngine.UI;
 //hey guys sky here
 public class EnemyFlyTowardsPlayer : EnemyMovementType
 {
+    public float MihDistanceOffGround = 2f; //@TODO
     protected override void Move(float speed)
     {
         Vector3 direction = target.transform.position - gameObject.transform.position;
         direction.Normalize();
         direction *= speed;
-        //rb.velocity = direction * Speed;
-        rb.AddForce(direction);
+        rb.velocity = direction * Speed;
+        //rb.AddForce(direction);
     }
 
     private void LateUpdate()
