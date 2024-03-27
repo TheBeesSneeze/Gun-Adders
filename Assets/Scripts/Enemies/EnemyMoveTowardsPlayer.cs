@@ -27,8 +27,8 @@ public class EnemyMoveTowardsPlayer : EnemyMovementType
         //direction.y = 0;
         direction.Normalize();
         //direction.y = rb.velocity.y;
-        //rb.velocity = direction;
-        rb.AddForce(direction * speed);
+        rb.velocity = direction * speed;
+        //rb.AddForce(direction * speed);
     }
 
 }

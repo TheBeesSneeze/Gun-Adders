@@ -27,10 +27,7 @@ public class BulletEffectPickup : UpgradePickupType
         base.Start();
         
         
-    }
-
-    
-    
+    }    
 
     protected override void PickUp(GunController gun)
     {
@@ -58,6 +55,8 @@ public class BulletEffectPickup : UpgradePickupType
         {
             gun.bulletEffect2 = loadedUpgrade;
         }
+
+        UpgradeText.text = loadedUpgrade.UpgradeName;
     }
 
     protected override void LoadNewUpgrade()
