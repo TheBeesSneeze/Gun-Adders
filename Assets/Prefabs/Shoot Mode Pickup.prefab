@@ -193,7 +193,7 @@ MonoBehaviour:
   ShootModes:
   - {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   - {fileID: 11400000, guid: c9e027354a58141408ec58a6101b45f9, type: 2}
-  - {fileID: 11400000, guid: a52b029778672aa459366f2a9b20285c, type: 2}
+  - {fileID: 11400000, guid: 0ae6a140712751b488d84609a5af14b5, type: 2}
   loadedShootMode: {fileID: 0}
 --- !u!33 &761223276192664944
 MeshFilter:
