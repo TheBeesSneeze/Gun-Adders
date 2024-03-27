@@ -194,6 +194,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   - {fileID: 11400000, guid: c9e027354a58141408ec58a6101b45f9, type: 2}
   - {fileID: 11400000, guid: a52b029778672aa459366f2a9b20285c, type: 2}
+  loadedShootMode: {fileID: 0}
 --- !u!33 &761223276192664944
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -273,7 +274,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5942065246957760255}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 53917b21031eaf1499ea60afeb36d8b6, type: 2}
   m_CullingMode: 0

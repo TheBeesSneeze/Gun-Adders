@@ -9,11 +9,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class ShootModePickup : UpgradePickupType
 {
     public ShootingMode[] ShootModes;
-    private ShootingMode loadedShootMode;
+    [ReadOnly] public ShootingMode loadedShootMode;
     
     protected override void PickUp(GunController gun)
     {

@@ -22,6 +22,7 @@ public class UpgradePickupType : MonoBehaviour
 
     private Color defaultColor;
     private Transform playerPoint;
+    private Vector3 initPosition;
 
     //debug only
     [ReadOnly] public bool Disabled;
@@ -74,6 +75,7 @@ public class UpgradePickupType : MonoBehaviour
         defaultColor = GetComponent<Renderer>().material.color;
         LoadNewUpgrade();
         playerPoint = Camera.main.transform;
+        initPosition = transform.localPosition;
     }
 
     private void Update()
@@ -82,5 +84,21 @@ public class UpgradePickupType : MonoBehaviour
 
         BackgroundImage.transform.LookAt(playerPoint.position);
         BackgroundImage.transform.Rotate(0, 180, 0);
+    }
+
+    /// <summary>
+    /// bruh moment
+    /// </summary>
+    private void LateUpdate()
+    {
+
+        var pos = transform.localPosition;
+        pos.y = initPosition.y + Mathf.Sin(Time.time * 1.5f) * .25f;
+        transform.localPosition = pos;
+
+        var rot = transform.eulerAngles;
+        rot.y += 25f * Time.deltaTime;
+        transform.eulerAngles = rot;
+
     }
 }
