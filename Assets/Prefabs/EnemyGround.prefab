@@ -188,7 +188,7 @@ Transform:
   m_Children:
   - {fileID: 415458240702346697}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5844086795473256532
 MonoBehaviour:
@@ -218,10 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89911e708aaddbe458b496cebf5bf500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
+  Speed: 1
   SlowedSpeed: 0.5
   PlayerSightDistance: 15
-  RequirePlayerSightToMove: 0
+  RequirePlayerSightToMove: 1
   MoveEnemy: 0
 --- !u!33 &5290609480795805529
 MeshFilter:
