@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class EnemyType : CharacterType
 {
@@ -26,6 +27,8 @@ public class EnemyType : CharacterType
     private Coroutine iFrames;
 
     public Transform playerLocation;
+    [SerializeField]public bool isRangedEnemy;
+    GunController gunController;
 
     protected override void Start()
     {
@@ -66,8 +69,11 @@ public class EnemyType : CharacterType
                 slowed = false;
             }
         }
-
-        LookForPlayer();
+        if(isRangedEnemy)
+        {
+            LookForPlayer();
+            
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -106,5 +112,5 @@ public class EnemyType : CharacterType
     private void LookForPlayer()
     {
         transform.LookAt(playerLocation);
-    }
+    }    
 }

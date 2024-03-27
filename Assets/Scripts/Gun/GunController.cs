@@ -18,13 +18,13 @@ public class GunController : MonoBehaviour
 {
     public ShootingMode defaultShootingMode;
     public Transform bulletSpawnPoint;
-    [SerializeField] private GameObject BulletPrefab;
+    [SerializeField] public GameObject BulletPrefab;
     public Transform Gun;
 
     [ReadOnly] public BulletEffect bulletEffect1;
     [ReadOnly] public BulletEffect bulletEffect2;
 
-    private ShootingMode currentShootMode;
+    public ShootingMode currentShootMode;
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
     private Transform camera;
@@ -53,7 +53,7 @@ public class GunController : MonoBehaviour
     /// <summary>
     /// direction is (get this) the direction the bullet goes
     /// </summary>
-    private void ShootBullet(Vector3 direction)
+    public void ShootBullet(Vector3 direction)
     {
         //alec put code here
 
@@ -68,7 +68,7 @@ public class GunController : MonoBehaviour
         Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);
     }
 
-    private Vector3 GetRandomizedAngle()
+    public Vector3 GetRandomizedAngle()
     {
         float a = currentShootMode.BulletAccuracyOffset / 90;
         float x = Random.Range(-a, a);
