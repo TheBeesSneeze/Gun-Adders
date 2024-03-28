@@ -22,16 +22,21 @@ public class PlayerStats : MonoBehaviour
 
     [Tooltip ("Movement speed. legs.")]
     public float Speed;
+    [Tooltip("How much simulated friction to prevent you from moving forward when stopping input")]
     public float Friction = 0.175f;
 
+    [Tooltip("What percent of normal movement will get applied whilst moving in the air")]
     public float AirMovementMultiplier = 0.5f;
     //[Tooltip("how much velocity is carried over from one frame to another")]
     //public float PlayerSlipperyness; //@TODO
+    [Tooltip("How high the player jumps")]
     public float JumpHeight = 2.5f;
 
+    [Tooltip("The max target speed")]
     public float MaxSpeed = 20f;
 
-    [Tooltip("m/s of gravity")] public float GravityBoost = 10f;
+    [Tooltip("How much gravity to apply to the player. Normal gravity is not used.")]
+    public float GravityBoost = 10f;
     [Tooltip("gravity when player is holding jump key")]
     public float JumpingGravitySpeed; //@TODO. might get cut also.
 }

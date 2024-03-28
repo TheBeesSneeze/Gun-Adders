@@ -9,22 +9,34 @@ public class GrapplingHook : MonoBehaviour
     public LayerMask shootLayers;
     private SpringJoint joint;
     private float maxDist = 1000f;
-    private PlayerControler playerControler;
     private LineRenderer renderer;
     private Transform cam;
+
+    [Tooltip("How much of the distance between the grapple hook and the player will be used.")]
     public float maxDistanceFromPointMultiplier = 0.8f;
+
+    [Tooltip("Multiplier between the min distance between the player and the hook point.")]
     public float minDistanceFromPointMultiplier = 0.25f;
+
+    [Tooltip("Spring to keep the player moving towards the target.")]
     public float jointSpring = 4.5f;
+
+    [Tooltip("Damper force of the joint.")]
     public float jointDamper = 7f;
+
+    [Tooltip("Scalar for mass of the player and potential connected objects.")]
     public float jointMassScale = 4.5f;
+
+    [Tooltip("Force to send the player in the direction of the grapple.")]
     public float jointForceBoost = 20f;
+
     [SerializeField] private Transform gunModel, gunFirePoint, gunFollowPoint, gunExitPoint;
     private Rigidbody rb;
+
     void Start()
     {
         InputEvents.Instance.SecondaryStarted.AddListener(StartGrapple);
         InputEvents.Instance.SecondaryCanceled.AddListener(StopGrapple);
-        playerControler = GetComponent<PlayerControler>();
         renderer = gameObject.AddComponent<LineRenderer>();
         renderer.endWidth = 0.05f;
         renderer.startWidth = 0.05f;
@@ -40,17 +52,18 @@ public class GrapplingHook : MonoBehaviour
         {
             renderer.positionCount = 0;
             gunModel.position = Vector3.MoveTowards(gunModel.position, gunExitPoint.position, Time.deltaTime * 2.5f);
-            gunModel.rotation = Quaternion.RotateTowards(gunModel.rotation, gunExitPoint.rotation, Time.deltaTime * 2.5f);
+            gunModel.rotation =
+                Quaternion.RotateTowards(gunModel.rotation, gunExitPoint.rotation, Time.deltaTime * 2.5f);
         }
         else
         {
             gunModel.position = Vector3.MoveTowards(gunModel.position, gunFollowPoint.position, Time.deltaTime * 15f);
-            gunModel.rotation = Quaternion.RotateTowards(gunModel.rotation, gunFollowPoint.rotation, Time.deltaTime * 15f);
+            gunModel.rotation =
+                Quaternion.RotateTowards(gunModel.rotation, gunFollowPoint.rotation, Time.deltaTime * 15f);
             renderer.positionCount = 2;
             renderer.SetPosition(0, gunFirePoint.position);
             renderer.SetPosition(1, hitPoint);
         }
-
     }
 
     private void StartGrapple()
@@ -68,7 +81,6 @@ public class GrapplingHook : MonoBehaviour
             joint.maxDistance = distanceFromPoint * maxDistanceFromPointMultiplier;
             joint.minDistance = distanceFromPoint * minDistanceFromPointMultiplier;
 
-            //Adjust these values to fit your game.
             joint.spring = jointSpring;
             joint.damper = jointDamper;
             joint.massScale = jointMassScale;
