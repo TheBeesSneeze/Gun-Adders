@@ -23,6 +23,8 @@ public class PlayerStats : MonoBehaviour
     [Tooltip ("Movement speed. legs.")]
     public float Speed;
     public float Friction = 0.175f;
+
+    public float AirMovementMultiplier = 0.5f;
     //[Tooltip("how much velocity is carried over from one frame to another")]
     //public float PlayerSlipperyness; //@TODO
     public float JumpHeight = 2.5f;

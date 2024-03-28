@@ -73,7 +73,7 @@ public class PlayerControler : MonoBehaviour
 
         if (!feet.Grounded)
         {
-            multiplier = 0.5f;
+            multiplier = stats.AirMovementMultiplier;
         }
 
         //Apply forces to move player
