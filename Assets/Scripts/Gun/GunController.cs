@@ -16,15 +16,17 @@ using static AudioManager;
 
 public class GunController : MonoBehaviour
 {
-    public ShootingMode defaultShootingMode;
-    public Transform bulletSpawnPoint;
+    [Header("Settings")]
+    [SerializeField] private ShootingMode defaultShootingMode;
     [SerializeField] private GameObject BulletPrefab;
+    [Header("Unity Stuff")]
     public Transform Gun;
+    public Transform bulletSpawnPoint;
 
-    [ReadOnly] public BulletEffect bulletEffect1;
-    [ReadOnly] public BulletEffect bulletEffect2;
+    [Foldout("Debug")][ReadOnly] public BulletEffect bulletEffect1;
+    [Foldout("Debug")][ReadOnly] public BulletEffect bulletEffect2;
+    [Foldout("Debug")][ReadOnly] public ShootingMode currentShootMode;
 
-    private ShootingMode currentShootMode;
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
     private Transform camera;
