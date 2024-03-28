@@ -7,7 +7,8 @@ public class Door_Controller : MonoBehaviour {
 	public bool stayOpen = true; //If set to true, door will open once and stay like this until Close() is called. If set to false, door will close after player leaves the trigger area
 	public bool locked = false; //If set to true, door will not open when player enters trigger area
 	public float openingSpeed = 5.0f;
-	
+
+	private bool isOpen;
 	private Transform[] allTransform; //Array for Transform components of this object and it's children	
 	private Transform[] childrenTransform; //for children's Transform components only
 	
@@ -29,7 +30,8 @@ public class Door_Controller : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
 	{
-		Open();
+		if (!isOpen)
+			Open();
 	}
 	
 	void OnTriggerExit(Collider other)
@@ -70,6 +72,8 @@ public class Door_Controller : MonoBehaviour {
 	{
 		if (locked == false)
 		{
+				AudioManager.instance.Play("Door");
+			isOpen = true;
 			StopAllCoroutines();
 			StartCoroutine(openInterpolation());
 		}

@@ -10,7 +10,7 @@ Material:
   m_Name: World Border
   m_Shader: {fileID: -6465566751694194690, guid: 9fb4f084be703f44e895509071b514cc,
     type: 3}
-  m_Parent: {fileID: 2100000, guid: 19dcd88ef02895047b67210136873b24, type: 2}
+  m_Parent: {fileID: 2100000, guid: d024b4222860a1f43a9be8ca75096630, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -30,7 +30,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_C9EAA629: 84.3
+    - Vector1_C9EAA629: 14
     m_Colors:
     - Color_3AF0A5F2: {r: 0.2264151, g: 0, b: 0.004439552, a: 0}
     - Vector2_D179DCCE: {r: 12, g: 103.7, b: 0, a: 0}
