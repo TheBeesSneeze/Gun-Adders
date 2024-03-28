@@ -44,7 +44,7 @@ public class FeetScript : MonoBehaviour
         }
         else
         {
-            GroundNormal = Vector3.up;
+            GroundNormal = Vector3.zero;
             Grounded = false;
         }
     }
