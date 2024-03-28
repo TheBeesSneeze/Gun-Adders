@@ -10,11 +10,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FeetScript : MonoBehaviour
 {
     public LayerMask GroundLayers;
-    public bool touchingGround = false;
+    [FormerlySerializedAs("touchingGround")] public bool Grounded = false;
+
+    public Vector3 GroundNormal;
     // private void OnTriggerEnter(Collider other){
     //     //if (other.tag == "Ground") {
     //         touchingGround = true;
@@ -27,6 +30,15 @@ public class FeetScript : MonoBehaviour
     // }
     private void FixedUpdate()
     {
-        touchingGround = Physics.Raycast(transform.position, Vector3.down, 0.25f, GroundLayers);
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 0.25f, GroundLayers))
+        {
+            GroundNormal = hitInfo.normal;
+            Grounded = true;
+        }
+        else
+        {
+            GroundNormal = Vector3.up;
+            Grounded = false;
+        }
     }
 }

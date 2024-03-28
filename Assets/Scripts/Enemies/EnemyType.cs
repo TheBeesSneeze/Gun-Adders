@@ -80,6 +80,7 @@ public class EnemyType : CharacterType
     private void OnCollisionExit(Collision collision)
     {
         canDamage = false;
+        if (iFrames == null) return;
         StopCoroutine(iFrames);
     }
 

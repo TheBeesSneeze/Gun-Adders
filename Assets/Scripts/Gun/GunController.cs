@@ -71,8 +71,6 @@ public class GunController : MonoBehaviour
             Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset),
             Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset),
             Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset));
-        
-
         Vector3 dir = destination - bulletSpawnPoint.position;
         var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.transform.forward = dir.normalized;

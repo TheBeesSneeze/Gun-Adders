@@ -22,15 +22,14 @@ public class PlayerStats : MonoBehaviour
 
     [Tooltip ("Movement speed. legs.")]
     public float Speed;
-    [Tooltip("speed MULTIPLIER while sprinting")]
-    public float SprintSpeed;
+    public float Friction = 0.175f;
     //[Tooltip("how much velocity is carried over from one frame to another")]
     //public float PlayerSlipperyness; //@TODO
+    public float JumpHeight = 2.5f;
 
-    public float JumpForce;
+    public float MaxSpeed = 20f;
 
-    [Tooltip("m/s of gravity")]
-    public float NormalGravitySpeed; //@TODO. might get cut. maybe stupid of me
+    [Tooltip("m/s of gravity")] public float GravityBoost = 10f;
     [Tooltip("gravity when player is holding jump key")]
     public float JumpingGravitySpeed; //@TODO. might get cut also.
 }
