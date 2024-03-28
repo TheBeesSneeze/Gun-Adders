@@ -45,7 +45,7 @@ Transform:
   - {fileID: 2131782724641973946}
   - {fileID: 1544151863226725713}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6888475280479492071
 MonoBehaviour:
@@ -63,9 +63,8 @@ MonoBehaviour:
   Sensitivity: 30
   Speed: 4200
   Friction: 0.175
-  SprintSpeed: 1.5
+  AirMovementMultiplier: 0.5
   JumpHeight: 5
-  JumpCooldown: 0.25
   MaxSpeed: 20
   GravityBoost: 30
   JumpingGravitySpeed: 0
@@ -83,15 +82,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultShootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6,
     type: 2}
-  bulletSpawnPoint: {fileID: 7533370447666590071}
   BulletPrefab: {fileID: 7340202116886174177, guid: bb98eaf02be1e9e44939ac0716429f99,
     type: 3}
   Gun: {fileID: 4532600544602286655}
+  bulletSpawnPoint: {fileID: 7533370447666590071}
   bulletEffect1: {fileID: 0}
   bulletEffect2: {fileID: 0}
   scanMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 179
 --- !u!114 &167815564817428575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +124,7 @@ MonoBehaviour:
   playerOrientationTracker: {fileID: 1544151863226725713}
   cameraFollowPoint: {fileID: 2131782724641973946}
   feet: {fileID: 8573732047299625785}
+  ConsistentJumps: 1
   airJumps: 2
 --- !u!33 &6567814080975899724
 MeshFilter:
