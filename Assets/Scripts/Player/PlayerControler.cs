@@ -31,6 +31,8 @@ public class PlayerControler : MonoBehaviour
     [Tooltip("The player prefabs feet script")]
     public FeetScript feet;
 
+    public bool ConsistentJumps = true;
+
     public int airJumps = 1;
     private int airJumpCounter;
     private bool jumping;
@@ -112,6 +114,9 @@ public class PlayerControler : MonoBehaviour
         
         airJumpCounter--;
 
+        if (ConsistentJumps)
+            HalfYVelocity();
+
         var grav = (Vector3.down * stats.GravityBoost * rb.mass).magnitude;
 
         rb.AddForce(
@@ -119,6 +124,14 @@ public class PlayerControler : MonoBehaviour
         rb.AddForce(
                 feet.GroundNormal * (Mathf.Sqrt(2 * stats.JumpHeight * grav) * 0.5f),
                 ForceMode.Impulse);
+    }
+
+    /// <summary>
+    /// guess what this function does. ill give you 3 tries.
+    /// </summary>
+    public void HalfYVelocity()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
     }
 
     private void ResetJump()
