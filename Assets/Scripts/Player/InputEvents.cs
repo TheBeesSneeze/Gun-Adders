@@ -31,6 +31,10 @@ public class InputEvents : Singleton<InputEvents>
     public UnityEvent ShootHeld;
     public UnityEvent ShootCanceled;
 
+    public UnityEvent SecondaryStarted;
+    public UnityEvent SecondaryHeld;
+    public UnityEvent SecondaryCanceled;
+
     public UnityEvent JumpStarted;
     public UnityEvent JumpHeld;
     public UnityEvent JumpCanceled;
@@ -60,7 +64,8 @@ public class InputEvents : Singleton<InputEvents>
     private InputAction Jump;
     private InputAction Look;
     private InputAction Sprint;
-    private InputAction Respawn; 
+    private InputAction Respawn;
+    private InputAction Secondary;
 
     //stuff and things
     private Transform movementOrigin; // camera.main
@@ -78,12 +83,15 @@ public class InputEvents : Singleton<InputEvents>
         Look = playerInput.currentActionMap.FindAction("Look");
         Sprint = playerInput.currentActionMap.FindAction("Sprint");
         Respawn = playerInput.currentActionMap.FindAction("Respawn");
+        Secondary = playerInput.currentActionMap.FindAction("Secondary");
 
         Move .started += context => { MovePressed = true;  MoveStarted.Invoke();  };
         Jump .started += context => { JumpPressed = true;  JumpStarted.Invoke();  };
         Shoot.started += context => { ShootPressed = true; ShootStarted.Invoke(); };
         Sprint.started += context => { SprintPressed = true; };
         Respawn.started += context => { RespawnPressed = true; RespawnStarted.Invoke(); };
+        Secondary.started += context => { SecondaryStarted.Invoke(); };
+        Secondary.canceled += context => { SecondaryCanceled.Invoke(); };
         /*
         Move.performed += context => { MoveHeld.Invoke(); };
         Jump.performed += context => { JumpHeld.Invoke(); };
