@@ -17,7 +17,7 @@ using static AudioManager;
 public class GunController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private ShootingMode defaultShootingMode;
+    [SerializeField] public ShootingMode defaultShootingMode;
     [SerializeField] private GameObject BulletPrefab;
     [Header("Unity Stuff")]
     public Transform Gun;
@@ -43,7 +43,7 @@ public class GunController : MonoBehaviour
             Application.Quit();
         }
 
-        currentShootMode = shootMode;
+        defaultShootingMode = shootMode;
         
         //change color
 
@@ -70,60 +70,19 @@ public class GunController : MonoBehaviour
         }
 
         destination += new Vector3(
-            Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset),
-            Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset),
-            Random.Range(-currentShootMode.BulletAccuracyOffset, currentShootMode.BulletAccuracyOffset));
+            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset),
+            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset),
+            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset));
         Vector3 dir = destination - bulletSpawnPoint.position;
         var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.transform.forward = dir.normalized;
-        bullet.GetComponent<Bullet>().damageAmount = currentShootMode.BulletDamage;
-        bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
+        bullet.GetComponent<Bullet>().damageAmount = defaultShootingMode.BulletDamage;
+        bullet.GetComponent<Bullet>().bulletForce = defaultShootingMode.BulletSpeed;
         bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2, dir);
         if(instance != null)
             instance.Play("Shoot Default");
     }
     
-    private Vector3 GetRandomizedAngle()
-    {
-        //tobys old code (doesnt work)
-
-        float a = currentShootMode.BulletAccuracyOffset / 90;
-        float x = Random.Range(-a, a);
-        float y = Random.Range(-a, a);
-
-        Vector3 angle = bulletSpawnPoint.forward;
-        angle = new Vector3(angle.x + x, angle.y + y, angle.z);
-
-        return angle;
-
-        //tobys new code (didnt work)
-        /*
-        float radius = Random.Range(0, currentShootMode.BulletAccuracyOffset);
-        float angle = Random.Range(0, 360);
-
-        float x = Random.Range(-1, 1);
-        float y = Random.Range(-1, 1);
-
-        Vector3 spread = new Vector3(x, y, 0.0f).normalized * currentShootMode.BulletAccuracyOffset;
-        Quaternion rotatio = Quaternion.Euler(spread) * bulletSpawnPoint.rotation;
-
-        return rotatio.eulerAngles;
-        */
-
-
-    }
-    /*
-    private void ShootHeld()
-    {
-
-    }
-
-    private void ShootReleased()
-    {
-
-    }
-    */
-
     private void Update()
     {
         Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
@@ -142,16 +101,16 @@ public class GunController : MonoBehaviour
 
         if (!InputEvents.Instance.ShootPressed) return;
 
-        if (secondsSinceLastShoot < (60f / currentShootMode.RPM)) return;
+        if (secondsSinceLastShoot < (60f / defaultShootingMode.RPM)) return;
 
         //shootin time
         secondsSinceLastShoot = 0;
-        for(int i = 0; i< currentShootMode.BulletsPerShot; i++)
+        for(int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
         {
             ShootBullet();
         }
 
-       playerRB.AddForce(-camera.transform.forward * currentShootMode.RecoilForce, ForceMode.Impulse);
+       playerRB.AddForce(-camera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
