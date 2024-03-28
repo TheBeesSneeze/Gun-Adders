@@ -1,36 +1,34 @@
-using System.Collections;
+/*******************************************************************************
+ * File Name :         EnemyMoveTowardsPlayer.cs
+ * Author(s) :         Sky
+ * Creation Date :     
+ *
+ * Brief Description : uses gravity
+ *****************************************************************************/
+
+ /*******************************************************************************
+  * File Name :         EnemyFlyTowardsPlayer.cs
+  * Author(s) :         Sky, Toby
+  * Creation Date :     
+  *
+  * Brief Description : 
+  *****************************************************************************/
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 //hey guys sky here
-public class EnemyMoveTowardsPlayer : MonoBehaviour
+public class EnemyMoveTowardsPlayer : EnemyMovementType
 {
-    private Rigidbody rb;
-    private PlayerBehaviour player;
-    private Slider slider;
-
-    [Tooltip("Speed at which enemy moves")]
-    [SerializeField] private float Speed = 1;
-    [SerializeField] private float SlowedSpeed = 0.5f;
-    private EnemyType _enemyType;
-
-    private void Start()
+    protected override void Move(float speed)
     {
-        rb = GetComponent<Rigidbody>();
-        player = GameObject.FindObjectOfType<PlayerBehaviour>();
-        slider = GetComponentInChildren<Slider>();
-        _enemyType = GetComponentInChildren<EnemyType>();
-    }
-    void FixedUpdate()
-    {
-        Vector3 direction = player.transform.position - gameObject.transform.position;
-        direction.y = 0;
+        Vector3 direction = target.position - transform.position;
+        //direction.y = 0;
         direction.Normalize();
-        direction *= _enemyType.slowed ? SlowedSpeed : Speed;
-        direction.y = rb.velocity.y;
-        rb.velocity = direction;
-        slider.transform.LookAt(player.transform.position);
+        //direction.y = rb.velocity.y;
+        rb.velocity = direction * speed;
+        //rb.AddForce(direction * speed);
     }
 
 }

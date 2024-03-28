@@ -13,6 +13,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerBehaviour : CharacterType
@@ -50,5 +51,10 @@ public class PlayerBehaviour : CharacterType
     {
         yield return new WaitForSeconds(visualDamageSeconds);
         damageCanvas.SetActive(false);
+    }
+
+    public override void Die()
+    {
+        SceneManager.LoadScene("Arena Scene");
     }
 }

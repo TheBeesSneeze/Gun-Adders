@@ -37,12 +37,10 @@ public class CharacterType : MonoBehaviour
         {
             Die();
         }
-
-        Debug.Log("grah");
     }
 
-    protected virtual void Die()
+    public virtual void Die()
     {
-        SceneManager.LoadScene("Arena Scene");
+        Destroy(gameObject);
     }
 }

@@ -18,6 +18,7 @@ public class FeetScript : MonoBehaviour
     [FormerlySerializedAs("touchingGround")] public bool Grounded = false;
 
     public Vector3 GroundNormal;
+    private bool groundedPrevFrame;
     // private void OnTriggerEnter(Collider other){
     //     //if (other.tag == "Ground") {
     //         touchingGround = true;
@@ -30,9 +31,15 @@ public class FeetScript : MonoBehaviour
     // }
     private void FixedUpdate()
     {
+        groundedPrevFrame = Grounded;
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 0.25f, GroundLayers))
         {
             GroundNormal = hitInfo.normal;
+            if(!groundedPrevFrame)
+            {
+                if(AudioManager.instance != null)
+                    AudioManager.instance.Play("Land");
+            }
             Grounded = true;
         }
         else

@@ -15,9 +15,9 @@ MonoBehaviour:
   GunName: Gattling
   GunColor: {r: 0, g: 0.6886792, b: 0.19307038, a: 1}
   gunIcon: {fileID: 0}
-  RPM: 120
-  BulletsPerShot: 2
-  BulletAccuracyOffset: 0
+  RPM: 900
+  BulletsPerShot: 1
+  BulletAccuracyOffset: 10
   BulletSpeed: 15
-  BulletDamage: 0.2
+  BulletDamage: 5
   RecoilForce: 0.01

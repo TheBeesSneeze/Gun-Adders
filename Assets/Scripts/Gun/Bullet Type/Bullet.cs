@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
@@ -65,15 +66,17 @@ public class Bullet : MonoBehaviour
             if (Physics.Raycast(lastPosition, transform.forward, out RaycastHit hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
                     QueryTriggerInteraction.Ignore))
             {
-                print(hit.collider);
-                if (hitImpactEffectPrefab != null)
+                GameObject obj = null;
+                try
                 {
-                    var obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(obj, impactEffectPrefabDespawnTime);
+                    obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 }
+                catch { Debug.LogWarning("Missing hitImpactEffectPrefab in Bullet, please add that :3"); }
+                AudioSource audio = obj.AddComponent<AudioSource>();
 
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
                 {
+                    audio.clip = instance.LoadFromGroup("Hit Enemy");
                     enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
@@ -88,6 +91,9 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
+                    if(instance != null)
+                        audio.clip = instance.LoadFromGroup("Hit Wall");
+
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
                     {
@@ -99,7 +105,19 @@ public class Bullet : MonoBehaviour
                         _bulletEffect2.OnHitOther(hit.point);
                     }
                 }
+
+                if (instance != null)
+                {
+                    audio.spatialBlend = 1;
+                    audio.maxDistance = 50;
+                    audio.rolloffMode = AudioRolloffMode.Linear;
+                    audio.Play();
+                }
+
+                Destroy(obj, impactEffectPrefabDespawnTime);
                 Destroy(gameObject);
+
+                
             }
 
             lastPosition = transform.position;

@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemey;
     
 
-    private static int roundNumber = 0;
+    private int roundNumber = 0;
 
     public void Update()
     {

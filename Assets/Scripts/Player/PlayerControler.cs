@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using static AudioManager;
 
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerControler : MonoBehaviour
@@ -34,6 +35,9 @@ public class PlayerControler : MonoBehaviour
     private int airJumpCounter;
     private bool jumping;
 
+    private float timeSinceLastFootstep = 0;
+    private AudioSource source;
+
     /// <summary>
     /// every frame while move is held
     /// </summary>
@@ -50,6 +54,20 @@ public class PlayerControler : MonoBehaviour
             airJumpCounter = airJumps;
         }
         input = InputEvents.Instance.InputDirection2D;
+
+        //footstep code
+        if (!feet.Grounded || rb.velocity.magnitude < 0.1f)
+            return;
+
+        if (Time.time - timeSinceLastFootstep >= Mathf.Max(1f - (rb.velocity.magnitude / 40.0f), 0.25f))
+        {
+            // Play a random footstep sound from the array
+
+            if (instance != null)
+                instance.PlayFromGroup("Footsteps");
+
+            timeSinceLastFootstep = Time.time;
+        }
     }
 
     private void DoMovement()
@@ -89,6 +107,9 @@ public class PlayerControler : MonoBehaviour
             return;
         }
 
+        if (instance != null)
+                instance.Play("Jump");
+        
         airJumpCounter--;
 
         var grav = (Vector3.down * stats.GravityBoost * rb.mass).magnitude;
@@ -164,6 +185,8 @@ public class PlayerControler : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         stats = GetComponent<PlayerStats>();
+        source = gameObject.AddComponent<AudioSource>();
+        source.volume = 0.15f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         cameraHolder.transform.parent = null;

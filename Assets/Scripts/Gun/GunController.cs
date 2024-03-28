@@ -12,19 +12,21 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using static AudioManager;
 
 public class GunController : MonoBehaviour
 {
-    public ShootingMode defaultShootingMode;
-    public Transform bulletSpawnPoint;
+    [Header("Settings")]
+    [SerializeField] private ShootingMode defaultShootingMode;
     [SerializeField] private GameObject BulletPrefab;
+    [Header("Unity Stuff")]
     public Transform Gun;
+    public Transform bulletSpawnPoint;
 
     [ReadOnly] public BulletEffect bulletEffect1;
     [ReadOnly] public BulletEffect bulletEffect2;
     public LayerMask scanMask;
 
-    private ShootingMode currentShootMode;
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
     private Camera camera;
@@ -77,18 +79,38 @@ public class GunController : MonoBehaviour
         bullet.GetComponent<Bullet>().damageAmount = currentShootMode.BulletDamage;
         bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
         bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2, dir);
+        if(instance != null)
+            instance.Play("Shoot Default");
     }
     
     private Vector3 GetRandomizedAngle()
     {
+        //tobys old code (doesnt work)
+
         float a = currentShootMode.BulletAccuracyOffset / 90;
         float x = Random.Range(-a, a);
         float y = Random.Range(-a, a);
 
         Vector3 angle = bulletSpawnPoint.forward;
-        angle = new Vector3 (angle.x + x, angle.y + y, angle.z);
+        angle = new Vector3(angle.x + x, angle.y + y, angle.z);
 
         return angle;
+
+        //tobys new code (didnt work)
+        /*
+        float radius = Random.Range(0, currentShootMode.BulletAccuracyOffset);
+        float angle = Random.Range(0, 360);
+
+        float x = Random.Range(-1, 1);
+        float y = Random.Range(-1, 1);
+
+        Vector3 spread = new Vector3(x, y, 0.0f).normalized * currentShootMode.BulletAccuracyOffset;
+        Quaternion rotatio = Quaternion.Euler(spread) * bulletSpawnPoint.rotation;
+
+        return rotatio.eulerAngles;
+        */
+
+
     }
     /*
     private void ShootHeld()
