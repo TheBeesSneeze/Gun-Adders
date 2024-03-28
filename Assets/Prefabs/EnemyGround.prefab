@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 9024483359748195293}
   - component: {fileID: 1503637654318619720}
   - component: {fileID: 4790329206841041940}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ Transform:
   m_Children:
   - {fileID: 415458240702346697}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5844086795473256532
 MonoBehaviour:
@@ -222,6 +222,9 @@ MonoBehaviour:
   SlowedSpeed: 1
   PlayerSightDistance: 50
   RequirePlayerSightToMove: 1
+  viewMask:
+    serializedVersion: 2
+    m_Bits: 7551
   MoveEnemy: 0
 --- !u!33 &5290609480795805529
 MeshFilter:
