@@ -77,7 +77,7 @@ MonoBehaviour:
   despawnTime: 5
   hitLayers:
     serializedVersion: 2
-    m_Bits: 307
+    m_Bits: 435
   hitImpactEffectPrefab: {fileID: 6289759660943968910, guid: b4ca01bbd78ddaa468ec026ab0612db3,
     type: 3}
   impactEffectPrefabDespawnTime: 2
