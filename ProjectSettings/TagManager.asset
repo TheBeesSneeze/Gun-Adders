@@ -13,15 +13,15 @@ TagManager:
   - Water
   - UI
   - ' Bullet'
-  - 
+  - Enemy
   - No Pixel
-  - 
+  - FogVolumeShadowCaster
   - Brick
   - Stone
   - Border
-  - 
-  - 
-  - 
+  - FogVolume
+  - FogVolumeSurrogate
+  - FogVolumeUniform
   - 
   - 
   - 

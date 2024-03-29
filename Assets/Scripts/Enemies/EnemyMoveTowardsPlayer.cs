@@ -1,12 +1,4 @@
 /*******************************************************************************
- * File Name :         EnemyMoveTowardsPlayer.cs
- * Author(s) :         Sky
- * Creation Date :     
- *
- * Brief Description : uses gravity
- *****************************************************************************/
-
- /*******************************************************************************
   * File Name :         EnemyFlyTowardsPlayer.cs
   * Author(s) :         Sky, Toby
   * Creation Date :     

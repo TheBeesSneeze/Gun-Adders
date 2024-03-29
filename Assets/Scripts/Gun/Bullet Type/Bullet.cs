@@ -35,10 +35,10 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
-    public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2)
+    public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2, Vector3 dir)
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
+        rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
 
         _bulletEffect1 = bulletEffect1;
@@ -66,7 +66,6 @@ public class Bullet : MonoBehaviour
             if (Physics.Raycast(lastPosition, transform.forward, out RaycastHit hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
                     QueryTriggerInteraction.Ignore))
             {
-                print(hit.collider);
                 GameObject obj = null;
                 try
                 {
@@ -92,7 +91,8 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
-                    audio.clip = instance.LoadFromGroup("Hit Wall");
+                    if(instance != null)
+                        audio.clip = instance.LoadFromGroup("Hit Wall");
 
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
@@ -105,12 +105,19 @@ public class Bullet : MonoBehaviour
                         _bulletEffect2.OnHitOther(hit.point);
                     }
                 }
-                audio.spatialBlend = 1;
-                audio.maxDistance = 50;
-                audio.rolloffMode = AudioRolloffMode.Linear;
-                audio.Play();
+
+                if (instance != null)
+                {
+                    audio.spatialBlend = 1;
+                    audio.maxDistance = 50;
+                    audio.rolloffMode = AudioRolloffMode.Linear;
+                    audio.Play();
+                }
+
                 Destroy(obj, impactEffectPrefabDespawnTime);
                 Destroy(gameObject);
+
+                
             }
 
             lastPosition = transform.position;

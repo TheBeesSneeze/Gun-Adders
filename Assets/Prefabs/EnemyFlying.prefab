@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyFlying
       objectReference: {fileID: 0}
+    - target: {fileID: 1651905046631748458, guid: 2627cc951982cb645bf4e16039f3deef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4790329206841041940, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
       propertyPath: m_UseGravity
@@ -21,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5310092065288185306, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
@@ -101,7 +106,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1651905046631748458, guid: 2627cc951982cb645bf4e16039f3deef,
         type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 1162250068435681809}
   m_SourcePrefab: {fileID: 100100000, guid: 2627cc951982cb645bf4e16039f3deef, type: 3}
 --- !u!1 &5452116755294236245 stripped
@@ -126,5 +131,8 @@ MonoBehaviour:
   SlowedSpeed: 0.5
   PlayerSightDistance: 15
   RequirePlayerSightToMove: 1
+  viewMask:
+    serializedVersion: 2
+    m_Bits: 7551
   MoveEnemy: 0
   MihDistanceOffGround: 2

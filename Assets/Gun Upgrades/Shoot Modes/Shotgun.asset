@@ -16,8 +16,13 @@ MonoBehaviour:
   GunColor: {r: 0.6313726, g: 0, b: 0, a: 1}
   gunIcon: {fileID: 0}
   RPM: 60
+<<<<<<< HEAD
   BulletsPerShot: 12
   BulletAccuracyOffset: 10
+=======
+  BulletsPerShot: 10
+  BulletAccuracyOffset: 0.5
+>>>>>>> main
   BulletSpeed: 15
   BulletDamage: 10
   RecoilForce: 10

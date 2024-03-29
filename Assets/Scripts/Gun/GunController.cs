@@ -16,18 +16,20 @@ using static AudioManager;
 
 public class GunController : MonoBehaviour
 {
-    public ShootingMode defaultShootingMode;
-    public Transform bulletSpawnPoint;
+    [Header("Settings")]
+    [SerializeField] public ShootingMode defaultShootingMode;
     [SerializeField] private GameObject BulletPrefab;
+    [Header("Unity Stuff")]
     public Transform Gun;
+    public Transform bulletSpawnPoint;
 
     [ReadOnly] public BulletEffect bulletEffect1;
     [ReadOnly] public BulletEffect bulletEffect2;
+    public LayerMask scanMask;
 
-    private ShootingMode currentShootMode;
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
-    private Transform camera;
+    private Camera camera;
 
     /// <summary>
     /// call this in from those little pickup guys
@@ -41,7 +43,7 @@ public class GunController : MonoBehaviour
             Application.Quit();
         }
 
-        currentShootMode = shootMode;
+        defaultShootingMode = shootMode;
         
         //change color
 
@@ -53,61 +55,62 @@ public class GunController : MonoBehaviour
     /// <summary>
     /// direction is (get this) the direction the bullet goes
     /// </summary>
-    private void ShootBullet(Vector3 direction)
+    private void ShootBullet()
     {
         //alec put code here
+        Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        Vector3 destination;
+        if(Physics.Raycast(ray, out RaycastHit hit, 1000f, scanMask))
+        {
+            destination = hit.point;
+        }
+        else
+        {
+            destination = ray.GetPoint(1000f);
+        }
 
-        var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction.normalized));
-        bullet.GetComponent<Bullet>().damageAmount = currentShootMode.BulletDamage;
-        bullet.GetComponent<Bullet>().bulletForce = currentShootMode.BulletSpeed;
-        bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2);
-
-        instance.Play("Shoot Default");
-
-        Debug.Log("pew");
-        Debug.DrawLine(bulletSpawnPoint.position, bulletSpawnPoint.position + (direction * 10), Color.white);
+        destination += new Vector3(
+            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset),
+            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset),
+            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset));
+        Vector3 dir = destination - bulletSpawnPoint.position;
+        var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        bullet.transform.forward = dir.normalized;
+        bullet.GetComponent<Bullet>().damageAmount = defaultShootingMode.BulletDamage;
+        bullet.GetComponent<Bullet>().bulletForce = defaultShootingMode.BulletSpeed;
+        bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2, dir);
+        if(instance != null)
+            instance.Play("Shoot Default");
     }
-
-    private Vector3 GetRandomizedAngle()
-    {
-        float a = currentShootMode.BulletAccuracyOffset / 90;
-        float x = Random.Range(-a, a);
-        float y = Random.Range(-a, a);
-
-        Vector3 angle = bulletSpawnPoint.forward;
-        angle = new Vector3 (angle.x + x, angle.y + y, angle.z);
-
-        return angle;
-    }
-    /*
-    private void ShootHeld()
-    {
-
-    }
-
-    private void ShootReleased()
-    {
-
-    }
-    */
-
+    
     private void Update()
     {
+        Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        Vector3 destination;
+        if(Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))
+        {
+            destination = hit.point;
+        }
+        else
+        {
+            destination = ray.GetPoint(1000f);
+        }
+        Debug.DrawLine(ray.origin, destination, Color.red);
+        Debug.DrawLine(bulletSpawnPoint.position, destination, Color.red);
         secondsSinceLastShoot += Time.deltaTime;
 
         if (!InputEvents.Instance.ShootPressed) return;
 
-        if (secondsSinceLastShoot < (60f / currentShootMode.RPM)) return;
+        if (secondsSinceLastShoot < (60f / defaultShootingMode.RPM)) return;
 
         //shootin time
         secondsSinceLastShoot = 0;
-        for(int i = 0; i< currentShootMode.BulletsPerShot; i++)
+        for(int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
         {
-            Vector3 angle = GetRandomizedAngle();
-            ShootBullet(angle);
+            ShootBullet();
         }
 
-       playerRB.AddForce(-camera.forward * currentShootMode.RecoilForce, ForceMode.Impulse);
+       playerRB.AddForce(-camera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
@@ -115,7 +118,7 @@ public class GunController : MonoBehaviour
         //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
         //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         playerRB = GetComponent<Rigidbody>();
-        camera = Camera.main.transform;
+        camera = Camera.main;
         LoadShootingMode(defaultShootingMode);
     }
 
