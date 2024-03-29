@@ -23,7 +23,7 @@ namespace DefaultNamespace
 
             GameObject explosion = Instantiate(ExplosionPrefab, type.transform.position, ExplosionPrefab.transform.rotation);
 
-            explosion.GetComponent<AttackType>().Damage = gun.currentShootMode.BulletDamage * DamageMultiplier;
+            explosion.GetComponent<AttackType>().Damage = gun.defaultShootingMode.BulletDamage * DamageMultiplier;
         }
 
         public override void OnHitOther(Vector3 point)
@@ -32,7 +32,7 @@ namespace DefaultNamespace
 
             GameObject explosion = Instantiate(ExplosionPrefab, point, ExplosionPrefab.transform.rotation);
 
-            explosion.GetComponent<AttackType>().Damage = gun.currentShootMode.BulletDamage * DamageMultiplier;
+            explosion.GetComponent<AttackType>().Damage = gun.defaultShootingMode.BulletDamage * DamageMultiplier;
         }
     }
 }

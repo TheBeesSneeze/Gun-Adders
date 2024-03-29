@@ -35,10 +35,10 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
-    public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2)
+    public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2, Vector3 dir)
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
+        rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
 
         _bulletEffect1 = bulletEffect1;

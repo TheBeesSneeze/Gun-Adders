@@ -64,17 +64,17 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {r: 0, g: 0, b: 0, a: 1}
   center:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.202
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.21
+    m_Value: 0.353
   rounded:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
 --- !u!114 &-4858685965655174441
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -263,25 +263,25 @@ MonoBehaviour:
     m_Value: 1059.9
   tonemapExposurePre:
     m_OverrideState: 1
-    m_Value: 2.3
+    m_Value: 2.5
   tonemapBrightnessPost:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 1.75
   saturate:
     m_OverrideState: 1
-    m_Value: 1.92
+    m_Value: 0
   brightness:
     m_OverrideState: 0
-    m_Value: 0.883
+    m_Value: 0.25
   contrast:
-    m_OverrideState: 1
-    m_Value: 1.002
+    m_OverrideState: 0
+    m_Value: 1.153
   daltonize:
     m_OverrideState: 0
     m_Value: 0.883
   sepia:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.513
   tintColor:
     m_OverrideState: 0
     m_Value: {r: 0.6707013, g: 0.9056604, b: 0.86067915, a: 0.3137255}
@@ -303,19 +303,19 @@ MonoBehaviour:
     dimension: 1
   bloomIntensity:
     m_OverrideState: 1
-    m_Value: 0.66
+    m_Value: 3.4
   bloomThreshold:
     m_OverrideState: 1
-    m_Value: 0.26
+    m_Value: 0.8
   bloomConservativeThreshold:
     m_OverrideState: 0
     m_Value: 0
   bloomSpread:
     m_OverrideState: 1
-    m_Value: 0.095
+    m_Value: 0.172
   bloomMaxBrightness:
-    m_OverrideState: 0
-    m_Value: 369.34
+    m_OverrideState: 1
+    m_Value: 2
   bloomTint:
     m_OverrideState: 0
     m_Value: {r: 0.8773585, g: 0.622664, b: 0.26072446, a: 0.72156864}
@@ -476,7 +476,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 30
   sunFlaresSunIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.3
   sunFlaresSunDiskSize:
     m_OverrideState: 0
@@ -814,14 +814,14 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   frameBandHorizontalSize:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   frameBandHorizontalSmoothness:
     m_OverrideState: 0
     m_Value: 0
   frameBandVerticalSize:
     m_OverrideState: 1
-    m_Value: 0.104
+    m_Value: 0.5
   frameBandVerticalSmoothness:
     m_OverrideState: 0
     m_Value: 0
@@ -923,11 +923,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 1
-    m_Value: 0.96
+    m_OverrideState: 0
+    m_Value: 0.54
   contrast:
     m_OverrideState: 0
-    m_Value: 32.9
+    m_Value: 100
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -936,4 +936,4 @@ MonoBehaviour:
     m_Value: 3
   saturation:
     m_OverrideState: 1
-    m_Value: 9.4
+    m_Value: 3

@@ -74,18 +74,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236f4b29a10a6f947959f4fdbf648201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 2000
   despawnTime: 5
-  hitRigidbodyImpactForce: 10
   hitLayers:
     serializedVersion: 2
-    m_Bits: 307
+    m_Bits: 371
   hitImpactEffectPrefab: {fileID: 6289759660943968910, guid: b4ca01bbd78ddaa468ec026ab0612db3,
     type: 3}
   impactEffectPrefabDespawnTime: 2
+  _bulletEffect1: {fileID: 0}
+  _bulletEffect2: {fileID: 0}
   damageAmount: 10
-  bulletEffect: {fileID: 11400000, guid: d6fd1cfedeae7594f98ddaba60c6cfbd, type: 2}
-  bulletEffect2: {fileID: 0}
+  bulletForce: 2000
 --- !u!136 &562047037873011998
 CapsuleCollider:
   m_ObjectHideFlags: 0
