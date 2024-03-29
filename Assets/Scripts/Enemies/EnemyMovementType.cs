@@ -22,6 +22,7 @@ public class EnemyMovementType : MonoBehaviour
     [Tooltip("How far enemy can see")]
     [SerializeField] private float PlayerSightDistance=15; 
     [SerializeField] private bool RequirePlayerSightToMove=true;
+    [SerializeField] private LayerMask viewMask;
 
     [ReadOnly] public bool MoveEnemy;
 
@@ -79,7 +80,7 @@ public class EnemyMovementType : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + (direction * PlayerSightDistance), Color.white);
 
         RaycastHit hit;
-        if(!Physics.Raycast(ray, out hit, PlayerSightDistance)) return false; //sees nothing
+        if(!Physics.Raycast(ray, out hit, PlayerSightDistance, viewMask)) return false; //sees nothing
 
         //ok it saw something
         PlayerBehaviour pb = hit.transform.GetComponent<PlayerBehaviour>();

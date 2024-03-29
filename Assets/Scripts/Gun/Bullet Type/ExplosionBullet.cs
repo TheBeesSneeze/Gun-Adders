@@ -15,16 +15,24 @@ namespace DefaultNamespace
     [CreateAssetMenu(fileName = "ExplosionBullet", menuName = "BulletEffects/ExplosionBullet")]
     public class ExplosionBullet : BulletEffect
     {
+        
         public GameObject ExplosionPrefab;
         public override void OnEnemyHit(EnemyType type)
         {
-            Instantiate(ExplosionPrefab, type.transform.position, ExplosionPrefab.transform.rotation);
+            GunController gun = GameObject.FindObjectOfType<GunController>();
+
+            GameObject explosion = Instantiate(ExplosionPrefab, type.transform.position, ExplosionPrefab.transform.rotation);
+
+            explosion.GetComponent<AttackType>().Damage = gun.currentShootMode.BulletDamage * DamageMultiplier;
         }
 
         public override void OnHitOther(Vector3 point)
         {
-            
-            Instantiate(ExplosionPrefab, point, ExplosionPrefab.transform.rotation);
+            GunController gun = GameObject.FindObjectOfType<GunController>();
+
+            GameObject explosion = Instantiate(ExplosionPrefab, point, ExplosionPrefab.transform.rotation);
+
+            explosion.GetComponent<AttackType>().Damage = gun.currentShootMode.BulletDamage * DamageMultiplier;
         }
     }
 }
