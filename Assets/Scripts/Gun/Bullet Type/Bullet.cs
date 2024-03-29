@@ -16,7 +16,7 @@ using static AudioManager;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-   
+
     [SerializeField] private float despawnTime = 5f;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
@@ -91,7 +91,7 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
-                    if(instance != null)
+                    if (instance != null)
                         audio.clip = instance.LoadFromGroup("Hit Wall");
 
                     Debug.Log("hit other");
@@ -117,7 +117,7 @@ public class Bullet : MonoBehaviour
                 Destroy(obj, impactEffectPrefabDespawnTime);
                 Destroy(gameObject);
 
-                
+
             }
 
             lastPosition = transform.position;
@@ -157,12 +157,12 @@ public class Bullet : MonoBehaviour
     /// <returns></returns>
     private Color GetBulletColor()
     {
-        if(_bulletEffect1 == null && _bulletEffect2 == null)
+        if (_bulletEffect1 == null && _bulletEffect2 == null)
         {
             return Color.white;
         }
 
-        if(_bulletEffect1 == null)
+        if (_bulletEffect1 == null)
         {
             return _bulletEffect2.TrailColor;
         }
@@ -175,4 +175,5 @@ public class Bullet : MonoBehaviour
         //weird way of averaging them but colors get weird when you add their parts to numbers above 1
         return (_bulletEffect1.TrailColor / 2) + (_bulletEffect2.TrailColor / 2);
     }
+
 }

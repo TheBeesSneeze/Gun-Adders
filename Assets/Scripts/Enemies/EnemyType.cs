@@ -9,6 +9,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -26,9 +27,23 @@ public class EnemyType : CharacterType
     private PlayerBehaviour player;
     private Coroutine iFrames;
 
+    [Header("Ranged Enemy Stuffs")]
     public Transform playerLocation;
+
     [SerializeField]public bool isRangedEnemy;
-    GunController gunController;
+    [SerializeField]private GameObject BulletPrefab;
+    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private float rangeOfAttack = 20;
+    [SerializeField] private float slowedFireRate = 1f;
+    [SerializeField] private float rangedAttackDamage = 20;
+
+    private bool isAttacking = false;
+    private Vector3 Distance;
+    private float distanceFrom;
+    private float nextFire = 0;
+    private float currentFireRate;
+    
 
     protected override void Start()
     {
@@ -56,23 +71,27 @@ public class EnemyType : CharacterType
     }
     
     private void Update()
-    {   
+    {
+        currentFireRate = fireRate;
         if (slowed)
         {
+             
             if (slowTimer < slowTimeRef)
             {
                 slowTimer += Time.deltaTime;
+                currentFireRate = slowedFireRate;
             }
             else
             {
                 slowTimer = 0f;
                 slowed = false;
+                currentFireRate = fireRate; 
             }
         }
         if(isRangedEnemy)
         {
-            LookForPlayer();
-            
+            Attacking();
+            canRangeAttack();
         }
     }
 
@@ -109,8 +128,36 @@ public class EnemyType : CharacterType
         
     }
 
-    private void LookForPlayer()
+    private void canRangeAttack()
     {
-        transform.LookAt(playerLocation);
-    }    
+        Distance = (transform.position - playerLocation.position).normalized;
+        Distance.y = 0;
+        distanceFrom = Distance.magnitude;
+        Distance /= distanceFrom;
+
+        if(distanceFrom < rangeOfAttack)
+        {
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false; 
+        }
+    }
+    private void Attacking()
+    {
+        if(isAttacking)
+        {
+            transform.LookAt(playerLocation.position);
+            
+            if(Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                var Shoot = Instantiate(BulletPrefab.gameObject.GetComponent<Rigidbody>(), bulletSpawnPoint.position, playerLocation.rotation);
+                Shoot.AddForce(playerLocation.position * 500, ForceMode.Acceleration);
+                
+            }
+        }
+    }
+    
 }
