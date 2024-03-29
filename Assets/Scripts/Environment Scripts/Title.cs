@@ -19,6 +19,7 @@ public class Title : MonoBehaviour
         Application.targetFrameRate = 144;
         title = GameObject.Find("Title Text").GetComponent<TextMeshProUGUI>();
         title.enabled = false;
+        title.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineSoftness, 0);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -121,9 +121,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisabledSeconds: 3
   DisabledOpacity: 0.5
-  PickUpSound: {fileID: 0}
+  PickUpSound: 
   UpgradeText: {fileID: 848096890510200894}
   BackgroundImage: {fileID: 8589535063049405910}
+  upgradeEffect: {fileID: 1171190231128718, guid: d9467a10b94fb3b428cc539326c9579b,
+    type: 3}
   Disabled: 0
   UpgradePool:
   - {fileID: 11400000, guid: 814977880fbe26a47a3c930460f777a9, type: 2}

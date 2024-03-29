@@ -16,7 +16,6 @@ public class BulletEffectPickup : UpgradePickupType
 {
     //public GameObject BulletPrefab;
     public BulletEffect[] UpgradePool;
-
     private BulletEffect loadedUpgrade;
 
     
