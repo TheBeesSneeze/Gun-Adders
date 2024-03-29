@@ -2,12 +2,16 @@ Shader "Custom/Dissolve" {
     Properties{
         _MainTex("Texture", 2D) = "white" {}
         _DissolveThreshold("Dissolve Threshold", Range(0, 1)) = 0
-        _EdgeColor("Edge Color", Color) = (0, 0, 0, 0)
+            // Edge color might not be used in this context, but kept for potential aesthetic adjustments
+            _EdgeColor("Edge Color", Color) = (0, 0, 0, 1)
     }
 
         SubShader{
             Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
             LOD 100
+
+            Blend SrcAlpha OneMinusSrcAlpha // Enable alpha blending
+            ZWrite Off // Disable Z writing for transparency
 
             Pass {
                 CGPROGRAM
@@ -42,21 +46,26 @@ Shader "Custom/Dissolve" {
                 fixed4 frag(v2f i) : SV_Target {
                     float noiseScale = 1.0;
                     fixed noise = frac(sin(dot(i.uv * noiseScale ,float2(12.9898,78.233))) * 43758.5453);
-                    noise = noise * 0.5 + 0.5; // Remap the noise
+                    noise = noise * 0.5 + 0.5; // Normalize noise to 0..1
 
-                    fixed4 col = tex2D(_MainTex, i.uv);
-                    fixed4 edgeCol = _EdgeColor;
-                    edgeCol.a = col.a;
+                    // Interpolate alpha from fully transparent to fully opaque as noise goes from 0 to threshold
+                    float alpha = smoothstep(0.0, _DissolveThreshold, noise);
 
+                    // If noise is below the threshold, make it fully transparent
                     if (noise < _DissolveThreshold) {
-                        clip(-1);
-                    }
-                    else if (noise < _DissolveThreshold + 0.1) {
-                        return edgeCol;
+                        alpha = 0.0; // Ensure full transparency
                     }
 
-                    UNITY_APPLY_FOG(i.fogCoord, col);
-                    return col;
+                    // Adjusting for edge color and visibility right at the threshold, if needed
+                    if (noise >= _DissolveThreshold && noise < _DissolveThreshold + 0.05) {
+                        float edgeFactor = (noise - _DissolveThreshold) / 0.05;
+                        fixed4 edgeColor = _EdgeColor;
+                        edgeColor.a = smoothstep(0.0, 1.0, edgeFactor); // Fade edge color in
+                        return edgeColor;
+                    }
+
+                    // Return black with adjusted alpha, ensuring it transitions from transparent to black
+                    return fixed4(0, 0, 0, alpha);
                 }
                 ENDCG
             }

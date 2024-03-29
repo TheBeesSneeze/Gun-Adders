@@ -186,9 +186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisabledSeconds: 3
   DisabledOpacity: 0.5
-  PickUpSound: {fileID: 0}
   UpgradeText: {fileID: 7882622207526477293}
   BackgroundImage: {fileID: 3411924018935363130}
+  upgradeEffect: {fileID: 1029683450922114, guid: 911d39b31e356794d971139c547d1e61,
+    type: 3}
   Disabled: 0
   ShootModes:
   - {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}

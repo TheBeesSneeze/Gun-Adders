@@ -41,7 +41,7 @@ public class Teleporter : MonoBehaviour
         while (currentTime < 1f)
         {
             currentTime += Time.deltaTime;
-            material.SetFloat("_DissolveThreshold", Mathf.Lerp(0, 1, currentTime / 1f));
+            material.SetFloat("_DissolveThreshold", Mathf.Lerp(1, 0, currentTime / 1f));
             for (int i = 0; i < sources.Length - 1; i++)
                 sources[i].volume = Mathf.Lerp(volumes[i], 0, currentTime / 1f);
             yield return null;
