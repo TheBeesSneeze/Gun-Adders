@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3033540032410691044}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 792.79816, y: 224.96083, z: -603.9834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5947468252291808186
 MonoBehaviour:
@@ -79,6 +79,34 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 23b248c5f089e944885ff448f0ec6554, type: 3}
     volume: 0.7
     spatialBlend: 1
+    loop: 0
+    parent: {fileID: 0}
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: d5d7e331b008bf34aa2d27ea1f4fe849, type: 3}
+    volume: 0.7
+    spatialBlend: 0
+    loop: 0
+    parent: {fileID: 0}
+    source: {fileID: 0}
+  - name: Hover
+    clip: {fileID: 8300000, guid: 29c77cf534ab37a4eb5cbcf5c323deaa, type: 3}
+    volume: 0.7
+    spatialBlend: 0
+    loop: 0
+    parent: {fileID: 0}
+    source: {fileID: 0}
+  - name: Start
+    clip: {fileID: 8300000, guid: 1b5244e209bd7aa42bf4f50170e19134, type: 3}
+    volume: 0.3
+    spatialBlend: 0
+    loop: 0
+    parent: {fileID: 0}
+    source: {fileID: 0}
+  - name: Pickup
+    clip: {fileID: 8300000, guid: c77c1efa705e5624a9c55d9e773aa7a5, type: 3}
+    volume: 0.3
+    spatialBlend: 0
     loop: 0
     parent: {fileID: 0}
     source: {fileID: 0}

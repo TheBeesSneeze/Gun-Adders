@@ -16,9 +16,9 @@ public class UpgradePickupType : MonoBehaviour
 {
     public float DisabledSeconds;
     public float DisabledOpacity;
-    public AudioClip PickUpSound;
     public TMP_Text UpgradeText;
     public Transform BackgroundImage;
+    public GameObject upgradeEffect;
 
     private Color defaultColor;
     private Transform playerPoint;
@@ -29,8 +29,10 @@ public class UpgradePickupType : MonoBehaviour
 
     protected virtual void PickUp(GunController gun)
     {
-        if (PickUpSound != null)
-            AudioSource.PlayClipAtPoint(PickUpSound, gun.transform.position);
+        AudioManager.instance.Play("Pickup");
+
+        if (upgradeEffect)
+            Instantiate(upgradeEffect, FindObjectOfType<PlayerBehaviour>().transform);
 
         //Destroy(gameObject);
         StartCoroutine(DisablePickup());
