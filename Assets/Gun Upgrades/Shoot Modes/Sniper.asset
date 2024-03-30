@@ -15,7 +15,7 @@ MonoBehaviour:
   GunName: Sniper
   GunColor: {r: 0.034882545, g: 0, b: 1, a: 1}
   gunIcon: {fileID: 0}
-  RPM: 60
+  RPM: 90
   BulletsPerShot: 1
   BulletAccuracyOffset: 0
   BulletSpeed: 15

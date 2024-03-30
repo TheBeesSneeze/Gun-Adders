@@ -17,7 +17,7 @@ MonoBehaviour:
   gunIcon: {fileID: 0}
   RPM: 300
   BulletsPerShot: 1
-  BulletAccuracyOffset: 0.75
+  BulletAccuracyOffset: 0.25
   BulletSpeed: 15
   BulletDamage: 16
   RecoilForce: 0.01
