@@ -11,6 +11,7 @@ public class GrapplingHook : MonoBehaviour
     private float maxDist = 1000f;
     private LineRenderer renderer;
     private Transform cam;
+    public Material grapplingMaterial;
 
     [Tooltip("How much of the distance between the grapple hook and the player will be used.")]
     public float maxDistanceFromPointMultiplier = 0.8f;
@@ -40,6 +41,7 @@ public class GrapplingHook : MonoBehaviour
         renderer = gameObject.AddComponent<LineRenderer>();
         renderer.endWidth = 0.05f;
         renderer.startWidth = 0.05f;
+        renderer.material = grapplingMaterial;
         renderer.positionCount = 2;
         cam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
