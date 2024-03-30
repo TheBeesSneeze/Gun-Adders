@@ -341,6 +341,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootModes.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootModes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5780a5b7fcb02764e99a93c9889af9dc,
+        type: 2}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootModes.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: bc48f0774f896854bbc8a4657c5f1eed,
+        type: 2}
+    - target: {fileID: 3894923257791370871, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: ShootModes.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 43231eb43d5e1c94c876765a3376910d,
+        type: 2}
     - target: {fileID: 5942065246957760255, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
         type: 3}
       propertyPath: m_Name
