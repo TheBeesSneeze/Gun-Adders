@@ -32,7 +32,7 @@ public class UpgradePickupType : MonoBehaviour
         AudioManager.instance.Play("Pickup");
 
         if (upgradeEffect)
-            Instantiate(upgradeEffect, FindObjectOfType<PlayerBehaviour>().transform);
+            Instantiate(upgradeEffect, gun.GetComponent<PlayerBehaviour>().transform);
 
         //Destroy(gameObject);
         StartCoroutine(DisablePickup());

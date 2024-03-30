@@ -76,9 +76,10 @@ public class GunController : MonoBehaviour
         Vector3 dir = destination - bulletSpawnPoint.position;
         var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.transform.forward = dir.normalized;
-        bullet.GetComponent<Bullet>().damageAmount = defaultShootingMode.BulletDamage;
-        bullet.GetComponent<Bullet>().bulletForce = defaultShootingMode.BulletSpeed;
-        bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2, dir);
+        var bulletObj = bullet.GetComponent<Bullet>();
+        bulletObj.damageAmount = defaultShootingMode.BulletDamage;
+        bulletObj.bulletForce = defaultShootingMode.BulletSpeed;
+        bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
         if(instance != null)
             instance.Play("Shoot Default");
     }
