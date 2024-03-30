@@ -32,12 +32,16 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public float damageAmount = 10f;
     [HideInInspector] public float bulletForce = 200f;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
     public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2, Vector3 dir)
     {
-        rb = GetComponent<Rigidbody>();
         rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
 
@@ -45,7 +49,7 @@ public class Bullet : MonoBehaviour
         _bulletEffect2 = bulletEffect2;
 
 
-        GetComponent<TrailRenderer>().enabled = true;
+        //GetComponent<TrailRenderer>().enabled = true;
 
         /*
         GetComponent<TrailRenderer>().startColor = GetBulletColor();
@@ -67,11 +71,11 @@ public class Bullet : MonoBehaviour
                     QueryTriggerInteraction.Ignore))
             {
                 GameObject obj = null;
-                try
+                if (hitImpactEffectPrefab != null)
                 {
                     obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 }
-                catch { Debug.LogWarning("Missing hitImpactEffectPrefab in Bullet, please add that :3"); }
+                
                 AudioSource audio = obj.AddComponent<AudioSource>();
 
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
@@ -80,12 +84,12 @@ public class Bullet : MonoBehaviour
                     enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
-                        _bulletEffect1.OnEnemyHit(enemy);
+                        _bulletEffect1.OnEnemyHit(enemy, damageAmount);
                     }
 
                     if (_bulletEffect2 != null)
                     {
-                        _bulletEffect2.OnEnemyHit(enemy);
+                        _bulletEffect2.OnEnemyHit(enemy, damageAmount);
                     }
                 }
                 //if hit something that isnt enemy
@@ -97,12 +101,12 @@ public class Bullet : MonoBehaviour
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
                     {
-                        _bulletEffect1.OnHitOther(hit.point);
+                        _bulletEffect1.OnHitOther(hit.point, damageAmount);
                     }
 
                     if (_bulletEffect2 != null)
                     {
-                        _bulletEffect2.OnHitOther(hit.point);
+                        _bulletEffect2.OnHitOther(hit.point, damageAmount);
                     }
                 }
 

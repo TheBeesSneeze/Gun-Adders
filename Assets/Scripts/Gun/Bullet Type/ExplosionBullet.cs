@@ -17,22 +17,18 @@ namespace DefaultNamespace
     {
         
         public GameObject ExplosionPrefab;
-        public override void OnEnemyHit(EnemyType type)
+        public override void OnEnemyHit(EnemyType type, float damage)
         {
-            GunController gun = GameObject.FindObjectOfType<GunController>();
-
             GameObject explosion = Instantiate(ExplosionPrefab, type.transform.position, ExplosionPrefab.transform.rotation);
 
-            explosion.GetComponent<AttackType>().Damage = gun.defaultShootingMode.BulletDamage * DamageMultiplier;
+            explosion.GetComponent<AttackType>().Damage = damage * DamageMultiplier;
         }
 
-        public override void OnHitOther(Vector3 point)
+        public override void OnHitOther(Vector3 point, float damage)
         {
-            GunController gun = GameObject.FindObjectOfType<GunController>();
-
             GameObject explosion = Instantiate(ExplosionPrefab, point, ExplosionPrefab.transform.rotation);
 
-            explosion.GetComponent<AttackType>().Damage = gun.defaultShootingMode.BulletDamage * DamageMultiplier;
+            explosion.GetComponent<AttackType>().Damage = damage * DamageMultiplier;
         }
     }
 }
