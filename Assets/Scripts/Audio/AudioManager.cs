@@ -97,25 +97,33 @@ public class AudioManager : MonoBehaviour
     public void Play (string name)
     {
         Sound s = FindSound(name);
-        s.source.Play();
+
+        if(s != null)
+            s.source.Play();
     }
 
     public void StopPlaying(string sound)
     {
         Sound s = FindSound(sound);
-        s.source.Stop();
+
+        if (s != null)
+            s.source.Stop();
     }
 
     public void Pause (string sound)
     {
         Sound s = FindSound(sound);
-        s.source.Pause();
+
+        if (s != null)
+            s.source.Pause();
     }
 
     public void UnPause (string sound)
     {
         Sound s = FindSound(sound);
-        s.source.UnPause();
+
+        if (s != null)
+            s.source.UnPause();
     }
 
     public void FadeOut(string sound, float FadeTime)
