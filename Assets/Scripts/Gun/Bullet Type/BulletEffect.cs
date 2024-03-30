@@ -18,7 +18,7 @@ public abstract class BulletEffect : ScriptableObject
     //this is the longest tooltip in the game
     [Tooltip("*IF* the bullet effect has a component that does damage, that damage is determined by multiplying the current shootmodes damage (per bullet) by this number")]
     public float DamageMultiplier; //you might have to implement this manually on a effect by effect basis. sorry guys
-    public abstract void OnEnemyHit(EnemyType type);
+    public abstract void OnEnemyHit(EnemyType type, float damage);
 
-    public abstract void OnHitOther(Vector3 point);
+    public abstract void OnHitOther(Vector3 point, float damage);
 }

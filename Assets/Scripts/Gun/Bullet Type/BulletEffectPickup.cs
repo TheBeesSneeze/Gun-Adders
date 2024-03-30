@@ -18,15 +18,11 @@ public class BulletEffectPickup : UpgradePickupType
     public BulletEffect[] UpgradePool;
     private BulletEffect loadedUpgrade;
 
-    
 
-    
     protected override void Start()
     {
         base.Start();
-        
-        
-    }    
+    }
 
     protected override void PickUp(GunController gun)
     {
@@ -46,7 +42,7 @@ public class BulletEffectPickup : UpgradePickupType
             return;
         }
 
-        if( UnityEngine.Random.value > 0.5f)
+        if (UnityEngine.Random.value > 0.5f)
         {
             gun.bulletEffect1 = loadedUpgrade;
         }
@@ -63,11 +59,17 @@ public class BulletEffectPickup : UpgradePickupType
         BulletEffect newUpgrade;
 
         //make sure new upgrade isnt same as last time
-        do
+        if (UpgradePool.Length > 1)
         {
-            newUpgrade = UpgradePool[UnityEngine.Random.Range(0, UpgradePool.Length)];
+            do
+            {
+                newUpgrade = UpgradePool[UnityEngine.Random.Range(0, UpgradePool.Length)];
+            } while (newUpgrade == loadedUpgrade); //DO WHILE DO WHILE DO WHILE
         }
-        while (newUpgrade == loadedUpgrade); //DO WHILE DO WHILE DO WHILE
+        else
+        {
+            newUpgrade = UpgradePool[0];
+        }
 
         loadedUpgrade = newUpgrade;
 
