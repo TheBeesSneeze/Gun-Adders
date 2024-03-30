@@ -18,12 +18,46 @@ public class MainMenu : MonoBehaviour
     private List<float> volumes;
     private Material material;
     private ColorAdjustments colorAdjustments;
+    private Transform subTitle;
+    private Vector3 maxScale, minScale;
+    private bool scalingUp = true;
+    private float currentLerpTime;
 
     private void Start()
-    {
+    {    
+        Application.targetFrameRate = 144;
         sources = FindObjectsOfType<AudioSource>();
         volumes = new List<float>();
+        subTitle = title.transform.GetChild(0);
+        minScale = new(0.9f, 0.9f, 0.9f);
+        maxScale = new(1.1f, 1.1f, 1.1f);
         StartCoroutine(ChangeColor());
+    }
+
+    private void FixedUpdate()
+    {
+        Camera.main.transform.Rotate(Vector3.up, 7f * Time.fixedDeltaTime, Space.World);
+
+        if (scalingUp)
+        {
+            currentLerpTime += Time.fixedDeltaTime * 3f;
+            if (currentLerpTime > 1.0f)
+            {
+                currentLerpTime = 1.0f;
+                scalingUp = false;
+            }
+        }
+        else
+        {
+            currentLerpTime -= Time.fixedDeltaTime * 3f;
+            if (currentLerpTime < 0.0f)
+            {
+                currentLerpTime = 0.0f;
+                scalingUp = true;
+            }
+        }
+
+        subTitle.localScale = Vector3.Lerp(minScale, maxScale, currentLerpTime);
     }
 
     public void ButtonHover()
