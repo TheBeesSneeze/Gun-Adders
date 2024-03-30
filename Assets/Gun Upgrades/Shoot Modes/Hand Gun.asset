@@ -15,9 +15,9 @@ MonoBehaviour:
   GunName: Hand Gun
   GunColor: {r: 1, g: 0.99237216, b: 0, a: 1}
   gunIcon: {fileID: 0}
-  RPM: 120
+  RPM: 150
   BulletsPerShot: 1
-  BulletAccuracyOffset: 1
+  BulletAccuracyOffset: 0.25
   BulletSpeed: 15
   BulletDamage: 35
   RecoilForce: 0.01
