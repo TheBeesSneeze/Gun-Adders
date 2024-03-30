@@ -15,7 +15,6 @@ public class EnemyMoveTowardsPlayer : EnemyMovementType
 {
     protected override void Move(float speed)
     {
-        Debug.Log("hey guys its me moving");
         Vector3 direction = target.position - transform.position;
         //direction.y = 0;
         direction.Normalize();
