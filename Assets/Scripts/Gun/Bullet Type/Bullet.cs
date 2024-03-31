@@ -88,6 +88,10 @@ public class Bullet : MonoBehaviour
                         _bulletEffect2.OnEnemyHit(enemy);
                     }
                 }
+                else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
+                {
+                    player.TakeDamage(damageAmount);
+                }
                 //if hit something that isnt enemy
                 else
                 {
