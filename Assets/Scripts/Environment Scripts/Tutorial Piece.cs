@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+/*******************************************************************************
+ * File Name :         TutorialPiece.cs
+ * Author(s) :         Claire
+ * Creation Date :     3/29/2024
+ *
+ * Brief Description : 
+ *****************************************************************************/
 using UnityEngine;
-using TMPro;
 
 public class TutorialPiece : MonoBehaviour
 {
