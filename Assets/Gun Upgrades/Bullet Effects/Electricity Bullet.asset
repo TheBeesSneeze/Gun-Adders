@@ -15,7 +15,7 @@ MonoBehaviour:
   TrailColor: {r: 1, g: 0.9019314, b: 0, a: 1}
   UpgradeName: Electricity
   DamageMultiplier: 0.1
-  ElectrocutionRange: 100
+  ElectrocutionRange: 7
   MaxEnemiesToZap: 2
   OnlyEnemiesMask:
     serializedVersion: 2
