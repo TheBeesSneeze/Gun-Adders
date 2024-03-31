@@ -40,6 +40,9 @@ public class AttackType : MonoBehaviour
     [Tooltip("If this # is less than 0, the attack will not be destroyed. Otherwise, destroys this gameobject")]
     public float DestroyAttackAfterSeconds = -1;
 
+    [Tooltip("turn off colider")]
+    public float DisableAttackAfterSeconds = -1;
+
     public AudioClip SoundWhenDestroyed;
 
     public enum _AttackSource { General, Enemy, Player };
@@ -52,6 +55,9 @@ public class AttackType : MonoBehaviour
     {
         if (DestroyAttackAfterSeconds > 0)
             StartCoroutine(DestroyAfterSeconds());
+
+        if(DisableAttackAfterSeconds > 0)
+            StartCoroutine(DisableAfterSeconds());
     }
 
     protected virtual void OnPlayerCollision(Collider collision)
@@ -149,6 +155,13 @@ public class AttackType : MonoBehaviour
         yield return new WaitForSeconds(DestroyAttackAfterSeconds);
 
         Destroy(this.gameObject);
+    }
+
+    protected virtual IEnumerator DisableAfterSeconds()
+    {
+        yield return new WaitForSeconds(DestroyAttackAfterSeconds);
+
+        GetComponent<Collider>().enabled = false;
     }
 
     protected void OnDestroy()

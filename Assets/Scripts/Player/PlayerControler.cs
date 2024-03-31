@@ -51,13 +51,22 @@ public class PlayerControler : MonoBehaviour
     private void Update()
     {
         UpdateCamera();
+
         if (feet.Grounded)
         {
             airJumpCounter = airJumps;
         }
         input = InputEvents.Instance.InputDirection2D;
 
-        //footstep code
+        
+        FootStepSound();
+    }
+
+    /// <summary>
+    /// footstep code
+    /// </summary>
+    private void FootStepSound()
+    {
         if (!feet.Grounded || rb.velocity.magnitude < 0.1f)
             return;
 

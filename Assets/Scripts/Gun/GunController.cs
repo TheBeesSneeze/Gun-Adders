@@ -30,6 +30,7 @@ public class GunController : MonoBehaviour
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
     private Camera camera;
+    private Animator animator;
 
     /// <summary>
     /// call this in from those little pickup guys
@@ -106,7 +107,9 @@ public class GunController : MonoBehaviour
 
         //shootin time
         secondsSinceLastShoot = 0;
-        for(int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
+        animator.SetTrigger("Shoot");
+
+        for (int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
         {
             ShootBullet();
         }
@@ -120,6 +123,7 @@ public class GunController : MonoBehaviour
         //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         playerRB = GetComponent<Rigidbody>();
         camera = Camera.main;
+        animator = GetComponent<Animator>();
         LoadShootingMode(defaultShootingMode);
     }
 
