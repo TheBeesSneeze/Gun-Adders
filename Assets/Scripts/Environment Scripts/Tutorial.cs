@@ -1,8 +1,14 @@
+/*******************************************************************************
+ * File Name :         Tutorial.cs
+ * Author(s) :         Claire
+ * Creation Date :     3/29/2024
+ *
+ * Brief Description : 
+ *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Beautify.Universal;
 
 public class Tutorial : MonoBehaviour
 {

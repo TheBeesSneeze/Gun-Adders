@@ -1,15 +1,12 @@
 /*******************************************************************************
  * File Name :         Sound.cs
- * Author(s) :         Clare
+ * Author(s) :         Claire
  * Creation Date :     3/24/2024
  *
  * Brief Description : 
  *****************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 [System.Serializable]
 public class Sound

@@ -15,8 +15,6 @@ using static AudioManager;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-   
     [SerializeField] private float despawnTime = 5f;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
@@ -115,13 +113,13 @@ public class Bullet : MonoBehaviour
                     audio.spatialBlend = 1;
                     audio.maxDistance = 50;
                     audio.rolloffMode = AudioRolloffMode.Linear;
+                    audio.volume = 0.4f;
+                    AssignGroupToAudioSource(audio, "SFX");
                     audio.Play();
                 }
 
                 Destroy(obj, impactEffectPrefabDespawnTime);
-                Destroy(gameObject);
-
-                
+                Destroy(gameObject);               
             }
 
             lastPosition = transform.position;
