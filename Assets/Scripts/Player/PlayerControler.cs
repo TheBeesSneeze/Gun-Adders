@@ -50,6 +50,9 @@ public class PlayerControler : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
+
         UpdateCamera();
 
         if (feet.Grounded)

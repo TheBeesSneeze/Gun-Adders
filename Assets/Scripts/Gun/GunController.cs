@@ -87,6 +87,9 @@ public class GunController : MonoBehaviour
     
     private void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
+
         Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
         if(Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 453400219}
-  m_IndirectSpecularColor: {r: 0.21773726, g: 0.27751592, b: 0.4487012, a: 1}
+  m_IndirectSpecularColor: {r: 0.02125346, g: 0.041197877, b: 0.100314826, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 8fbb48c9f6733114cb7b3093cce579a9,
-    type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 8946e7cece721e141aab70b918c74e1d,
     type: 2}
 --- !u!196 &4
@@ -428,11 +427,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_MinimumChartSize
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1731,7 +1734,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3775,7 +3782,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3937,7 +3948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 285943764}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: InfoBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4264,7 +4275,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4351,7 +4366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4613,7 +4632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5710,7 +5733,7 @@ GameObject:
   - component: {fileID: 393963097}
   - component: {fileID: 393963099}
   - component: {fileID: 393963098}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7197,7 +7220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9765,7 +9792,7 @@ PrefabInstance:
     - target: {fileID: 287788413816102554, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 287788413816102554, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
@@ -9779,6 +9806,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 287788413816102554, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+      value: ef0d231a-6b33-478e-94b9-14b4088c56bb
+      objectReference: {fileID: 0}
+    - target: {fileID: 287788413816102554, guid: 60166741ab3445049a52d4f541cb867f,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[6].m_ActionName
       value: Player/Sprint[/Keyboard/shift]
       objectReference: {fileID: 0}
@@ -9786,6 +9818,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[7].m_ActionName
       value: Player/Respawn[/Keyboard/f]
+      objectReference: {fileID: 0}
+    - target: {fileID: 287788413816102554, guid: 60166741ab3445049a52d4f541cb867f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+      value: Player/Secondary[/Mouse/rightButton]
       objectReference: {fileID: 0}
     - target: {fileID: 7451657138070458626, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
@@ -9800,17 +9837,17 @@ PrefabInstance:
     - target: {fileID: 8670902409729241495, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 792.79816
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8670902409729241495, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 224.96083
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8670902409729241495, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -603.9834
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8670902409729241495, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
@@ -12327,7 +12364,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12872,7 +12913,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13219,7 +13264,7 @@ GameObject:
   - component: {fileID: 1135436450}
   - component: {fileID: 1135436452}
   - component: {fileID: 1135436451}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: White
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14028,7 +14073,7 @@ GameObject:
   - component: {fileID: 1185248025}
   - component: {fileID: 1185248027}
   - component: {fileID: 1185248026}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15528,7 +15573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15730,8 +15779,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958940511115153612, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958940511115153612, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084953203888305576, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7084953203888305576, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
@@ -15746,6 +15805,11 @@ PrefabInstance:
     - target: {fileID: 7695845747558673500, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699364483739739857, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7699364483739739857, guid: 584bb12fffb6c834baf39d3290500c25,
@@ -15765,6 +15829,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8568139863254407943, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568139863254407943, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -15772,6 +15841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8683969771477153558, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8683969771477153558, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
@@ -15783,20 +15857,20 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 397465779540036564, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 1903752428}
     - targetCorrespondingSourceObject: {fileID: 397465779540036564, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 285943764}
+    - targetCorrespondingSourceObject: {fileID: 397465779540036564, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1135436450}
     - targetCorrespondingSourceObject: {fileID: 397465779540036564, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 393963097}
-    - targetCorrespondingSourceObject: {fileID: 397465779540036564, guid: 584bb12fffb6c834baf39d3290500c25,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1135436450}
     - targetCorrespondingSourceObject: {fileID: 4246944182689504440, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       insertIndex: -1
@@ -16867,7 +16941,7 @@ GameObject:
   - component: {fileID: 1392510717}
   - component: {fileID: 1392510719}
   - component: {fileID: 1392510718}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17780,7 +17854,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358442, guid: a2b47112a1c27704f941edb01b7374d0, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358442, guid: a2b47112a1c27704f941edb01b7374d0, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13642152, guid: a2b47112a1c27704f941edb01b7374d0, type: 3}
       propertyPath: m_Center.y
@@ -18796,7 +18874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19679,7 +19761,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369008, guid: a65d892ddf6b61440ac95a9284593af4, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20191,7 +20277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21224,6 +21314,10 @@ PrefabInstance:
     - target: {fileID: 10811866, guid: fde0863b3b38bed4682dcbfdbcd96af2, type: 3}
       propertyPath: m_Intensity
       value: 10.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 10811866, guid: fde0863b3b38bed4682dcbfdbcd96af2, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 19893646, guid: fde0863b3b38bed4682dcbfdbcd96af2, type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
@@ -22590,7 +22684,7 @@ GameObject:
   - component: {fileID: 1903752428}
   - component: {fileID: 1903752430}
   - component: {fileID: 1903752429}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22637,7 +22731,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GUN ADDERS
+  m_text: Gun Adders
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 883827dfa2a088742898d6389bdf762d, type: 2}
   m_sharedMaterial: {fileID: 7840694614855483648, guid: 883827dfa2a088742898d6389bdf762d,
@@ -22952,7 +23046,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352606, guid: fad119e20751c944cb4b2e3dacde6826, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22976,7 +23074,7 @@ GameObject:
   - component: {fileID: 1947224087}
   - component: {fileID: 1947224089}
   - component: {fileID: 1947224088}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
