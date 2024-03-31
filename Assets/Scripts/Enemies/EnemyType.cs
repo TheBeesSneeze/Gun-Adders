@@ -16,7 +16,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyType : CharacterType
 {
-    public float DefaultHealth=1;
+    public float DefaultHealth = 1;
     private Slider slider;
     internal bool slowed { get; private set; }
     private float slowTimer = 0f;
@@ -25,7 +25,13 @@ public class EnemyType : CharacterType
     [SerializeField] private float iFrameSeconds = 1;
     [SerializeField] private int enemyDamage = 1;
     private PlayerBehaviour player;
-    private Coroutine iFrames;
+    private Coroutine playerIFrames;
+    [Tooltip ("What color the enemy is when it takes damage")]
+    [SerializeField] private Color enemyDamageColor;
+    private MeshRenderer mR;
+    [Tooltip("Enemy damage flash time")]
+    [SerializeField] private float enemyDamageFlashSeconds = 0.5f;
+    private Color enemyOriginalColor;
 
     [Header("Ranged Enemy Stuffs")]
     public Transform playerLocation;
@@ -50,6 +56,8 @@ public class EnemyType : CharacterType
         base.Start();
         CurrentHealth = DefaultHealth;
         slider = GetComponentInChildren<Slider>();
+        mR = GetComponent<MeshRenderer>();
+        enemyOriginalColor = mR.material.color;
     }
 
     public override void TakeDamage(float damage)
@@ -61,6 +69,17 @@ public class EnemyType : CharacterType
             slider.value = t;
         }
 
+        StartCoroutine(EnemyDamageFlash());
+
+    }
+
+    public IEnumerator EnemyDamageFlash()
+    {
+        mR.material.color = enemyDamageColor;
+        Debug.Log("setting color");
+        yield return new WaitForSeconds(enemyDamageFlashSeconds);
+        mR.material.color = enemyOriginalColor;
+        Debug.Log("normal color");
     }
 
     public void ApplySlow(float slowTime)
@@ -101,21 +120,21 @@ public class EnemyType : CharacterType
         if (collision.gameObject.GetComponent<PlayerBehaviour>() != null)
         {
             player = collision.gameObject.GetComponent<PlayerBehaviour>();
-            iFrames = StartCoroutine(IFrames());
+            playerIFrames = StartCoroutine(PlayerIFrames());
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
         canDamage = false;
-        if (iFrames != null)
+        if (playerIFrames != null)
         {
-            StopCoroutine(iFrames); 
+            StopCoroutine(playerIFrames); 
         }
         
     }
 
-    public IEnumerator IFrames()
+    public IEnumerator PlayerIFrames()
     {
         canDamage = true;
         do

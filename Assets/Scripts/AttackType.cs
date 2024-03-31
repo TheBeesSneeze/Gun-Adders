@@ -108,8 +108,6 @@ public class AttackType : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
         //string tag = collision.tag;
-        Debug.Log("collision");
-
         if (collision.GetComponent<PlayerBehaviour>() != null)
         {
             OnPlayerCollision(collision);

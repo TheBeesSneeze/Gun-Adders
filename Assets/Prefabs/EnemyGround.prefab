@@ -206,6 +206,8 @@ MonoBehaviour:
   DefaultHealth: 100
   iFrameSeconds: 0.1
   enemyDamage: 1
+  enemyDamageColor: {r: 0.31132078, g: 0.0044054748, b: 0.0044054748, a: 1}
+  enemyDamageFlashSeconds: 0.15
 --- !u!114 &5124234784880764874
 MonoBehaviour:
   m_ObjectHideFlags: 0

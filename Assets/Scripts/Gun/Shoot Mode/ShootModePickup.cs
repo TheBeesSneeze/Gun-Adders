@@ -16,7 +16,7 @@ public class ShootModePickup : UpgradePickupType
 {
     public ShootingMode[] ShootModes;
     [ReadOnly] public ShootingMode loadedShootMode;
-    
+
     protected override void PickUp(GunController gun)
     {
         gun.LoadShootingMode(loadedShootMode);
@@ -25,11 +25,11 @@ public class ShootModePickup : UpgradePickupType
 
     protected override void Start()
     {
-        base.Start(); 
-        if(ShootModes.Length < 1)
+        base.Start();
+        if (ShootModes.Length < 1)
         {
             Debug.LogWarning(gameObject.name + " doesnt have shoot modes");
-            Destroy (gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -38,11 +38,19 @@ public class ShootModePickup : UpgradePickupType
         ShootingMode newUpgrade;
 
         //make sure new upgrade isnt same as last time
+
+        if (ShootModes.Length > 1)
+        {
+            
         do
         {
             newUpgrade = ShootModes[UnityEngine.Random.Range(0, ShootModes.Length)];
+        } while (newUpgrade == loadedShootMode); //DO WHILE DO WHILE DO WHILE
         }
-        while (newUpgrade == loadedShootMode); //DO WHILE DO WHILE DO WHILE
+        else
+        {
+            newUpgrade = ShootModes[0];
+        }
 
         loadedShootMode = newUpgrade;
 
