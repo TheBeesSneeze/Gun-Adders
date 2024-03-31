@@ -13,6 +13,7 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using static AudioManager;
 
 public class EnemyType : CharacterType
 {
@@ -37,18 +38,23 @@ public class EnemyType : CharacterType
     public Transform playerLocation;
 
     [SerializeField]public bool isRangedEnemy;
+    [SerializeField] public ShootingMode shootingMode;
+    [SerializeField] public BulletEffect bulletEffect1;
+    [SerializeField] public BulletEffect bulletEffect2;
     [SerializeField]private GameObject BulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float rangeOfAttack = 20;
     [SerializeField] private float slowedFireRate = 1f;
-    [SerializeField] private float rangedAttackDamage = 20;
+
+    
 
     private bool isAttacking = false;
     private Vector3 Distance;
     private float distanceFrom;
     private float nextFire = 0;
     private float currentFireRate;
+    private AudioManager instance; 
     
 
     protected override void Start()
@@ -171,10 +177,22 @@ public class EnemyType : CharacterType
             
             if(Time.time > nextFire)
             {
-                nextFire = Time.time + fireRate;
-                var Shoot = Instantiate(BulletPrefab.gameObject.GetComponent<Rigidbody>(), bulletSpawnPoint.position, playerLocation.rotation);
-                Shoot.AddForce(playerLocation.position * 500, ForceMode.Acceleration);
-                
+                nextFire += Time.time;
+                Vector3 destination = playerLocation.position;
+                destination += new Vector3(
+                    Random.Range(-shootingMode.BulletAccuracyOffset,shootingMode.BulletAccuracyOffset),
+                    Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+                    Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
+                Vector3 dir = destination - bulletSpawnPoint.position;
+                var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+                bullet.transform.forward = dir.normalized;
+                var bulletObj = bullet.GetComponent<Bullet>();
+                bulletObj.damageAmount = shootingMode.BulletDamage;
+                bulletObj.bulletForce = shootingMode.BulletSpeed;
+                bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
+                if (instance != null)
+                    instance.Play("Shoot Default");
+
             }
         }
     }

@@ -312,7 +312,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7124835933501473211, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 584bb12fffb6c834baf39d3290500c25, type: 3}
 --- !u!4 &979949854 stripped
 Transform:
@@ -625,6 +629,32 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 796813985856225072, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: BulletPrefab
+      value: 
+      objectReference: {fileID: 6567326148616320655, guid: 8b6479e73a94a2346a4ddfadd6ea32c6,
+        type: 3}
+    - target: {fileID: 796813985856225072, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: scanMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769944724463633898, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769944724463633898, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246057482301186411, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4451841318166210755, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
         type: 3}
       propertyPath: m_RootOrder
@@ -638,7 +668,7 @@ PrefabInstance:
     - target: {fileID: 4451841318166210755, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.09
+      value: 4.47
       objectReference: {fileID: 0}
     - target: {fileID: 4451841318166210755, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
         type: 3}
@@ -684,6 +714,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949873505075076621, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: BulletPrefab
+      value: 
+      objectReference: {fileID: 6567326148616320655, guid: 8b6479e73a94a2346a4ddfadd6ea32c6,
+        type: 3}
+    - target: {fileID: 4949873505075076621, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: shootingMode
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6,
+        type: 2}
+    - target: {fileID: 4949873505075076621, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
+        type: 3}
+      propertyPath: rangeOfAttack
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4949873505075076621, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
         type: 3}
