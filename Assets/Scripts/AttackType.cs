@@ -56,7 +56,6 @@ public class AttackType : MonoBehaviour
 
     protected virtual void OnPlayerCollision(Collider collision)
     {
-        Debug.Log("player");
         if (AttackSource.Equals(_AttackSource.Enemy) || AttackSource.Equals(_AttackSource.General))
         {
             PlayerBehaviour player = collision.GetComponent<PlayerBehaviour>();
@@ -156,7 +155,6 @@ public class AttackType : MonoBehaviour
     {
         if (SoundWhenDestroyed != null)
         {
-            Debug.Log("playing");
             AudioSource.PlayClipAtPoint(SoundWhenDestroyed, Camera.main.transform.position);
         }
     }
