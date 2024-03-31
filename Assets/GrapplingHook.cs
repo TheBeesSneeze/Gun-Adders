@@ -48,9 +48,6 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (PauseMenu.IsPaused)
-            return;
-
         if (joint == null)
         {
             renderer.positionCount = 0;

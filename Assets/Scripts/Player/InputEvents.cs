@@ -1,115 +1,126 @@
+/*******************************************************************************
+ * File Name :         InputEvents.cs
+ * Author(s) :         Toby
+ * Creation Date :     3/18/2024
+ *
+ * Brief Description : 
+ * Listens for player inputs and invokes events. pressed, unpressed, held (every frame)
+ * contains bools for if an input is being held.
+ * contains values for inputs that have those (vector2 for move, etc).
+ * calculates player in 3d space respective to camera
+ * calculates camera direction (does not apply it)
+ * 
+ * singleton.
+ *****************************************************************************/
+
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+//good amount of this code taken from fish splatters lol
 public class InputEvents : Singleton<InputEvents>
 {
-    // Events
-    public UnityEvent MoveStarted, MoveHeld, MoveCanceled;
-    public UnityEvent ShootStarted, ShootHeld, ShootCanceled;
-    public UnityEvent SecondaryStarted, SecondaryHeld, SecondaryCanceled;
-    public UnityEvent JumpStarted, JumpHeld, JumpCanceled;
-    public UnityEvent SprintStarted, SprintHeld, SprintCanceled;
-    public UnityEvent PauseStarted, PauseCanceled;
-    public UnityEvent RestartStarted, RespawnStarted;
+    //most of these wont get used haha
+    public UnityEvent MoveStarted;
+    public UnityEvent MoveHeld;
+    public UnityEvent MoveCanceled;
 
-    // Input values and flags
-    public Vector2 LookDelta => Look.ReadValue<Vector2>();
-    public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
-    public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
-    public bool MovePressed, JumpPressed, ShootPressed, SprintPressed;
+    public UnityEvent ShootStarted;
+    public UnityEvent ShootHeld;
+    public UnityEvent ShootCanceled;
 
-    public static bool RespawnPressed, PausePressed;
+    public UnityEvent SecondaryStarted;
+    public UnityEvent SecondaryHeld;
+    public UnityEvent SecondaryCanceled;
 
-    // Input actions
+    public UnityEvent JumpStarted;
+    public UnityEvent JumpHeld;
+    public UnityEvent JumpCanceled;
+
+    public UnityEvent SprintStarted;
+    public UnityEvent SprintHeld;
+
+    public UnityEvent PauseStarted; //@TODO
+    public UnityEvent RestartStarted; //@TODO //re start start ed
+
+    public UnityEvent RespawnStarted; 
+
+    [HideInInspector] public Vector2 LookDelta { get { return Look.ReadValue<Vector2>(); } }
+    [HideInInspector] public Vector3 InputDirection { get { return movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y)); } }
+    [HideInInspector] public Vector2 InputDirection2D { get { return Move.ReadValue<Vector2>(); } }
+    [HideInInspector] public bool MovePressed;
+    [HideInInspector] public bool JumpPressed;
+    [HideInInspector] public bool ShootPressed;
+    [HideInInspector] public bool SprintPressed;
+
+    [HideInInspector] public static bool RespawnPressed; 
+
+    //actions
     private PlayerInput playerInput;
-    private InputAction Move, Shoot, Jump, Look, Sprint, Respawn, Secondary, Pause;
+    private InputAction Move;
+    private InputAction Shoot;
+    private InputAction Jump;
+    private InputAction Look;
+    private InputAction Sprint;
+    private InputAction Respawn;
+    private InputAction Secondary;
 
-    // References
-    private Transform movementOrigin;
+    //stuff and things
+    private Transform movementOrigin; // camera.main
 
     private void Start()
     {
         movementOrigin = Camera.main.transform;
+
         playerInput = GetComponent<PlayerInput>();
-        InitializeActions();
+        playerInput.currentActionMap.Enable();
+
+        Move = playerInput.currentActionMap.FindAction("Move");
+        Jump = playerInput.currentActionMap.FindAction("Jump");
+        Shoot = playerInput.currentActionMap.FindAction("Shoot");
+        Look = playerInput.currentActionMap.FindAction("Look");
+        Sprint = playerInput.currentActionMap.FindAction("Sprint");
+        Respawn = playerInput.currentActionMap.FindAction("Respawn");
+        Secondary = playerInput.currentActionMap.FindAction("Secondary");
+
+        Move .started += context => { MovePressed = true;  MoveStarted.Invoke();  };
+        Jump .started += context => { JumpPressed = true;  JumpStarted.Invoke();  };
+        Shoot.started += context => { ShootPressed = true; ShootStarted.Invoke(); };
+        Sprint.started += context => { SprintPressed = true; };
+        Respawn.started += context => { RespawnPressed = true; RespawnStarted.Invoke(); };
+        Secondary.started += context => { SecondaryStarted.Invoke(); };
+        Secondary.canceled += context => { SecondaryCanceled.Invoke(); };
+        /*
+        Move.performed += context => { MoveHeld.Invoke(); };
+        Jump.performed += context => { JumpHeld.Invoke(); };
+        Shoot.performed += context => { ShootHeld.Invoke(); };
+        Sprint.performed += context => { SprintPressed = true; };
+        */
+        Move .canceled += context => { MovePressed = false;  MoveCanceled.Invoke();  };
+        Jump .canceled += context => { JumpPressed = false;  JumpCanceled.Invoke();  };
+        Shoot.canceled += context => { ShootPressed = false; ShootCanceled.Invoke(); };
+        Sprint.canceled += context => { SprintPressed = false; };
     }
-
-    void InitializeActions()
-    {
-        var map = playerInput.currentActionMap;
-        Move = map.FindAction("Move");
-        Jump = map.FindAction("Jump");
-        Shoot = map.FindAction("Shoot");
-        Look = map.FindAction("Look");
-        Sprint = map.FindAction("Sprint");
-        Respawn = map.FindAction("Respawn");
-        Secondary = map.FindAction("Secondary");
-        Pause = map.FindAction("Pause");
-
-        // Subscribe to action events
-        Move.started += ctx => ActionStarted(ref MovePressed, MoveStarted);
-        Jump.started += ctx => ActionStarted(ref JumpPressed, JumpStarted);
-        Shoot.started += ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        Sprint.started += ctx => SprintPressed = true;
-        Respawn.started += ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
-        Secondary.started += ctx => SecondaryStarted.Invoke();
-        Secondary.canceled += ctx => SecondaryCanceled.Invoke();
-        Pause.started += ctx => { PausePressed = true; PauseStarted.Invoke(); };
-
-        Move.canceled += ctx => ActionCanceled(ref MovePressed, MoveCanceled);
-        Jump.canceled += ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
-        Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        Sprint.canceled += ctx => SprintPressed = false;
-        Pause.canceled += ctx => { PausePressed = false; PauseCanceled.Invoke(); }; // Handle PauseCanceled
-        Pause.performed += OnPause;
-    }
-
-    void ActionStarted(ref bool pressedFlag, UnityEvent actionEvent)
-    {
-        pressedFlag = true;
-        actionEvent?.Invoke();
-    }
-
-    void ActionCanceled(ref bool pressedFlag, UnityEvent actionEvent)
-    {
-        pressedFlag = false;
-        actionEvent?.Invoke();
-    }
-
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-        {
-            Debug.Log("Pause event triggered");
-            FindObjectOfType<PauseMenu>().TogglePause();
-        }
-    }
-
+    /// <summary>
+    /// im ashamed of this code but i couldnt get [input].performed to work so HERE WE ARE
+    /// </summary>
     private void Update()
     {
-        if (MovePressed) MoveHeld.Invoke();
-        if (JumpPressed) JumpHeld.Invoke();
-        if (ShootPressed) ShootHeld.Invoke();
-    }
+        if(MovePressed)
+            MoveHeld.Invoke();
 
+        if (JumpPressed)
+            JumpHeld.Invoke();
+
+        if (ShootPressed)
+            ShootHeld.Invoke();
+
+        
+    }
     private void OnDisable()
     {
-        // Unsubscribe from all action events to prevent memory leaks
-        Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
-        Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
-        Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        Sprint.started -= ctx => SprintPressed = true;
-        Respawn.started -= ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
-        Secondary.started -= ctx => SecondaryStarted.Invoke();
-        Secondary.canceled -= ctx => SecondaryCanceled.Invoke();
-        Pause.started -= ctx => { PausePressed = true; PauseStarted.Invoke(); };
-
-        Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
-        Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
-        Shoot.canceled -= ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        Sprint.canceled -= ctx => SprintPressed = false;
-        Pause.canceled -= ctx => { PausePressed = false; PauseCanceled.Invoke(); };
-        Pause.performed -= OnPause;
+        //Debug.LogWarning("i got lazy and didnt make an ondisable function hopefully nothing bad happens");
     }
 }
