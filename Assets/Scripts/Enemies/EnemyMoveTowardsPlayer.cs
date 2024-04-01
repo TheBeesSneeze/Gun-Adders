@@ -13,14 +13,18 @@ using UnityEngine.UI;
 //hey guys sky here
 public class EnemyMoveTowardsPlayer : EnemyMovementType
 {
+    [SerializeField] private float groundFriction = 0.3f;
     protected override void Move(float speed)
     {
         Vector3 direction = target.position - transform.position;
         //direction.y = 0;
         direction.Normalize();
         direction *= speed;
-        direction.y = rb.velocity.y;
-        rb.velocity = direction;
+        direction.y = 0f;
+        rb.AddForce(direction);
+        var friction = -rb.velocity * groundFriction;
+        friction.y = 0f;
+        rb.AddForce(friction);
 
         //rb.AddForce(direction * speed);
     }

@@ -208,6 +208,16 @@ MonoBehaviour:
   enemyDamage: 1
   enemyDamageColor: {r: 0.31132078, g: 0.0044054748, b: 0.0044054748, a: 1}
   enemyDamageFlashSeconds: 0.15
+  playerLocation: {fileID: 0}
+  isRangedEnemy: 0
+  shootingMode: {fileID: 0}
+  bulletEffect1: {fileID: 0}
+  bulletEffect2: {fileID: 0}
+  BulletPrefab: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
+  fireRate: 0.5
+  rangeOfAttack: 20
+  slowedFireRate: 1
 --- !u!114 &5124234784880764874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,8 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89911e708aaddbe458b496cebf5bf500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
-  SlowedSpeed: 1
+  Speed: 15
+  SlowedSpeed: 10
   PlayerSightDistance: 50
   RequirePlayerSightToMove: 1
   viewMask:
