@@ -83,7 +83,8 @@ public class GunController : MonoBehaviour
         bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
         Gun.TryGetComponent(out AudioSource source);
         
-        source.Play();
+        if(source != null)
+            source.Play();
     }
     
     private void Update()
