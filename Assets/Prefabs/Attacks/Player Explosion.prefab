@@ -125,6 +125,7 @@ MonoBehaviour:
   DestroyOtherAttacks: 0
   GetDestroyedByOtherAttacks: 0
   DestroyAttackAfterSeconds: 0.3
+  DisableAttackAfterSeconds: 0.05
   SoundWhenDestroyed: {fileID: 0}
   AttackSource: 0
 --- !u!1001 &1489820454626514802

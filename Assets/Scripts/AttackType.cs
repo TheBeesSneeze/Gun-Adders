@@ -40,6 +40,9 @@ public class AttackType : MonoBehaviour
     [Tooltip("If this # is less than 0, the attack will not be destroyed. Otherwise, destroys this gameobject")]
     public float DestroyAttackAfterSeconds = -1;
 
+    [Tooltip("turn off colider")]
+    public float DisableAttackAfterSeconds = -1;
+
     public AudioClip SoundWhenDestroyed;
 
     public enum _AttackSource { General, Enemy, Player };
@@ -52,11 +55,13 @@ public class AttackType : MonoBehaviour
     {
         if (DestroyAttackAfterSeconds > 0)
             StartCoroutine(DestroyAfterSeconds());
+
+        if(DisableAttackAfterSeconds > 0)
+            StartCoroutine(DisableAfterSeconds());
     }
 
     protected virtual void OnPlayerCollision(Collider collision)
     {
-        Debug.Log("player");
         if (AttackSource.Equals(_AttackSource.Enemy) || AttackSource.Equals(_AttackSource.General))
         {
             PlayerBehaviour player = collision.GetComponent<PlayerBehaviour>();
@@ -108,8 +113,6 @@ public class AttackType : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
         //string tag = collision.tag;
-        Debug.Log("collision");
-
         if (collision.GetComponent<PlayerBehaviour>() != null)
         {
             OnPlayerCollision(collision);
@@ -154,11 +157,17 @@ public class AttackType : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    protected virtual IEnumerator DisableAfterSeconds()
+    {
+        yield return new WaitForSeconds(DestroyAttackAfterSeconds);
+
+        GetComponent<Collider>().enabled = false;
+    }
+
     protected void OnDestroy()
     {
         if (SoundWhenDestroyed != null)
         {
-            Debug.Log("playing");
             AudioSource.PlayClipAtPoint(SoundWhenDestroyed, Camera.main.transform.position);
         }
     }

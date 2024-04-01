@@ -15,9 +15,9 @@ MonoBehaviour:
   GunName: Pistol
   GunColor: {r: 0.34901962, g: 0.3764706, b: 0.35686275, a: 1}
   gunIcon: {fileID: 0}
-  RPM: 240
+  RPM: 300
   BulletsPerShot: 1
-  BulletAccuracyOffset: 0.03
+  BulletAccuracyOffset: 0.25
   BulletSpeed: 15
-  BulletDamage: 12
+  BulletDamage: 16
   RecoilForce: 0.01

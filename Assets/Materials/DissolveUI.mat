@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DissolveUI
-  m_Shader: {fileID: 4800000, guid: 903a2239d52dd4f43905806118d7a961, type: 3}
+  m_Shader: {fileID: 4800000, guid: 29f58193a6769bc46a2da43127bb6706, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

@@ -18,8 +18,10 @@ public class EnemyMoveTowardsPlayer : EnemyMovementType
         Vector3 direction = target.position - transform.position;
         //direction.y = 0;
         direction.Normalize();
-        //direction.y = rb.velocity.y;
-        rb.velocity = direction * speed;
+        direction *= speed;
+        direction.y = rb.velocity.y;
+        rb.velocity = direction;
+
         //rb.AddForce(direction * speed);
     }
 

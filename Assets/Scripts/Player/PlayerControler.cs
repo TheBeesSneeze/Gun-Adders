@@ -18,7 +18,7 @@ using static AudioManager;
 public class PlayerControler : MonoBehaviour
 {
     [SerializeField] private Transform cameraHolder;
-    [SerializeField] private Transform camera;
+    [SerializeField] private Transform playerCamera;
     [SerializeField] private Transform playerOrientationTracker;
     [SerializeField] private Transform cameraFollowPoint;
     private Vector2 input;
@@ -50,14 +50,26 @@ public class PlayerControler : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
+
         UpdateCamera();
+
         if (feet.Grounded)
         {
             airJumpCounter = airJumps;
         }
         input = InputEvents.Instance.InputDirection2D;
 
-        //footstep code
+        
+        FootStepSound();
+    }
+
+    /// <summary>
+    /// footstep code
+    /// </summary>
+    private void FootStepSound()
+    {
         if (!feet.Grounded || rb.velocity.magnitude < 0.1f)
             return;
 
@@ -181,8 +193,8 @@ public class PlayerControler : MonoBehaviour
     private void UpdateCamera()
     {
         var mouse = InputEvents.Instance.LookDelta;
-        float mouseX = mouse.x * stats.Sensitivity * Time.fixedDeltaTime;
-        float mouseY = mouse.y * stats.Sensitivity * Time.fixedDeltaTime;
+        float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
+        float mouseY = mouse.y * OptionInstance.sensitivity * Time.fixedDeltaTime;
         Vector3 rot = cameraHolder.localRotation.eulerAngles;
         xMovement = rot.y + mouseX;
         yMovement -= mouseY;

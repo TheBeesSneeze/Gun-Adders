@@ -1,5 +1,11 @@
+/*******************************************************************************
+ * File Name :         MainMenu.cs
+ * Author(s) :         Claire
+ * Creation Date :     3/29/2024
+ *
+ * Brief Description : 
+ *****************************************************************************/
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -11,19 +17,49 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public GameObject black;
-    public AudioMixer mixer;
     public TextMeshProUGUI title;
 
-    private AudioSource[] sources;
-    private List<float> volumes;
-    private Material material;
     private ColorAdjustments colorAdjustments;
+    private Transform subTitle;
+    private Vector3 maxScale, minScale;
+    private bool scalingUp = true;
+    private float currentLerpTime;
 
     private void Start()
     {
-        sources = FindObjectsOfType<AudioSource>();
-        volumes = new List<float>();
+        Application.targetFrameRate = 144;
+
+        subTitle = title.transform.GetChild(0);
+        minScale = new(0.9f, 0.9f, 0.9f);
+        maxScale = new(1.1f, 1.1f, 1.1f);
+        StartCoroutine(FadeSceneIn());
         StartCoroutine(ChangeColor());
+    }
+
+    private void FixedUpdate()
+    {
+        Camera.main.transform.Rotate(Vector3.up, 6f * Time.fixedDeltaTime, Space.World);
+
+        if (scalingUp)
+        {
+            currentLerpTime += Time.fixedDeltaTime * 2f;
+            if (currentLerpTime > 1.0f)
+            {
+                currentLerpTime = 1.0f;
+                scalingUp = false;
+            }
+        }
+        else
+        {
+            currentLerpTime -= Time.fixedDeltaTime * 2f;
+            if (currentLerpTime < 0.0f)
+            {
+                currentLerpTime = 0.0f;
+                scalingUp = true;
+            }
+        }
+
+        subTitle.localScale = Vector3.Lerp(minScale, maxScale, currentLerpTime);
     }
 
     public void ButtonHover()
@@ -45,6 +81,12 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(Transition("Tutorial"));
     }
 
+    public void OptionsButton()
+    {
+        AudioManager.instance.Play("Click");
+
+    }
+
     public void QuitButton()
     {
         AudioManager.instance.Play("Click");
@@ -53,18 +95,17 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator Transition(string scene)
     {
+        Material material;
         float currentTime = 0f;
         black.SetActive(true);
         material = black.GetComponent<Image>().material;
         material.shader = Shader.Find("Custom/Dissolve");
-        foreach (AudioSource source in sources)
-            volumes.Add(source.volume);
+
+        AudioManager.instance.FadeMixerVolume(0);
         while (currentTime < 2f)
         {
             currentTime += Time.deltaTime;
             material.SetFloat("_DissolveThreshold", Mathf.Lerp(1, 0, currentTime / 2f));
-            for (int i = 0; i < sources.Length; i++)
-                sources[i].volume = Mathf.Lerp(volumes[i], 0, currentTime / 2f);
             yield return null;
         }
         SceneManager.LoadSceneAsync(scene);
@@ -73,10 +114,7 @@ public class MainMenu : MonoBehaviour
     IEnumerator ChangeColor()
     {
         yield return new WaitForSeconds(39.45f);
-        if (FindObjectOfType<Volume>().profile.TryGet(out colorAdjustments))
-        {
-        }
-
+        FindObjectOfType<Volume>().profile.TryGet(out colorAdjustments);
         float currentSoft;
         float time = 0;
         while (time < 2f)
@@ -85,6 +123,28 @@ public class MainMenu : MonoBehaviour
             currentSoft = Mathf.Lerp(0.5f, 0f, time / 2f);
             colorAdjustments.saturation.value = Mathf.Lerp(70f, 3f, time / 2f);
             title.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineSoftness, currentSoft);
+        }
+    }
+
+    IEnumerator FadeSceneIn()
+    {
+        Material material;
+        float currentTime = 0f;
+
+        // Enable the fadeBlack GameObject and get its material
+        black.SetActive(true);
+        material = black.GetComponent<Image>().material;
+        material.shader = Shader.Find("Custom/Dissolve");
+        yield return null;
+        AudioManager.mainAudioMixer.SetFloat("Master", -80);
+        AudioManager.instance.FadeMixerVolume(-1, 1);
+        // Dissolve effect over 1 second
+        while (currentTime < 1f)
+        {
+            currentTime += Time.deltaTime;
+            material.SetFloat("_DissolveThreshold", Mathf.Lerp(0, 1, currentTime / 1f));
+
+            yield return null;
         }
     }
 }

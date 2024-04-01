@@ -18,8 +18,6 @@ public class PlayerStats : MonoBehaviour
 {
     public float DefaultHealth; 
 
-    public float Sensitivity = 100;
-
     [Tooltip ("Movement speed. legs.")]
     public float Speed;
     [Tooltip("How much simulated friction to prevent you from moving forward when stopping input")]

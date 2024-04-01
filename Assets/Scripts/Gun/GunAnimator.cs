@@ -14,20 +14,24 @@ using NaughtyAttributes;
 public class GunAnimator : MonoBehaviour
 {
     public Animator animator;
+    public FeetScript iDontWantToNameAVariableFeetTBH;
 
     private void Start()
     {
         //animator = GetComponent<Animator>();
-
-        InputEvents.Instance.MoveStarted.AddListener(MoveStart);
+        iDontWantToNameAVariableFeetTBH = FindObjectOfType<FeetScript>();
+        InputEvents.Instance.MoveStarted.AddListener(WhileMove);
         InputEvents.Instance.MoveCanceled.AddListener(MoveEnd);
         InputEvents.Instance.ShootStarted.AddListener(ShootStart);
         InputEvents.Instance.ShootCanceled.AddListener(ShootEnd);
     }
 
-    private void MoveStart()
+    private void WhileMove()
     {
-        animator.SetBool("Walking", true);
+        if (iDontWantToNameAVariableFeetTBH == null)
+            Debug.LogWarning("NO FEET?!?!?!?!");
+        if (animator)
+            animator.SetBool("Walking", iDontWantToNameAVariableFeetTBH.Grounded);
     }
 
     private void MoveEnd()
@@ -37,7 +41,7 @@ public class GunAnimator : MonoBehaviour
 
     private void ShootStart()
     {
-        animator.SetTrigger("Shoot");
+        //animator.SetTrigger("Shoot");
     }
 
     private void ShootEnd()

@@ -16,7 +16,7 @@ using static AudioManager;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-   
+
     [SerializeField] private float despawnTime = 5f;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject hitImpactEffectPrefab;
@@ -32,12 +32,16 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public float damageAmount = 10f;
     [HideInInspector] public float bulletForce = 200f;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
     public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2, Vector3 dir)
     {
-        rb = GetComponent<Rigidbody>();
         rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
 
@@ -45,7 +49,7 @@ public class Bullet : MonoBehaviour
         _bulletEffect2 = bulletEffect2;
 
 
-        GetComponent<TrailRenderer>().enabled = true;
+        //GetComponent<TrailRenderer>().enabled = true;
 
         /*
         GetComponent<TrailRenderer>().startColor = GetBulletColor();
@@ -67,11 +71,11 @@ public class Bullet : MonoBehaviour
                     QueryTriggerInteraction.Ignore))
             {
                 GameObject obj = null;
-                try
+                if (hitImpactEffectPrefab != null)
                 {
                     obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 }
-                catch { Debug.LogWarning("Missing hitImpactEffectPrefab in Bullet, please add that :3"); }
+                
                 AudioSource audio = obj.AddComponent<AudioSource>();
 
                 if (hit.collider.TryGetComponent(out EnemyType enemy))
@@ -80,29 +84,33 @@ public class Bullet : MonoBehaviour
                     enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
-                        _bulletEffect1.OnEnemyHit(enemy);
+                        _bulletEffect1.OnEnemyHit(enemy, damageAmount);
                     }
 
                     if (_bulletEffect2 != null)
                     {
-                        _bulletEffect2.OnEnemyHit(enemy);
+                        _bulletEffect2.OnEnemyHit(enemy, damageAmount);
                     }
+                }
+                else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
+                {
+                    player.TakeDamage(damageAmount);
                 }
                 //if hit something that isnt enemy
                 else
                 {
-                    if(instance != null)
+                    if (instance != null)
                         audio.clip = instance.LoadFromGroup("Hit Wall");
 
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
                     {
-                        _bulletEffect1.OnHitOther(hit.point);
+                        _bulletEffect1.OnHitOther(hit.point, damageAmount);
                     }
 
                     if (_bulletEffect2 != null)
                     {
-                        _bulletEffect2.OnHitOther(hit.point);
+                        _bulletEffect2.OnHitOther(hit.point, damageAmount);
                     }
                 }
 
@@ -110,14 +118,16 @@ public class Bullet : MonoBehaviour
                 {
                     audio.spatialBlend = 1;
                     audio.maxDistance = 50;
+                    audio.volume = 0.4f;
                     audio.rolloffMode = AudioRolloffMode.Linear;
+                    AssignGroupToAudioSource(audio, "SFX");
                     audio.Play();
                 }
 
                 Destroy(obj, impactEffectPrefabDespawnTime);
                 Destroy(gameObject);
 
-                
+
             }
 
             lastPosition = transform.position;
@@ -157,12 +167,12 @@ public class Bullet : MonoBehaviour
     /// <returns></returns>
     private Color GetBulletColor()
     {
-        if(_bulletEffect1 == null && _bulletEffect2 == null)
+        if (_bulletEffect1 == null && _bulletEffect2 == null)
         {
             return Color.white;
         }
 
-        if(_bulletEffect1 == null)
+        if (_bulletEffect1 == null)
         {
             return _bulletEffect2.TrailColor;
         }
@@ -175,4 +185,5 @@ public class Bullet : MonoBehaviour
         //weird way of averaging them but colors get weird when you add their parts to numbers above 1
         return (_bulletEffect1.TrailColor / 2) + (_bulletEffect2.TrailColor / 2);
     }
+
 }
