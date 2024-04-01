@@ -16,7 +16,8 @@ public class DeathPlane : MonoBehaviour
         }
         if (enemy != null)
         {
-            Destroy(collision);
+            enemy.TakeDamage(10000000);
+            Debug.Log("enemy should be dying now");
         }
     }
 }
