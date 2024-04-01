@@ -16,7 +16,7 @@ public class ShootingMode : ScriptableObject
 {
     [Header("Display")]
     public string GunName;
-    public Image Crosshair;
+    public Sprite Crosshair;
     public Color GunColor = Color.white;
     public Sprite gunIcon;
     [Tooltip("RPM of bullets shot")] public float RPM = 120f;

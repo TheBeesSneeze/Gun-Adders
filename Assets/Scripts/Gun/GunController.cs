@@ -56,6 +56,9 @@ public class GunController : MonoBehaviour
         //maybe put a sound effect here or something
 
         canShoot = true;
+
+        CrosshairScript cross = GetComponent<CrosshairScript>();
+        cross.ChangeCrosshairSprite(defaultShootingMode.Crosshair);
     }
 
     /// <summary>
