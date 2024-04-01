@@ -6821,6 +6821,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: UpgradePool.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: UpgradePool.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71d20d88df7d14d4eb9562b58fa911db,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8279,6 +8290,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8021842014947643627, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8090263674786533997, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8388,7 +8404,15 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7124835933501473211, guid: 584bb12fffb6c834baf39d3290500c25,
+    - targetCorrespondingSourceObject: {fileID: 3962617243924348065, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6979316099898506054, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6514351247090857413, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
