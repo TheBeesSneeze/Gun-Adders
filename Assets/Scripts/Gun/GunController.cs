@@ -13,6 +13,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using static AudioManager;
+using static Unity.VisualScripting.Member;
 
 public class GunController : MonoBehaviour
 {
@@ -29,7 +30,8 @@ public class GunController : MonoBehaviour
 
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
-    private Camera camera;
+    private Camera playerCamera;
+    private Animator animator;
 
     /// <summary>
     /// call this in from those little pickup guys
@@ -47,7 +49,7 @@ public class GunController : MonoBehaviour
         
         //change color
 
-        Gun.GetComponent<Renderer>().material.color = shootMode.GunColor;
+        Gun.GetChild(0).GetComponent<Renderer>().material.color = shootMode.GunColor;
 
         //maybe put a sound effect here or something
     }
@@ -58,7 +60,7 @@ public class GunController : MonoBehaviour
     private void ShootBullet()
     {
         //alec put code here
-        Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
         if(Physics.Raycast(ray, out RaycastHit hit, 1000f, scanMask))
         {
@@ -76,16 +78,21 @@ public class GunController : MonoBehaviour
         Vector3 dir = destination - bulletSpawnPoint.position;
         var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.transform.forward = dir.normalized;
-        bullet.GetComponent<Bullet>().damageAmount = defaultShootingMode.BulletDamage;
-        bullet.GetComponent<Bullet>().bulletForce = defaultShootingMode.BulletSpeed;
-        bullet.GetComponent<Bullet>().Initialize(bulletEffect1, bulletEffect2, dir);
-        if(instance != null)
-            instance.Play("Shoot Default");
+        var bulletObj = bullet.GetComponent<Bullet>();
+        bulletObj.damageAmount = defaultShootingMode.BulletDamage;
+        bulletObj.bulletForce = defaultShootingMode.BulletSpeed;
+        bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
+        
+        
+        
     }
     
     private void Update()
     {
-        Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        if (PauseMenu.IsPaused)
+            return;
+
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
         if(Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))
         {
@@ -105,12 +112,19 @@ public class GunController : MonoBehaviour
 
         //shootin time
         secondsSinceLastShoot = 0;
-        for(int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
+        animator.SetTrigger("Shoot");
+
+        Gun.TryGetComponent(out AudioSource source);
+        if (source != null)
+            source.Play();
+
+        for (int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
         {
             ShootBullet();
         }
 
-       playerRB.AddForce(-camera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
+
+       playerRB.AddForce(-playerCamera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
@@ -118,7 +132,8 @@ public class GunController : MonoBehaviour
         //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
         //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         playerRB = GetComponent<Rigidbody>();
-        camera = Camera.main;
+        playerCamera = Camera.main;
+        animator = GetComponent<Animator>();
         LoadShootingMode(defaultShootingMode);
     }
 

@@ -19,7 +19,6 @@ using UnityEngine.SceneManagement;
 public class PlayerBehaviour : CharacterType
 {
     private PlayerStats stats;
-    [SerializeField] private AudioClip hurtSound;
     [SerializeField] private GameObject damageCanvas;
     [SerializeField] private float visualDamageSeconds = 0.5f;
     // Start is called before the first frame update
@@ -38,10 +37,6 @@ public class PlayerBehaviour : CharacterType
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        if (hurtSound != null)
-        {
-            AudioSource.PlayClipAtPoint(hurtSound, gameObject.transform.position);
-        }
 
         damageCanvas.SetActive(true);
         StartCoroutine(TakeDamageVisual());

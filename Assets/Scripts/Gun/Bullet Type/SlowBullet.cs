@@ -14,13 +14,13 @@ namespace DefaultNamespace
     public class SlowBullet : BulletEffect
     {
         [field:SerializeField] public float SlowTime { get; private set; }= 2f;
-        public override void OnEnemyHit(EnemyType type)
+        public override void OnEnemyHit(EnemyType type, float damgae)
         {
             //slow down the enemy some how
             type.ApplySlow(SlowTime);
         }
 
-        public override void OnHitOther(Vector3 point)
+        public override void OnHitOther(Vector3 point, float damage)
         {
             
         }

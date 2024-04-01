@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5301814801022533003}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3489419514677977541
 MeshFilter:
@@ -121,7 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisabledSeconds: 3
   DisabledOpacity: 0.5
-  PickUpSound: 
   UpgradeText: {fileID: 848096890510200894}
   BackgroundImage: {fileID: 8589535063049405910}
   upgradeEffect: {fileID: 1171190231128718, guid: d9467a10b94fb3b428cc539326c9579b,
@@ -130,6 +129,7 @@ MonoBehaviour:
   UpgradePool:
   - {fileID: 11400000, guid: 814977880fbe26a47a3c930460f777a9, type: 2}
   - {fileID: 11400000, guid: d6fd1cfedeae7594f98ddaba60c6cfbd, type: 2}
+  - {fileID: 11400000, guid: fb3f8a193fdcdbd46a4316f2dc03f6f6, type: 2}
 --- !u!1 &6870082267864973550
 GameObject:
   m_ObjectHideFlags: 0
