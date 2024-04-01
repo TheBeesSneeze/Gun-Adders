@@ -15,9 +15,9 @@ MonoBehaviour:
   GunName: Roulette Gun
   GunColor: {r: 0.43438768, g: 0, b: 1, a: 1}
   gunIcon: {fileID: 0}
-  RPM: 800
-  BulletsPerShot: 20
+  RPM: 777
+  BulletsPerShot: 7
   BulletAccuracyOffset: 10
-  BulletSpeed: 10
+  BulletSpeed: 7
   BulletDamage: 70
-  RecoilForce: 1
+  RecoilForce: 0.77
