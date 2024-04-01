@@ -6824,11 +6824,17 @@ PrefabInstance:
     - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
         type: 3}
       propertyPath: UpgradePool.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
         type: 3}
       propertyPath: UpgradePool.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71d20d88df7d14d4eb9562b58fa911db,
+        type: 2}
+    - target: {fileID: 8570716678982903354, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: UpgradePool.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 71d20d88df7d14d4eb9562b58fa911db,
         type: 2}
