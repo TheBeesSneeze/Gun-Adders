@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5947468252291808186
 MonoBehaviour:
@@ -73,16 +73,9 @@ MonoBehaviour:
     loop: 0
     parent: {fileID: 0}
     source: {fileID: 0}
-  - name: Door
-    clip: {fileID: 8300000, guid: 23b248c5f089e944885ff448f0ec6554, type: 3}
-    volume: 0.8
-    spatialBlend: 1
-    loop: 0
-    parent: {fileID: 0}
-    source: {fileID: 0}
   - name: Click
     clip: {fileID: 8300000, guid: d5d7e331b008bf34aa2d27ea1f4fe849, type: 3}
-    volume: 0.7
+    volume: 0.9
     spatialBlend: 0
     loop: 0
     parent: {fileID: 0}
@@ -117,6 +110,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Unpause
     clip: {fileID: 8300000, guid: be22db4b693e1fc439b4bce00611838f, type: 3}
+    volume: 0.5
+    spatialBlend: 0
+    loop: 0
+    parent: {fileID: 0}
+    source: {fileID: 0}
+  - name: Slider
+    clip: {fileID: 8300000, guid: 637248c9f9d25354eaddfad17c68283c, type: 3}
+    volume: 0.5
+    spatialBlend: 0
+    loop: 0
+    parent: {fileID: 0}
+    source: {fileID: 0}
+  - name: Warning
+    clip: {fileID: 8300000, guid: da0f5c47db5372842a861b86743635a7, type: 3}
     volume: 0.5
     spatialBlend: 0
     loop: 0
@@ -166,3 +173,4 @@ MonoBehaviour:
     sounds:
     - clip: {fileID: 8300000, guid: 9d746672072411848ad9660f8a07fc35, type: 3}
       source: {fileID: 0}
+  defaultMixerVolume: 0

@@ -34,6 +34,7 @@ public class PauseMenu : MonoBehaviour
         }
         else
         {
+            ToggleOptions(false);
             Debug.Log("Unpausing game...");
             FadePause(false);
             AudioManager.instance.Play("Click");
@@ -41,11 +42,19 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void ToggleOptions(bool on)
+    {
+        float defaultVolume = PlayerPrefs.GetFloat("Master") / 100f;
+
+        AudioManager.instance.FadeMixerVolume(on ? defaultVolume : defaultVolume / 2f, 0);
+        OptionInstance.Instance.transform.GetChild(0).gameObject.SetActive(on);
+    }
+
     private void FadePause(bool fadeIn)
     {
         // Activate the UI element for pause menu
         transform.GetChild(0).gameObject.SetActive(fadeIn);
-        float defaultVolume = AudioManager.DecibelToLinear(AudioManager.instance.defaultMixerVolume);
+        float defaultVolume = PlayerPrefs.GetFloat("Master") / 100f;
         float targetVolume = fadeIn ? defaultVolume / 2f : defaultVolume;
 
         black.color = new Color(black.color.r, black.color.g, black.color.b, fadeIn ? 0.5f : 0);
@@ -113,7 +122,7 @@ public class PauseMenu : MonoBehaviour
         material = fadeBlack.GetComponent<Image>().material;
         material.shader = Shader.Find("Custom/Dissolve");
 
-        // Dissolve effect over 1 second
+        AudioManager.mainAudioMixer.SetFloat("Master", -80);
         AudioManager.instance.FadeMixerVolume(-1, 1f);
         while (currentTime < 1f)
         {

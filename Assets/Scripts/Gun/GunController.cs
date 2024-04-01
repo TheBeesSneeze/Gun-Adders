@@ -29,7 +29,7 @@ public class GunController : MonoBehaviour
 
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
-    private Camera camera;
+    private Camera playerCamera;
     private Animator animator;
 
     /// <summary>
@@ -59,7 +59,7 @@ public class GunController : MonoBehaviour
     private void ShootBullet()
     {
         //alec put code here
-        Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
         if(Physics.Raycast(ray, out RaycastHit hit, 1000f, scanMask))
         {
@@ -81,8 +81,9 @@ public class GunController : MonoBehaviour
         bulletObj.damageAmount = defaultShootingMode.BulletDamage;
         bulletObj.bulletForce = defaultShootingMode.BulletSpeed;
         bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
-        if(instance != null)
-            instance.Play("Shoot Default");
+        Gun.TryGetComponent(out AudioSource source);
+        
+        source.Play();
     }
     
     private void Update()
@@ -90,7 +91,7 @@ public class GunController : MonoBehaviour
         if (PauseMenu.IsPaused)
             return;
 
-        Ray ray = camera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
         if(Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))
         {
@@ -117,7 +118,7 @@ public class GunController : MonoBehaviour
             ShootBullet();
         }
 
-       playerRB.AddForce(-camera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
+       playerRB.AddForce(-playerCamera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
@@ -125,7 +126,7 @@ public class GunController : MonoBehaviour
         //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
         //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         playerRB = GetComponent<Rigidbody>();
-        camera = Camera.main;
+        playerCamera = Camera.main;
         animator = GetComponent<Animator>();
         LoadShootingMode(defaultShootingMode);
     }

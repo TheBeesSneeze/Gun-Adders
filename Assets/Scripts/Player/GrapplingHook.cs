@@ -9,7 +9,7 @@ public class GrapplingHook : MonoBehaviour
     public LayerMask shootLayers;
     private SpringJoint joint;
     private float maxDist = 1000f;
-    private LineRenderer renderer;
+    private LineRenderer hookRenderer;
     private Transform cam;
 
     [Tooltip("How much of the distance between the grapple hook and the player will be used.")]
@@ -37,10 +37,10 @@ public class GrapplingHook : MonoBehaviour
     {
         InputEvents.Instance.SecondaryStarted.AddListener(StartGrapple);
         InputEvents.Instance.SecondaryCanceled.AddListener(StopGrapple);
-        renderer = gameObject.AddComponent<LineRenderer>();
-        renderer.endWidth = 0.05f;
-        renderer.startWidth = 0.05f;
-        renderer.positionCount = 2;
+        hookRenderer = gameObject.AddComponent<LineRenderer>();
+        hookRenderer.endWidth = 0.05f;
+        hookRenderer.startWidth = 0.05f;
+        hookRenderer.positionCount = 2;
         cam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
     }
@@ -53,7 +53,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (joint == null)
         {
-            renderer.positionCount = 0;
+            hookRenderer.positionCount = 0;
             gunModel.position = Vector3.MoveTowards(gunModel.position, gunExitPoint.position, Time.deltaTime * 2.5f);
             gunModel.rotation =
                 Quaternion.RotateTowards(gunModel.rotation, gunExitPoint.rotation, Time.deltaTime * 2.5f);
@@ -63,9 +63,9 @@ public class GrapplingHook : MonoBehaviour
             gunModel.position = Vector3.MoveTowards(gunModel.position, gunFollowPoint.position, Time.deltaTime * 15f);
             gunModel.rotation =
                 Quaternion.RotateTowards(gunModel.rotation, gunFollowPoint.rotation, Time.deltaTime * 15f);
-            renderer.positionCount = 2;
-            renderer.SetPosition(0, gunFirePoint.position);
-            renderer.SetPosition(1, hitPoint);
+            hookRenderer.positionCount = 2;
+            hookRenderer.SetPosition(0, gunFirePoint.position);
+            hookRenderer.SetPosition(1, hitPoint);
         }
     }
 

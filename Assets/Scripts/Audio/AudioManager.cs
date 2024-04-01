@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour
         AssignGroupToAudioSource(s.source, "SFX");
     }
 
-    // New method to assign an AudioSource to a specific mixer group
+    // Assign an AudioSource to a specific mixer group
     public static void AssignGroupToAudioSource(AudioSource audioSource, string groupName)
     {
         if (mainAudioMixer == null)
@@ -105,7 +105,7 @@ public class AudioManager : MonoBehaviour
         float targetVolumeInDb;
 
         if (linearVolume < 0)
-            targetVolumeInDb = defaultMixerVolume;
+            targetVolumeInDb = LinearToDecibel(PlayerPrefs.GetFloat("Master")/100f);
         else if (linearVolume == 0)
         {
             targetVolumeInDb = -80f;

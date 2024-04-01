@@ -17,7 +17,6 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public GameObject black;
-    public AudioMixer mixer;
     public TextMeshProUGUI title;
 
     private ColorAdjustments colorAdjustments;
@@ -82,6 +81,12 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(Transition("Tutorial"));
     }
 
+    public void OptionsButton()
+    {
+        AudioManager.instance.Play("Click");
+
+    }
+
     public void QuitButton()
     {
         AudioManager.instance.Play("Click");
@@ -130,9 +135,10 @@ public class MainMenu : MonoBehaviour
         black.SetActive(true);
         material = black.GetComponent<Image>().material;
         material.shader = Shader.Find("Custom/Dissolve");
-
+        yield return null;
+        AudioManager.mainAudioMixer.SetFloat("Master", -80);
+        AudioManager.instance.FadeMixerVolume(-1, 1);
         // Dissolve effect over 1 second
-        AudioManager.instance.FadeMixerVolume(-1, 1f);
         while (currentTime < 1f)
         {
             currentTime += Time.deltaTime;
