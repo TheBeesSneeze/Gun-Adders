@@ -18,7 +18,7 @@ using static AudioManager;
 public class PlayerControler : Singleton<PlayerControler>
 {
     [SerializeField] private Transform cameraHolder;
-    [SerializeField] private Transform camera;
+    [SerializeField] private Transform playerCamera;
     [SerializeField] private Transform playerOrientationTracker;
     [SerializeField] private Transform cameraFollowPoint;
     private Vector2 input;
@@ -51,6 +51,9 @@ public class PlayerControler : Singleton<PlayerControler>
 
     private void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
+
         UpdateCamera();
 
         if (feet.Grounded)
@@ -191,8 +194,8 @@ public class PlayerControler : Singleton<PlayerControler>
     private void UpdateCamera()
     {
         var mouse = InputEvents.Instance.LookDelta;
-        float mouseX = mouse.x * stats.Sensitivity * Time.fixedDeltaTime;
-        float mouseY = mouse.y * stats.Sensitivity * Time.fixedDeltaTime;
+        float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
+        float mouseY = mouse.y * OptionInstance.sensitivity * Time.fixedDeltaTime;
         Vector3 rot = cameraHolder.localRotation.eulerAngles;
         xMovement = rot.y + mouseX;
         yMovement -= mouseY;

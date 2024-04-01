@@ -72,7 +72,7 @@ public class Door_Controller : MonoBehaviour {
 	{
 		if (locked == false)
 		{
-				AudioManager.instance.Play("Door");
+			GetComponent<AudioSource>().Play();
 			isOpen = true;
 			StopAllCoroutines();
 			StartCoroutine(openInterpolation());
