@@ -68,7 +68,7 @@ public class GunController : MonoBehaviour
         }
         else
         {
-            destination = ray.GetPoint(1000f);
+            destination = ray.GetPoint(100f);
         }
 
         destination += new Vector3(
