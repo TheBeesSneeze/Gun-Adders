@@ -15,5 +15,5 @@ MonoBehaviour:
   TrailColor: {r: 1, g: 1, b: 1, a: 1}
   UpgradeName: Wind Bullet
   DamageMultiplier: 0
-  KnockBackForce: 15
+  KnockBackForce: 30
   PlayerKnockBackForce: 10
