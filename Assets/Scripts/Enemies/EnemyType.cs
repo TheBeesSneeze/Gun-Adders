@@ -47,7 +47,8 @@ public class EnemyType : CharacterType
     [SerializeField] private float rangeOfAttack = 20;
     [SerializeField] private float slowedFireRate = 1f;
 
-    
+    private Rigidbody rb;
+    public Rigidbody RB => rb;
 
     private bool isAttacking = false;
     private Vector3 Distance;
@@ -64,6 +65,7 @@ public class EnemyType : CharacterType
         slider = GetComponentInChildren<Slider>();
         mR = GetComponent<MeshRenderer>();
         enemyOriginalColor = mR.material.color;
+        rb = GetComponent<Rigidbody>();
     }
 
     public override void TakeDamage(float damage)

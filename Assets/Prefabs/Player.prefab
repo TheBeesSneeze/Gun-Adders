@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 2616906911819539490}
   - component: {fileID: 3156066056495464734}
   - component: {fileID: 2919115037079629898}
+  - component: {fileID: 1956894797375174540}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -303,6 +304,24 @@ MonoBehaviour:
   gun: {fileID: 1750741956018133970}
   effect1: {fileID: 2573601226447642552}
   effect2: {fileID: 4732872871215135153}
+--- !u!114 &1956894797375174540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334479710990617890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6bb04301fd49244a803865dc6240faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossHairImage: {fileID: 8683969771477153558}
+  newCrossHairImage: {fileID: 7084953203888305576}
+  gunRange: 1000
+  mask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &681993700891311542
 GameObject:
   m_ObjectHideFlags: 0
