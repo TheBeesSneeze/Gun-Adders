@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae486a9476a9e7245b85c4bf4dd47130, type: 3}
-  m_Name: WindBullet
+  m_Name: WindBullet 3
   m_EditorClassIdentifier: 
   TrailColor: {r: 1, g: 1, b: 1, a: 1}
-  UpgradeName: Wind Bullet
-  DamageMultiplier: 0
-  KnockBackForce: 15
-  PlayerKnockBackForce: 10
+  UpgradeName: Enemy Launcher
+  DamageMultiplier: 1
+  KnockBackForce: 30
+  PlayerKnockBackForce: 20
