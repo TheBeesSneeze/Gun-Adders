@@ -92,7 +92,7 @@ public class GunController : MonoBehaviour
         }
         else
         {
-            destination = ray.GetPoint(1000f);
+            destination = ray.GetPoint(100f);
         }
 
         destination += new Vector3(
@@ -105,6 +105,7 @@ public class GunController : MonoBehaviour
         var bulletObj = bullet.GetComponent<Bullet>();
         bulletObj.damageAmount = defaultShootingMode.BulletDamage;
         bulletObj.bulletForce = defaultShootingMode.BulletSpeed;
+        bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
         bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
         
         
