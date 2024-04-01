@@ -23,4 +23,9 @@ public class CrosshairScript : MonoBehaviour
             crossHairImage.SetActive(true);
         }
     }
+
+    public void ChangeCrosshairSprite(Sprite sprite)
+    {
+
+    }
 }
