@@ -845,7 +845,8 @@ MonoBehaviour:
   enemyDamage: 1
   enemyDamageColor: {r: 0, g: 0, b: 0, a: 0}
   enemyDamageFlashSeconds: 0.5
-  playerLocation: {fileID: 0}
+  playerLocation: {fileID: 533644169729596943, guid: 584bb12fffb6c834baf39d3290500c25,
+    type: 3}
   isRangedEnemy: 1
   shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   bulletEffect1: {fileID: 0}
