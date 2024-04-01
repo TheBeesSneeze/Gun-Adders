@@ -80,6 +80,7 @@ public class GunController : MonoBehaviour
         var bulletObj = bullet.GetComponent<Bullet>();
         bulletObj.damageAmount = defaultShootingMode.BulletDamage;
         bulletObj.bulletForce = defaultShootingMode.BulletSpeed;
+        bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
         bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
         if(instance != null)
             instance.Play("Shoot Default");

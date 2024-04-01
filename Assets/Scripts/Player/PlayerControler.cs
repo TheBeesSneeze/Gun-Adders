@@ -15,7 +15,7 @@ using UnityEngine;
 using static AudioManager;
 
 [RequireComponent(typeof(PlayerStats))]
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : Singleton<PlayerControler>
 {
     [SerializeField] private Transform cameraHolder;
     [SerializeField] private Transform camera;
@@ -24,6 +24,7 @@ public class PlayerControler : MonoBehaviour
     private Vector2 input;
     private Rigidbody rb;
     private PlayerStats stats;
+    public Rigidbody RB => rb;
 
     private float xMovement;
     private float yMovement;
