@@ -19,8 +19,8 @@ public class GunAnimator : MonoBehaviour
     private void Start()
     {
         //animator = GetComponent<Animator>();
-
-        InputEvents.Instance.MoveHeld.AddListener(WhileMove);
+        iDontWantToNameAVariableFeetTBH = FindObjectOfType<FeetScript>();
+        InputEvents.Instance.MoveStarted.AddListener(WhileMove);
         InputEvents.Instance.MoveCanceled.AddListener(MoveEnd);
         InputEvents.Instance.ShootStarted.AddListener(ShootStart);
         InputEvents.Instance.ShootCanceled.AddListener(ShootEnd);
@@ -28,7 +28,10 @@ public class GunAnimator : MonoBehaviour
 
     private void WhileMove()
     {
-        animator.SetBool("Walking", iDontWantToNameAVariableFeetTBH.Grounded);
+        if (iDontWantToNameAVariableFeetTBH == null)
+            Debug.LogWarning("NO FEET?!?!?!?!");
+        if (animator)
+            animator.SetBool("Walking", iDontWantToNameAVariableFeetTBH.Grounded);
     }
 
     private void MoveEnd()

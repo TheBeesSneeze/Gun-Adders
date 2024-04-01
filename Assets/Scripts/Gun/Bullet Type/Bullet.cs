@@ -118,7 +118,9 @@ public class Bullet : MonoBehaviour
                 {
                     audio.spatialBlend = 1;
                     audio.maxDistance = 50;
+                    audio.volume = 0.4f;
                     audio.rolloffMode = AudioRolloffMode.Linear;
+                    AssignGroupToAudioSource(audio, "SFX");
                     audio.Play();
                 }
 
