@@ -123,11 +123,11 @@ public class GunController : MonoBehaviour
         DebugTarget();
         secondsSinceLastShoot += Time.deltaTime;
 
+        if (!canShoot) return;
         if (!InputEvents.Instance.ShootPressed) return;
-
         if (secondsSinceLastShoot < (60f / defaultShootingMode.RPM)) return;
 
-        if (defaultShootingMode.HoldFire)
+        if (!defaultShootingMode.HoldFire)
             canShoot = false;
 
         //shootin time
@@ -136,7 +136,7 @@ public class GunController : MonoBehaviour
 
     private void OnShootStart()
     {
-
+        canShoot = true;
     }
 
     private void DebugTarget()
@@ -163,6 +163,7 @@ public class GunController : MonoBehaviour
         playerCamera = Camera.main;
         animator = GetComponent<Animator>();
         LoadShootingMode(defaultShootingMode);
+        InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
     }
 
     
