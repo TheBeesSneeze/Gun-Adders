@@ -13,6 +13,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using static AudioManager;
+using static Unity.VisualScripting.Member;
 
 public class GunController : MonoBehaviour
 {
@@ -81,9 +82,9 @@ public class GunController : MonoBehaviour
         bulletObj.damageAmount = defaultShootingMode.BulletDamage;
         bulletObj.bulletForce = defaultShootingMode.BulletSpeed;
         bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
-        Gun.TryGetComponent(out AudioSource source);
         
-        source.Play();
+        
+        
     }
     
     private void Update()
@@ -113,10 +114,15 @@ public class GunController : MonoBehaviour
         secondsSinceLastShoot = 0;
         animator.SetTrigger("Shoot");
 
+        Gun.TryGetComponent(out AudioSource source);
+        if (source != null)
+            source.Play();
+
         for (int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
         {
             ShootBullet();
         }
+
 
        playerRB.AddForce(-playerCamera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
     }

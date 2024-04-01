@@ -42,6 +42,8 @@ namespace ModularOptions {
 		}
 
 		void SetDisplayText(float _value){
+			if (displayText == null) return;
+
 			if (formattingOverride != null)
 				displayText.text = formattingOverride.OverrideFormatting(_value);
 			else
