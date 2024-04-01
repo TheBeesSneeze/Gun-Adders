@@ -6,7 +6,7 @@ using static AudioManager;
 public class OptionInstance : MonoBehaviour
 {
     public static OptionInstance Instance;
-    public static float sensitivity;
+    public static float sensitivity = 8;
     // Start is called before the first frame update
     void Start()
     {

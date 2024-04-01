@@ -144,7 +144,14 @@ public class PlayerControler : Singleton<PlayerControler>
     /// </summary>
     public void HalfYVelocity()
     {
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        }
+        else
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
+        }
     }
 
     private void ResetJump()
