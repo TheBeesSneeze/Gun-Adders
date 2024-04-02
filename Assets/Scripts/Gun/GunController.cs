@@ -82,7 +82,21 @@ public class GunController : MonoBehaviour
             ShootBullet();
         }
 
-        playerRB.AddForce(-playerCamera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
+        float multiplier = 1f;
+        if (BulletPrefab != null)
+        {
+            var bullet = BulletPrefab.GetComponent<Bullet>();
+            if (bullet._bulletEffect1 && bullet._bulletEffect1.PlayerRecoilMultiplier != 0)
+            {
+                multiplier *= bulletEffect1.PlayerRecoilMultiplier;
+            }
+
+            if (bullet._bulletEffect2 && bullet._bulletEffect2.PlayerRecoilMultiplier != 0)
+            {
+                multiplier *= bulletEffect2.PlayerRecoilMultiplier;
+            }
+        }
+        playerRB.AddForce(-playerCamera.transform.forward * (defaultShootingMode.RecoilForce * multiplier), ForceMode.Impulse);
     }
 
     /// <summary>

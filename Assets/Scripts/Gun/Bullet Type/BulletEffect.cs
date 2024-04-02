@@ -21,4 +21,5 @@ public abstract class BulletEffect : ScriptableObject
     public abstract void OnEnemyHit(EnemyType type, float damage);
 
     public abstract void OnHitOther(Vector3 point, float damage);
+    public virtual float PlayerRecoilMultiplier => 0f;
 }

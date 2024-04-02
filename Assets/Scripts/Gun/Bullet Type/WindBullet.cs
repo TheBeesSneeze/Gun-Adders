@@ -15,11 +15,13 @@ public class WindBullet : BulletEffect
         {
             type.RB.AddForce(normal.normalized * KnockBackForce, ForceMode.Impulse);
         }
-        PlayerControler.Instance.RB.AddForce(-normal.normalized * PlayerKnockBackForce, ForceMode.Impulse);
+        //PlayerControler.Instance.RB.AddForce(-normal.normalized * PlayerKnockBackForce, ForceMode.Impulse);
     }
 
     public override void OnHitOther(Vector3 point, float damage)
     {
         
     }
+
+    public override float PlayerRecoilMultiplier => PlayerKnockBackForce;
 }
