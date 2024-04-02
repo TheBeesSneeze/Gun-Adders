@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootLayers:
     serializedVersion: 2
-    m_Bits: 3073
+    m_Bits: 1
   maxDistanceFromPointMultiplier: 0.25
   minDistanceFromPointMultiplier: 0.25
   jointSpring: 4.5
@@ -301,7 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d17097825602149b534a8aa6452db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 1750741956018133970}
   effect1: {fileID: 2573601226447642552}
   effect2: {fileID: 4732872871215135153}
 --- !u!114 &1956894797375174540
