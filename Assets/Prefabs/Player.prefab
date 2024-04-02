@@ -123,9 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraHolder: {fileID: 1858083360781754766}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 2433427317724165245}
   playerOrientationTracker: {fileID: 1544151863226725713}
   cameraFollowPoint: {fileID: 2131782724641973946}
+  fovChangeSpeed: 2
+  tiltAmount: 5
   feet: {fileID: 8573732047299625785}
   ConsistentJumps: 1
   airJumps: 2
@@ -301,7 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d17097825602149b534a8aa6452db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 1750741956018133970}
   effect1: {fileID: 2573601226447642552}
   effect2: {fileID: 4732872871215135153}
 --- !u!114 &1956894797375174540
@@ -3999,7 +4000,7 @@ PrefabInstance:
     - target: {fileID: 7604870334526333957, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
       propertyPath: m_Size
-      value: 0.8477781
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953191739320921805, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
@@ -4175,6 +4176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173208411425977550, guid: 7ec81f37473d4f7498a34acd997f0fb0,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

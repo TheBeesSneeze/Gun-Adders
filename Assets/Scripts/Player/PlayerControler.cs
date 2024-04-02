@@ -12,15 +12,18 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 using static AudioManager;
 
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerControler : Singleton<PlayerControler>
 {
     [SerializeField] private Transform cameraHolder;
-    [SerializeField] private Transform playerCamera;
+    [SerializeField] private Camera playerCamera;
     [SerializeField] private Transform playerOrientationTracker;
     [SerializeField] private Transform cameraFollowPoint;
+    [SerializeField] private float fovChangeSpeed = 2f;
+    [SerializeField] private float tiltAmount = 15f;
     private Vector2 input;
     private Rigidbody rb;
     private PlayerStats stats;
@@ -60,9 +63,10 @@ public class PlayerControler : Singleton<PlayerControler>
         {
             airJumpCounter = airJumps;
         }
+
         input = InputEvents.Instance.InputDirection2D;
 
-        
+
         FootStepSound();
     }
 
@@ -123,8 +127,8 @@ public class PlayerControler : Singleton<PlayerControler>
         }
 
         if (instance != null)
-                instance.Play("Jump");
-        
+            instance.Play("Jump");
+
         airJumpCounter--;
 
         if (ConsistentJumps)
@@ -135,8 +139,8 @@ public class PlayerControler : Singleton<PlayerControler>
         rb.AddForce(
             Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
         rb.AddForce(
-                feet.GroundNormal * (Mathf.Sqrt(2 * stats.JumpHeight * grav) * 0.5f),
-                ForceMode.Impulse);
+            feet.GroundNormal * (Mathf.Sqrt(2 * stats.JumpHeight * grav) * 0.5f),
+            ForceMode.Impulse);
     }
 
     /// <summary>
@@ -210,6 +214,24 @@ public class PlayerControler : Singleton<PlayerControler>
         cameraHolder.localRotation = Quaternion.Euler(yMovement, xMovement, 0);
         cameraHolder.position = cameraFollowPoint.position;
         playerOrientationTracker.localRotation = Quaternion.Euler(0, xMovement, 0);
+
+        //fov
+        Vector3 vel = rb.velocity;
+        float mag = vel.magnitude / stats.MaxSpeed;
+        float sqr = mag * mag * mag * mag;
+        float newFOV = Mathf.Lerp(60f, 70f, sqr);
+        newFOV = Mathf.Clamp(newFOV, 60f, 70f);
+        playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, newFOV, fovChangeSpeed * Time.deltaTime);
+        
+        float lerp = Lerp3(tiltAmount, 0f, -tiltAmount, sqr * Mathf.Sign(input.x) * Mathf.Abs(input.x));
+        Quaternion targetRot = Quaternion.Euler(0f, 0f, lerp);
+        playerCamera.transform.localRotation =
+            Quaternion.RotateTowards(playerCamera.transform.localRotation, targetRot, fovChangeSpeed * Time.deltaTime);
+    }
+
+    float Lerp3(float a, float b, float c, float t)
+    {
+        return Mathf.Lerp(Mathf.Lerp(a, b, Mathf.Min(t, 0.0f) + 1.0f), c, Mathf.Max(t, 0.0f));
     }
 
     // Start is called every frame
