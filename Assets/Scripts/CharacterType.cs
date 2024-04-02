@@ -24,6 +24,8 @@ public class CharacterType : MonoBehaviour
 
     [ReadOnly] public float CurrentHealth = 1;
     // Start is called before the first frame update
+    private EnemyManager enemyManager;
+
     protected virtual void Start()
     {
         
@@ -41,6 +43,11 @@ public class CharacterType : MonoBehaviour
 
     public virtual void Die()
     {
+        if (gameObject.GetComponent<EnemyType>() != null)
+        {
+            enemyManager = FindAnyObjectByType<EnemyManager>();
+            --enemyManager.numberOfEnemies;
+        }
         Destroy(gameObject);
     }
 }

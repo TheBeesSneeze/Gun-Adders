@@ -19,29 +19,73 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] public Transform[] spawnPoints;
     [Tooltip("This is multiplied by round number to calculate how many more enemies per round")]
     [SerializeField] public int roundExtraSpawn = 1;
-    public GameObject enemey;
-    
+    public GameObject[] enemyPrefabs;
 
-    private int roundNumber = 0;
+
+    public int numberOfEnemies;
+
+    private int roundNumber;
+
+    /*
+     * public Transform bulletUpgrade spawn
+     * public Transform gunUpgrade spawn
+     * public GameObject bullet Upgrade
+     * public Gameobject gunupgrade
+     * public int roundsBetweenUpgradeSpawn
+    */
+    public void Start()
+    {
+        numberOfEnemies = 0;
+        roundNumber = 0;
+        RoundStart();
+    }
+
+    public void RoundStart()
+    {
+        /*
+         * if(round % roundsBetweenUpgradeSpawn) 
+         * {
+         *      instantiate(bulletUpgrade, bulletUpgradeSpawn.position, Quaaternion.identiy)
+         *      instantiate(gunUpgrade, gunUpgradeSpawn.position, Quaternion.identiy)
+         *  }
+         *  else
+         *  {
+         *      somehow destroy the gunUp and bullet up in the scene currently need to ask how these work 
+         *  }
+         */
+        SpawnEnemies();
+        ++roundNumber;
+    }
+
+    public void RoundEnd()
+    {
+        /*
+         * someohow wait a certain amount of time before next round start i don't know how to do 
+         */
+        RoundStart();
+    }
 
     public void Update()
     {
-        if (enemey == null) { return; }
-        SpawnEnemies();
+        if (enemyPrefabs == null) { return; }
+        if (numberOfEnemies == 0) { RoundEnd(); }
+
     }
+
     public void SpawnEnemies()
     {
-        if(!InputEvents.RespawnPressed) { return; }
+        int iterrations = spawnPoints.Length + (roundExtraSpawn * roundNumber);
 
-        int iterrations = spawnPoints.Length + (roundExtraSpawn * roundNumber); 
         for (int i = 0; i < iterrations; ++i)
         {
-            Instantiate(enemey, spawnPoints[i % (spawnPoints.Length)].transform.position, Quaternion.identity);
+            int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+            Vector3 location = new Vector3(
+                spawnPoints[i % (spawnPoints.Length)].transform.position.x + Random.Range(-1f, 1f),
+                spawnPoints[i % (spawnPoints.Length)].transform.position.y,
+                spawnPoints[i % (spawnPoints.Length)].transform.position.z + Random.Range(-1f, 1f));
+            Instantiate(enemyPrefabs[enemyIndex], location, Quaternion.identity);
+            ++numberOfEnemies;
         }
-        ++roundNumber;
-        InputEvents.RespawnPressed = false;
-        
     }
-
 
 }
