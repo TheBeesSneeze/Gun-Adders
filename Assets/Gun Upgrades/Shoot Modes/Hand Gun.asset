@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Hand Gun
   m_EditorClassIdentifier: 
   GunName: Hand Gun
+  Crosshair: {fileID: 21300000, guid: f886b3dc672b2a2409b43b70b44b7149, type: 3}
   GunColor: {r: 1, g: 0.99237216, b: 0, a: 1}
   gunIcon: {fileID: 0}
   RPM: 150
   BulletsPerShot: 1
   BulletAccuracyOffset: 0.25
+  HoldFire: 0
   BulletSpeed: 15
   BulletDamage: 35
   RecoilForce: 0.01

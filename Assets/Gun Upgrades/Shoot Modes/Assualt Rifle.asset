@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Assualt Rifle
   m_EditorClassIdentifier: 
   GunName: Assault Rifle
+  Crosshair: {fileID: 21300000, guid: 25c230a0a09e26e469b690c30590c2fe, type: 3}
   GunColor: {r: 1, g: 1, b: 1, a: 1}
   gunIcon: {fileID: 0}
   RPM: 600
   BulletsPerShot: 1
   BulletAccuracyOffset: 0.5
+  HoldFire: 1
   BulletSpeed: 15
   BulletDamage: 12
   RecoilForce: 0.01
