@@ -71,7 +71,7 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.instance.Play("Click");
         AudioManager.instance.Play("Start");
-        StartCoroutine(Transition("Environment"));
+        StartCoroutine(Transition("Level Designs testing"));
     }
 
     public void TutorialButton()

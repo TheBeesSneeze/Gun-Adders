@@ -18,7 +18,7 @@ public class DynamicStage : MonoBehaviour
     public GameObject stageCube;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         stageAnimator = GetComponent<Animator>();
         InputEvents.Instance.RespawnStarted.AddListener(ChangeStage);
