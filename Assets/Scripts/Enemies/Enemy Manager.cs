@@ -54,8 +54,13 @@ public class EnemyManager : MonoBehaviour
          *      somehow destroy the gunUp and bullet up in the scene currently need to ask how these work 
          *  }
          */
-        dynamicStage = FindAnyObjectByType<DynamicStage>();
-        dynamicStage.ChangeStage();
+        if(GameObject.FindAnyObjectByType<DynamicStage>() != null)
+        {
+            dynamicStage = FindAnyObjectByType<DynamicStage>();
+            dynamicStage.ChangeStage();
+        }
+        
+        numberOfEnemies = 0;
         SpawnEnemies();
         ++roundNumber;
     }
@@ -86,7 +91,9 @@ public class EnemyManager : MonoBehaviour
                 spawnPoints[i % (spawnPoints.Length)].transform.position.x + Random.Range(-1f, 1f),
                 spawnPoints[i % (spawnPoints.Length)].transform.position.y,
                 spawnPoints[i % (spawnPoints.Length)].transform.position.z + Random.Range(-1f, 1f));
-            Instantiate(enemyPrefabs[enemyIndex], location, Quaternion.identity);
+            Quaternion q = new Quaternion(0, 0, 0, 0);
+            Instantiate(enemyPrefabs[enemyIndex], location, q);
+            
             ++numberOfEnemies;
         }
     }
