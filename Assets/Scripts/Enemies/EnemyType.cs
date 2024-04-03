@@ -117,6 +117,7 @@ public class EnemyType : CharacterType
         }
         if(isRangedEnemy)
         {
+            transform.LookAt(playerLocation.position);
             Attacking();
             canRangeAttack();
         }
@@ -179,7 +180,6 @@ public class EnemyType : CharacterType
     {
         if(isAttacking)
         {
-            transform.LookAt(playerLocation.position);
             
             if(Time.time > nextFire)
             {

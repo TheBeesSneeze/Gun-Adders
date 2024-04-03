@@ -1665,6 +1665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
         type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 945484380}
@@ -1683,6 +1688,12 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 1490357115}
+    - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5452116755294236245, guid: f6a2f010e70809046ad44204e7abbcb1,
+        type: 3}
     - target: {fileID: 5360082600437120453, guid: 0d91bc4da2f28bd479327116936175b2,
         type: 3}
       propertyPath: m_Name
@@ -8559,6 +8570,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 167815564817428575, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: redVignette
+      value: 
+      objectReference: {fileID: 1681423168}
     - target: {fileID: 334479710990617890, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_Name
@@ -14002,7 +14018,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0.1
   sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
 --- !u!4 &832575519
 Transform:
@@ -18123,7 +18139,7 @@ MonoBehaviour:
   - name: Shoot Default
     clip: {fileID: 8300000, guid: 8d4c34490c4153b46a0c54c4364b3cfc, type: 3}
     volume: 0.6
-    spatialBlend: 0
+    spatialBlend: 0.51
     loop: 0
     parent: {fileID: 0}
     source: {fileID: 0}
@@ -30774,6 +30790,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1679180827}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1681423168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5530225831465893412, guid: 584bb12fffb6c834baf39d3290500c25,
+    type: 3}
+  m_PrefabInstance: {fileID: 351454282}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1686574080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 141440, guid: 8874ec60e48b283469e0bdd07497369b,
