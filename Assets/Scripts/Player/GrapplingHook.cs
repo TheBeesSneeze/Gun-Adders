@@ -42,14 +42,17 @@ public class GrapplingHook : MonoBehaviour
         InputEvents.Instance.SecondaryStarted.AddListener(StartGrapple);
         InputEvents.Instance.SecondaryCanceled.AddListener(StopGrapple);
         hookRenderer = gameObject.AddComponent<LineRenderer>();
-        hookRenderer.endWidth = 0.05f;
-        hookRenderer.startWidth = 0.05f;
+        //hookRenderer.endWidth = 0.05f;
+        //hookRenderer.startWidth = 0.05f;
         hookRenderer.positionCount = 2;
         cam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
 
         //snake
         hookRenderer.material = BodyMaterial;
+        hookRenderer.startWidth = 1;
+        hookRenderer.endWidth = 1;
+        hookRenderer.textureMode = LineTextureMode.Tile;
     }
 
     // Update is called once per frame
@@ -73,6 +76,12 @@ public class GrapplingHook : MonoBehaviour
             hookRenderer.positionCount = 2;
             hookRenderer.SetPosition(0, gunFirePoint.position);
             hookRenderer.SetPosition(1, hitPoint);
+
+            if(Head != null) //so no head?
+            {
+                Head.position = hitPoint;
+                Head.eulerAngles = gunModel.forward;
+            }
         }
     }
 
