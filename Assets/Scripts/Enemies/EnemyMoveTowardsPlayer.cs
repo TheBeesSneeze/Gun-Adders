@@ -25,7 +25,6 @@ public class EnemyMoveTowardsPlayer : EnemyMovementType
         var friction = -rb.velocity * groundFriction;
         friction.y = 0f;
         rb.AddForce(friction);
-
         //rb.AddForce(direction * speed);
     }
 
