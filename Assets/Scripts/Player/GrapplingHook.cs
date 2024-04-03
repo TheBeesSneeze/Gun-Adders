@@ -33,6 +33,10 @@ public class GrapplingHook : MonoBehaviour
     [SerializeField] private Transform gunModel, gunFirePoint, gunFollowPoint, gunExitPoint;
     private Rigidbody rb;
 
+    [Header("Snake town")]
+    [SerializeField] private Transform Head;
+    [SerializeField] private Material BodyMaterial;
+
     void Start()
     {
         InputEvents.Instance.SecondaryStarted.AddListener(StartGrapple);
@@ -43,6 +47,9 @@ public class GrapplingHook : MonoBehaviour
         hookRenderer.positionCount = 2;
         cam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
+
+        //snake
+        hookRenderer.material = BodyMaterial;
     }
 
     // Update is called once per frame
