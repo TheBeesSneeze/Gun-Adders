@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * File Name :         DynamicStage.cs
+ * Author(s) :         Toby
+ * Creation Date :     
+ *
+ * Brief Description : talks to the animator
+ *****************************************************************************/
+
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
