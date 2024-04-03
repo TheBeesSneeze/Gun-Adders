@@ -57,11 +57,11 @@ public class GunController : MonoBehaviour
 
         canShoot = true;
 
-        if(defaultShootingMode.Crosshair != null)
-        {
-            CrosshairScript cross = GetComponent<CrosshairScript>();
-            cross.ChangeCrosshairSprite(defaultShootingMode.Crosshair);
-        }
+        // if(defaultShootingMode.Crosshair != null)
+        // {
+        //     CrosshairScript cross = GetComponent<CrosshairScript>();
+        //     cross.ChangeCrosshairSprite(defaultShootingMode.Crosshair);
+        // }
         
     }
 
