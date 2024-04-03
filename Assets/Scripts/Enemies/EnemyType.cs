@@ -47,14 +47,17 @@ public class EnemyType : CharacterType
     [SerializeField] private float rangeOfAttack = 20;
     [SerializeField] private float slowedFireRate = 1f;
 
-    
+    private Rigidbody rb;
+    public Rigidbody RB => rb;
 
     private bool isAttacking = false;
     private Vector3 Distance;
     private float distanceFrom;
     private float nextFire = 0;
     private float currentFireRate;
-    private AudioManager instance; 
+    private AudioManager instance;
+    private bool isAlive;
+    private EnemyManager enemyManager;
     
 
     protected override void Start()
@@ -64,6 +67,8 @@ public class EnemyType : CharacterType
         slider = GetComponentInChildren<Slider>();
         mR = GetComponent<MeshRenderer>();
         enemyOriginalColor = mR.material.color;
+        rb = GetComponent<Rigidbody>();
+        isAlive = true;
     }
 
     public override void TakeDamage(float damage)
@@ -115,6 +120,7 @@ public class EnemyType : CharacterType
         }
         if(isRangedEnemy)
         {
+            transform.LookAt(playerLocation.position);
             Attacking();
             canRangeAttack();
         }
@@ -123,7 +129,9 @@ public class EnemyType : CharacterType
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.GetComponent<PlayerBehaviour>() != null)
+        var p = collision.gameObject.GetComponent<PlayerBehaviour>();
+
+        if (p != null)
         {
             player = collision.gameObject.GetComponent<PlayerBehaviour>();
             playerIFrames = StartCoroutine(PlayerIFrames());
@@ -132,10 +140,11 @@ public class EnemyType : CharacterType
 
     private void OnCollisionExit(Collision collision)
     {
-        canDamage = false;
-        if (playerIFrames != null)
+
+        var p = collision.gameObject.GetComponent<PlayerBehaviour>();
+        if (p != null)
         {
-            StopCoroutine(playerIFrames); 
+            canDamage = false;
         }
         
     }
@@ -145,12 +154,13 @@ public class EnemyType : CharacterType
         canDamage = true;
         do
         {
-            player.TakeDamage(enemyDamage);
+            player.TakeDamage(enemyDamage * Time.deltaTime);
             Debug.Log("doin damage!");
-            yield return new WaitForSeconds(iFrameSeconds);
+            yield return null;
         }
         while (canDamage);
-        
+
+        playerIFrames = null;
     }
 
     private void canRangeAttack()
@@ -173,7 +183,6 @@ public class EnemyType : CharacterType
     {
         if(isAttacking)
         {
-            transform.LookAt(playerLocation.position);
             
             if(Time.time > nextFire)
             {
@@ -196,5 +205,23 @@ public class EnemyType : CharacterType
             }
         }
     }
-    
+
+    public override void Die()
+    {
+        
+        if(isAlive)
+        {
+            if (GameObject.FindAnyObjectByType<EnemyManager>() != null)
+            {
+                enemyManager = FindAnyObjectByType<EnemyManager>();
+                if (enemyManager.numberOfEnemies > 0)
+                {
+                    --enemyManager.numberOfEnemies;
+                    isAlive = false;
+                }
+            }
+        }
+        base.Die();
+
+    }
 }

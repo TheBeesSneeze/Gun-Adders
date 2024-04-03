@@ -15,7 +15,7 @@ using UnityEngine;
 using static AudioManager;
 
 [RequireComponent(typeof(PlayerStats))]
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : Singleton<PlayerControler>
 {
     [SerializeField] private Transform cameraHolder;
     [SerializeField] private Transform playerCamera;
@@ -24,6 +24,7 @@ public class PlayerControler : MonoBehaviour
     private Vector2 input;
     private Rigidbody rb;
     private PlayerStats stats;
+    public Rigidbody RB => rb;
 
     private float xMovement;
     private float yMovement;
@@ -33,7 +34,6 @@ public class PlayerControler : MonoBehaviour
 
     public bool ConsistentJumps = true;
 
-    public int airJumps = 1;
     private int airJumpCounter;
     private bool jumping;
 
@@ -57,7 +57,7 @@ public class PlayerControler : MonoBehaviour
 
         if (feet.Grounded)
         {
-            airJumpCounter = airJumps;
+            airJumpCounter = stats.AirJumps;
         }
         input = InputEvents.Instance.InputDirection2D;
 
@@ -143,7 +143,14 @@ public class PlayerControler : MonoBehaviour
     /// </summary>
     public void HalfYVelocity()
     {
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        }
+        else
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
+        }
     }
 
     private void ResetJump()
@@ -217,6 +224,6 @@ public class PlayerControler : MonoBehaviour
         cameraHolder.transform.parent = null;
         InputEvents.Instance.JumpStarted.AddListener(Jump);
         InputEvents.Instance.JumpStarted.AddListener(ResetJump);
-        airJumpCounter = airJumps;
+        airJumpCounter = stats.AirJumps;
     }
 }

@@ -24,6 +24,7 @@ public class CharacterType : MonoBehaviour
 
     [ReadOnly] public float CurrentHealth = 1;
     // Start is called before the first frame update
+
     protected virtual void Start()
     {
         
@@ -40,7 +41,7 @@ public class CharacterType : MonoBehaviour
     }
 
     public virtual void Die()
-    {
-        Destroy(gameObject);
+    { 
+        Destroy(gameObject); 
     }
 }

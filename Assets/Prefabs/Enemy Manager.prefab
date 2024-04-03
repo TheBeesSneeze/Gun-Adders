@@ -47,7 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - {fileID: 2346694357331903082}
-  enemey: {fileID: 1651905046631748458, guid: 2627cc951982cb645bf4e16039f3deef, type: 3}
+  roundExtraSpawn: 1
+  enemyPrefabs:
+  - {fileID: 1651905046631748458, guid: 2627cc951982cb645bf4e16039f3deef, type: 3}
+  - {fileID: 4811878778032009355, guid: bcdff7bdd88e7b4499611e127f1a9e5c, type: 3}
+  - {fileID: 5452116755294236245, guid: f6a2f010e70809046ad44204e7abbcb1, type: 3}
+  numberOfEnemies: 0
 --- !u!1 &6917430615640812274
 GameObject:
   m_ObjectHideFlags: 0

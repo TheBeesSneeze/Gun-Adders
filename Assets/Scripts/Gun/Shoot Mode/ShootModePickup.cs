@@ -41,11 +41,11 @@ public class ShootModePickup : UpgradePickupType
 
         if (ShootModes.Length > 1)
         {
-            
-        do
-        {
-            newUpgrade = ShootModes[UnityEngine.Random.Range(0, ShootModes.Length)];
-        } while (newUpgrade == loadedShootMode); //DO WHILE DO WHILE DO WHILE
+            do
+            {
+                newUpgrade = ShootModes[UnityEngine.Random.Range(0, ShootModes.Length)];
+            } 
+            while (newUpgrade == loadedShootMode); //DO WHILE DO WHILE DO WHILE
         }
         else
         {

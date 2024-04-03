@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Roulette Gun
   m_EditorClassIdentifier: 
   GunName: Roulette Gun
+  Crosshair: {fileID: 21300000, guid: a0a8cacbf9766ab4ca6449ed614f03a1, type: 3}
   GunColor: {r: 0.43438768, g: 0, b: 1, a: 1}
   gunIcon: {fileID: 0}
-  RPM: 800
-  BulletsPerShot: 20
+  RPM: 777
+  BulletsPerShot: 7
   BulletAccuracyOffset: 10
-  BulletSpeed: 10
+  HoldFire: 1
+  BulletSpeed: 7
   BulletDamage: 70
-  RecoilForce: 1
+  RecoilForce: 0.77

@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Gattling Gun
   m_EditorClassIdentifier: 
   GunName: Gattling
+  Crosshair: {fileID: 21300000, guid: a0a8cacbf9766ab4ca6449ed614f03a1, type: 3}
   GunColor: {r: 0, g: 0.6886792, b: 0.19307038, a: 1}
   gunIcon: {fileID: 0}
   RPM: 900
   BulletsPerShot: 1
   BulletAccuracyOffset: 0.75
-  BulletSpeed: 15
-  BulletDamage: 9
+  HoldFire: 1
+  BulletSpeed: 100
+  BulletDamage: 27
   RecoilForce: 0.01
