@@ -132,9 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4868cda417bf8314a8522933c8e284af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 2
   SlowedSpeed: 0.5
-  PlayerSightDistance: 15
+  PlayerSightDistance: 40
   RequirePlayerSightToMove: 1
   viewMask:
     serializedVersion: 2

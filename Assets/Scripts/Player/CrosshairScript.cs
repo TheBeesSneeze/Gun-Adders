@@ -11,7 +11,7 @@ public class CrosshairScript : MonoBehaviour
     void Update()
     {
         Ray ray = new Ray(transform.position, transform.forward);
-        //Debug.DrawLine(transform.position, transform.forward, Color.red);
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
         bool hitEnemy = Physics.Raycast(ray, out RaycastHit hit, gunRange, mask);
         if (hitEnemy) {
             if (hit.collider.gameObject.GetComponent<EnemyType>() != null) {
