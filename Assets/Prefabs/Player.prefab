@@ -50,7 +50,7 @@ Transform:
   - {fileID: 1544151863226725713}
   - {fileID: 498913349358759857}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6888475280479492071
 MonoBehaviour:
@@ -4185,10 +4185,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8963741913490532039, guid: 7ec81f37473d4f7498a34acd997f0fb0,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173208411425977550, guid: 7ec81f37473d4f7498a34acd997f0fb0,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.99999994
+      objectReference: {fileID: 0}
     - target: {fileID: 9173208411425977550, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

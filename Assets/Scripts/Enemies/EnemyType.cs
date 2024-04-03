@@ -35,7 +35,7 @@ public class EnemyType : CharacterType
     private Color enemyOriginalColor;
 
     [Header("Ranged Enemy Stuffs")]
-    public Transform playerLocation;
+    
 
     [SerializeField]public bool isRangedEnemy;
     [SerializeField] public ShootingMode shootingMode;
@@ -58,7 +58,8 @@ public class EnemyType : CharacterType
     private AudioManager instance;
     private bool isAlive;
     private EnemyManager enemyManager;
-    
+    private GameObject playerLocation;
+
 
     protected override void Start()
     {
@@ -69,6 +70,7 @@ public class EnemyType : CharacterType
         enemyOriginalColor = mR.material.color;
         rb = GetComponent<Rigidbody>();
         isAlive = true;
+        playerLocation = GameObject.Find("Player");
     }
 
     public override void TakeDamage(float damage)
@@ -103,6 +105,7 @@ public class EnemyType : CharacterType
     private void Update()
     {
         currentFireRate = fireRate;
+       
         if (slowed)
         {
              
@@ -120,7 +123,7 @@ public class EnemyType : CharacterType
         }
         if(isRangedEnemy)
         {
-            transform.LookAt(playerLocation.position);
+            transform.LookAt(playerLocation.transform.position);
             Attacking();
             canRangeAttack();
         }
@@ -165,7 +168,7 @@ public class EnemyType : CharacterType
 
     private void canRangeAttack()
     {
-        Distance = (transform.position - playerLocation.position).normalized;
+        Distance = (transform.position - playerLocation.transform.position).normalized;
         Distance.y = 0;
         distanceFrom = Distance.magnitude;
         Distance /= distanceFrom;
@@ -187,7 +190,7 @@ public class EnemyType : CharacterType
             if(Time.time > nextFire)
             {
                 nextFire += Time.time;
-                Vector3 destination = playerLocation.position;
+                Vector3 destination = playerLocation.transform.position;
                 destination += new Vector3(
                     Random.Range(-shootingMode.BulletAccuracyOffset,shootingMode.BulletAccuracyOffset),
                     Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),

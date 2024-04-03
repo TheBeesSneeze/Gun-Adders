@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 8670902409729241495, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8670902409729241495, guid: 60166741ab3445049a52d4f541cb867f,
         type: 3}
@@ -340,6 +340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 334479710990617890, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 533644169729596943, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
@@ -790,6 +795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888475280479492071, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: DefaultHealth
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 6974879785427474715, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
@@ -1281,7 +1291,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 1651905046631748458, guid: 2627cc951982cb645bf4e16039f3deef,
+      objectReference: {fileID: 4811878778032009355, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
         type: 3}
     - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
         type: 3}
@@ -1293,7 +1303,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 5452116755294236245, guid: f6a2f010e70809046ad44204e7abbcb1,
+      objectReference: {fileID: 4811878778032009355, guid: bcdff7bdd88e7b4499611e127f1a9e5c,
         type: 3}
     - target: {fileID: 5360082600437120453, guid: 0d91bc4da2f28bd479327116936175b2,
         type: 3}
@@ -1464,5 +1474,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
