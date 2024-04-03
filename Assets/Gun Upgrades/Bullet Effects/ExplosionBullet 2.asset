@@ -15,5 +15,5 @@ MonoBehaviour:
   TrailColor: {r: 1, g: 0.65521413, b: 0.0037735105, a: 1}
   UpgradeName: Outburst
   DamageMultiplier: 1
-  ExplosionPrefab: {fileID: 6280559830242961613, guid: 9e85bc0aba2c08844944812719370b29,
+  ExplosionPrefab: {fileID: 6280559830242961613, guid: 1d6f96a557196b947ac42099e47a4fbc,
     type: 3}
