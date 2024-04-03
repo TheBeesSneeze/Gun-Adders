@@ -1792,7 +1792,7 @@ GameObject:
   - component: {fileID: 150662230}
   - component: {fileID: 150662229}
   - component: {fileID: 150662228}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1889,13 +1889,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150662227}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10, y: -50.3, z: -75.9}
-  m_LocalScale: {x: 750, y: 1, z: 740}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -68.06907, y: -186.96777, z: -109.52434}
+  m_LocalScale: {x: 750, y: 1, z: 739.99994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 246561898}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &170065687
 GameObject:
@@ -2925,6 +2925,43 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 231182316}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &246561897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246561898}
+  m_Layer: 0
+  m_Name: Death Planes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246561898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246561897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 78.06907, y: 136.66777, z: 33.624336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1307416454}
+  - {fileID: 150662232}
+  - {fileID: 2012926083}
+  - {fileID: 577797429}
+  - {fileID: 1238466666}
+  - {fileID: 337150077}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &261929625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8556,7 +8593,7 @@ GameObject:
   - component: {fileID: 337150075}
   - component: {fileID: 337150074}
   - component: {fileID: 337150073}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death plane (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8653,13 +8690,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337150072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 299, z: 60.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -68.06907, y: 162.33223, z: 26.875664}
   m_LocalScale: {x: 750, y: 1, z: 740}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 246561898}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &346287950
 PrefabInstance:
@@ -11839,7 +11876,7 @@ GameObject:
   - component: {fileID: 577797427}
   - component: {fileID: 577797426}
   - component: {fileID: 577797425}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11937,12 +11974,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577797424}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -52.6, y: -50.3, z: 65}
+  m_LocalPosition: {x: -130.66907, y: -186.96777, z: 31.375664}
   m_LocalScale: {x: 750, y: 1, z: 740}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 246561898}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1 &644447724 stripped
 GameObject:
@@ -17047,21 +17084,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1685722749994943960, guid: 4525acae889943744921bb5caa470b28,
         type: 3}
+      propertyPath: UpgradePool.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d6fd1cfedeae7594f98ddaba60c6cfbd,
+        type: 2}
+    - target: {fileID: 1685722749994943960, guid: 4525acae889943744921bb5caa470b28,
+        type: 3}
       propertyPath: UpgradePool.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: d0fc066f513b1554194cf91d895a0933,
+      objectReference: {fileID: 11400000, guid: 71d20d88df7d14d4eb9562b58fa911db,
         type: 2}
     - target: {fileID: 1685722749994943960, guid: 4525acae889943744921bb5caa470b28,
         type: 3}
       propertyPath: UpgradePool.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: b96ffd0aa5d8eef4a80d73a1c6f7860a,
+      objectReference: {fileID: 11400000, guid: fb3f8a193fdcdbd46a4316f2dc03f6f6,
         type: 2}
     - target: {fileID: 1685722749994943960, guid: 4525acae889943744921bb5caa470b28,
         type: 3}
       propertyPath: UpgradePool.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 71d20d88df7d14d4eb9562b58fa911db,
+      objectReference: {fileID: 11400000, guid: 814977880fbe26a47a3c930460f777a9,
         type: 2}
     - target: {fileID: 1692863276549173819, guid: 4525acae889943744921bb5caa470b28,
         type: 3}
@@ -25779,7 +25822,7 @@ GameObject:
   - component: {fileID: 1238466664}
   - component: {fileID: 1238466663}
   - component: {fileID: 1238466662}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death plane (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25877,12 +25920,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238466661}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 178.9, y: -50.3, z: 65}
+  m_LocalPosition: {x: 100.830925, y: -186.96777, z: 31.375664}
   m_LocalScale: {x: 750, y: 1, z: 740}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 246561898}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1001 &1273940599
 PrefabInstance:
@@ -26342,7 +26385,7 @@ GameObject:
   - component: {fileID: 1307416452}
   - component: {fileID: 1307416451}
   - component: {fileID: 1307416450}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26439,13 +26482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307416449}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -1, z: 60.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -68.06907, y: -137.66777, z: 26.875664}
   m_LocalScale: {x: 750, y: 1, z: 740}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 246561898}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1307811940
 PrefabInstance:
@@ -39263,7 +39306,7 @@ GameObject:
   - component: {fileID: 2012926081}
   - component: {fileID: 2012926080}
   - component: {fileID: 2012926079}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39360,13 +39403,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012926078}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10, y: -50.3, z: 159.2}
-  m_LocalScale: {x: 750, y: 1, z: 740}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -68.06907, y: -186.96777, z: 125.57566}
+  m_LocalScale: {x: 750, y: 1, z: 739.99994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 246561898}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &2017865211
 PrefabInstance:
