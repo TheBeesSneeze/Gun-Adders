@@ -55,7 +55,9 @@ public class EnemyType : CharacterType
     private float distanceFrom;
     private float nextFire = 0;
     private float currentFireRate;
-    private AudioManager instance; 
+    private AudioManager instance;
+    private bool isAlive;
+    private EnemyManager enemyManager;
     
 
     protected override void Start()
@@ -66,6 +68,7 @@ public class EnemyType : CharacterType
         mR = GetComponent<MeshRenderer>();
         enemyOriginalColor = mR.material.color;
         rb = GetComponent<Rigidbody>();
+        isAlive = true;
     }
 
     public override void TakeDamage(float damage)
@@ -202,5 +205,23 @@ public class EnemyType : CharacterType
             }
         }
     }
-    
+
+    public override void Die()
+    {
+        
+        if(isAlive)
+        {
+            if (GameObject.FindAnyObjectByType<EnemyManager>() != null)
+            {
+                enemyManager = FindAnyObjectByType<EnemyManager>();
+                if (enemyManager.numberOfEnemies > 0)
+                {
+                    --enemyManager.numberOfEnemies;
+                    isAlive = false;
+                }
+            }
+        }
+        base.Die();
+
+    }
 }

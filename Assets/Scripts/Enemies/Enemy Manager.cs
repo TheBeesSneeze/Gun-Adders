@@ -14,7 +14,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     [SerializeField] public Transform[] spawnPoints;
     [Tooltip("This is multiplied by round number to calculate how many more enemies per round")]
@@ -70,6 +70,7 @@ public class EnemyManager : MonoBehaviour
         /*
          * someohow wait a certain amount of time before next round start i don't know how to do 
          */
+
         RoundStart();
     }
 
