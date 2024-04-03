@@ -5719,7 +5719,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2299204943406430299}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5771,7 +5771,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -6769,7 +6769,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2588025132333995228}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6821,7 +6821,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8029,7 +8029,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988555608105225813}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8081,7 +8081,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -10926,7 +10926,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4046236863435452125}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10978,7 +10978,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -16281,7 +16281,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5507331645535555437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16333,7 +16333,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -22328,7 +22328,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7728045734087792883}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -22380,7 +22380,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -22686,7 +22686,7 @@ Transform:
   - {fileID: 5908658313337581674}
   - {fileID: 7123223676025139666}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7648846947699114292
 MonoBehaviour:
@@ -24369,7 +24369,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8219829806679726963}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24421,7 +24421,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -24894,7 +24894,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8347991649724940385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24946,7 +24946,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -28218,6 +28218,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletEffectPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 401856214871096476, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: UpgradePool.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d6fd1cfedeae7594f98ddaba60c6cfbd,
+        type: 2}
+    - target: {fileID: 401856214871096476, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: UpgradePool.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71d20d88df7d14d4eb9562b58fa911db,
+        type: 2}
+    - target: {fileID: 401856214871096476, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: UpgradePool.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 814977880fbe26a47a3c930460f777a9,
+        type: 2}
+    - target: {fileID: 3678047700637012804, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688728834101421607, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5289534938124026739, guid: 3a4a25340d4077a46957b9677cdb28c7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8288778896804193075, guid: 3a4a25340d4077a46957b9677cdb28c7,
         type: 3}
       propertyPath: m_RootOrder
@@ -28307,10 +28340,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1546873130270478585}
     m_Modifications:
+    - target: {fileID: 198295055671055045, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5942065246957760255, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
         type: 3}
       propertyPath: m_Name
       value: Shoot Mode Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627387874290402077, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7901183052363097526, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
         type: 3}
@@ -28380,6 +28423,11 @@ PrefabInstance:
     - target: {fileID: 7901183052363097526, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745864368622387405, guid: 0b75187ed5ecabb4cb66184bfa829a7b,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
