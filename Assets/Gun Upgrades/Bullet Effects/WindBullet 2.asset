@@ -16,4 +16,4 @@ MonoBehaviour:
   UpgradeName: Player Propulsion
   DamageMultiplier: 0.5
   KnockBackForce: 5
-  PlayerKnockBackForce: 20
+  PlayerKnockBackForce: 100

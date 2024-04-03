@@ -6,8 +6,9 @@ using UnityEngine.UIElements;
 
 public class DynamicStage : MonoBehaviour
 {
-    public int NumberOfStages=1;
+    public int NumberOfStages=1; //sorry guys ive just never used a uint
     private Animator stageAnimator;
+    private int currentStageNumber;
 
     [Header("Debug Stuff")]
     public int Width;
@@ -17,7 +18,7 @@ public class DynamicStage : MonoBehaviour
     public GameObject stageCube;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         stageAnimator = GetComponent<Animator>();
         InputEvents.Instance.RespawnStarted.AddListener(ChangeStage);
@@ -25,7 +26,22 @@ public class DynamicStage : MonoBehaviour
 
     public void ChangeStage()
     {
-        stageAnimator.SetInteger("Stage", Random.Range(1, NumberOfStages+1));
+        if(NumberOfStages > 1)
+        {
+            int old = currentStageNumber;
+            do
+            {
+                currentStageNumber = Random.Range(1, NumberOfStages + 1);
+            }
+            while (old == currentStageNumber);
+        }
+        else
+        {
+            currentStageNumber = 1;
+        }
+
+        //currentStageNumber = Random.Range(1, NumberOfStages + 1);
+        stageAnimator.SetInteger("Stage", currentStageNumber);
         stageAnimator.SetTrigger("New Stage");
         
     }

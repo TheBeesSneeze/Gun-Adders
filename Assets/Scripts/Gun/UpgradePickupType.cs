@@ -92,8 +92,7 @@ public class UpgradePickupType : MonoBehaviour
     /// bruh moment
     /// </summary>
     private void LateUpdate()
-    {
-
+    { 
         var pos = transform.localPosition;
         pos.y = initPosition.y + Mathf.Sin(Time.time * 1.5f) * .25f;
         transform.localPosition = pos;

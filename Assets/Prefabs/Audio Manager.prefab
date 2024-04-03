@@ -157,7 +157,7 @@ MonoBehaviour:
       source: {fileID: 0}
   - name: Hit Wall
     groupVolume: 0.5
-    groupSpatialBlend: 1
+    groupSpatialBlend: 0
     parent: {fileID: 0}
     sounds:
     - clip: {fileID: 8300000, guid: b845c7810edeb8041a8863639f7ceb43, type: 3}

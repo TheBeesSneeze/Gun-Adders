@@ -117,6 +117,7 @@ public class EnemyType : CharacterType
         }
         if(isRangedEnemy)
         {
+            transform.LookAt(playerLocation.position);
             Attacking();
             canRangeAttack();
         }
@@ -125,7 +126,9 @@ public class EnemyType : CharacterType
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.GetComponent<PlayerBehaviour>() != null)
+        var p = collision.gameObject.GetComponent<PlayerBehaviour>();
+
+        if (p != null)
         {
             player = collision.gameObject.GetComponent<PlayerBehaviour>();
             playerIFrames = StartCoroutine(PlayerIFrames());
@@ -134,10 +137,11 @@ public class EnemyType : CharacterType
 
     private void OnCollisionExit(Collision collision)
     {
-        canDamage = false;
-        if (playerIFrames != null)
+
+        var p = collision.gameObject.GetComponent<PlayerBehaviour>();
+        if (p != null)
         {
-            StopCoroutine(playerIFrames); 
+            canDamage = false;
         }
         
     }
@@ -147,12 +151,13 @@ public class EnemyType : CharacterType
         canDamage = true;
         do
         {
-            player.TakeDamage(enemyDamage);
+            player.TakeDamage(enemyDamage * Time.deltaTime);
             Debug.Log("doin damage!");
-            yield return new WaitForSeconds(iFrameSeconds);
+            yield return null;
         }
         while (canDamage);
-        
+
+        playerIFrames = null;
     }
 
     private void canRangeAttack()
@@ -175,7 +180,6 @@ public class EnemyType : CharacterType
     {
         if(isAttacking)
         {
-            transform.LookAt(playerLocation.position);
             
             if(Time.time > nextFire)
             {

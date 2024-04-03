@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
-  m_Name: Hand Gun
+  m_Name: Hand Cannon
   m_EditorClassIdentifier: 
-  GunName: Hand Gun
+  GunName: Hand Cannon
+  Crosshair: {fileID: 21300000, guid: f886b3dc672b2a2409b43b70b44b7149, type: 3}
   GunColor: {r: 1, g: 0.99237216, b: 0, a: 1}
   gunIcon: {fileID: 0}
   RPM: 150
   BulletsPerShot: 1
   BulletAccuracyOffset: 0.25
-  BulletSpeed: 15
-  BulletDamage: 35
+  HoldFire: 0
+  BulletSpeed: 100
+  BulletDamage: 70
   RecoilForce: 0.01

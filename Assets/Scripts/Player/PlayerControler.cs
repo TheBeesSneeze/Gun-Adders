@@ -34,7 +34,6 @@ public class PlayerControler : Singleton<PlayerControler>
 
     public bool ConsistentJumps = true;
 
-    public int airJumps = 1;
     private int airJumpCounter;
     private bool jumping;
 
@@ -58,7 +57,7 @@ public class PlayerControler : Singleton<PlayerControler>
 
         if (feet.Grounded)
         {
-            airJumpCounter = airJumps;
+            airJumpCounter = stats.AirJumps;
         }
         input = InputEvents.Instance.InputDirection2D;
 
@@ -225,6 +224,6 @@ public class PlayerControler : Singleton<PlayerControler>
         cameraHolder.transform.parent = null;
         InputEvents.Instance.JumpStarted.AddListener(Jump);
         InputEvents.Instance.JumpStarted.AddListener(ResetJump);
-        airJumpCounter = airJumps;
+        airJumpCounter = stats.AirJumps;
     }
 }

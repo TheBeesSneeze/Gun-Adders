@@ -15,5 +15,5 @@ MonoBehaviour:
   TrailColor: {r: 1, g: 1, b: 1, a: 1}
   UpgradeName: Enemy Launcher
   DamageMultiplier: 1
-  KnockBackForce: 30
+  KnockBackForce: 60
   PlayerKnockBackForce: 20

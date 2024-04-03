@@ -33,6 +33,8 @@ public class GunController : MonoBehaviour
     private Camera playerCamera;
     private Animator animator;
 
+    private bool canShoot;
+
     /// <summary>
     /// call this in from those little pickup guys
     /// </summary>
@@ -52,6 +54,35 @@ public class GunController : MonoBehaviour
         Gun.GetChild(0).GetComponent<Renderer>().material.color = shootMode.GunColor;
 
         //maybe put a sound effect here or something
+
+        canShoot = true;
+
+        if(defaultShootingMode.Crosshair != null)
+        {
+            CrosshairScript cross = GetComponent<CrosshairScript>();
+            cross.ChangeCrosshairSprite(defaultShootingMode.Crosshair);
+        }
+        
+    }
+
+    /// <summary>
+    /// shoots all the bullets. calls the ShootBullet function
+    /// </summary>
+    private void Shoot()
+    {
+        secondsSinceLastShoot = 0;
+        animator.SetTrigger("Shoot");
+
+        Gun.TryGetComponent(out AudioSource source);
+        if (source != null)
+            source.Play();
+
+        for (int i = 0; i < defaultShootingMode.BulletsPerShot; i++)
+        {
+            ShootBullet();
+        }
+
+        playerRB.AddForce(-playerCamera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     /// <summary>
@@ -93,9 +124,30 @@ public class GunController : MonoBehaviour
         if (PauseMenu.IsPaused)
             return;
 
+        DebugTarget();
+        secondsSinceLastShoot += Time.deltaTime;
+
+        if (!canShoot) return;
+        if (!InputEvents.Instance.ShootPressed) return;
+        if (secondsSinceLastShoot < (60f / defaultShootingMode.RPM)) return;
+
+        if (!defaultShootingMode.HoldFire)
+            canShoot = false;
+
+        //shootin time
+        Shoot();
+    }
+
+    private void OnShootStart()
+    {
+        canShoot = true;
+    }
+
+    private void DebugTarget()
+    {
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
-        if(Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))
         {
             destination = hit.point;
         }
@@ -105,27 +157,6 @@ public class GunController : MonoBehaviour
         }
         Debug.DrawLine(ray.origin, destination, Color.red);
         Debug.DrawLine(bulletSpawnPoint.position, destination, Color.red);
-        secondsSinceLastShoot += Time.deltaTime;
-
-        if (!InputEvents.Instance.ShootPressed) return;
-
-        if (secondsSinceLastShoot < (60f / defaultShootingMode.RPM)) return;
-
-        //shootin time
-        secondsSinceLastShoot = 0;
-        animator.SetTrigger("Shoot");
-
-        Gun.TryGetComponent(out AudioSource source);
-        if (source != null)
-            source.Play();
-
-        for (int i = 0; i< defaultShootingMode.BulletsPerShot; i++)
-        {
-            ShootBullet();
-        }
-
-
-       playerRB.AddForce(-playerCamera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     private void Start()
@@ -136,6 +167,7 @@ public class GunController : MonoBehaviour
         playerCamera = Camera.main;
         animator = GetComponent<Animator>();
         LoadShootingMode(defaultShootingMode);
+        InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
     }
 
     
