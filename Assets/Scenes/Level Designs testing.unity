@@ -8803,6 +8803,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 77938983610899891, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 77938983610899891, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 77938983610899891, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 77938983610899891, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 105499957041969097, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8992,6 +9012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: far clip plane
       value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616906911819539490, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: jointForceBoost
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2616906911819539490, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
@@ -9338,6 +9363,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6888475280479492071, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: DefaultHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6974879785427474715, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -9446,6 +9476,17 @@ PrefabInstance:
     - target: {fileID: 7505612450342146219, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720351262012301187, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ea4cf637d2de2514e89f710c7ccc4b24,
+        type: 3}
+    - target: {fileID: 7720351262012301187, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8007718518362275423, guid: 584bb12fffb6c834baf39d3290500c25,
@@ -9538,6 +9579,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8878237862127877313, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: crossHairHit
+      value: 
+      objectReference: {fileID: 1757782094}
     - target: {fileID: 9036961622105217249, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -9593,14 +9639,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3962617243924348065, guid: 584bb12fffb6c834baf39d3290500c25,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6979316099898506054, guid: 584bb12fffb6c834baf39d3290500c25,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6514351247090857413, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -29667,6 +29705,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1922713438399770442, guid: ea1549f7600ae4043b858d3d48ef410b,
     type: 3}
   m_PrefabInstance: {fileID: 1722613997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1757782094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7084953203888305576, guid: 584bb12fffb6c834baf39d3290500c25,
+    type: 3}
+  m_PrefabInstance: {fileID: 351454282}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1763847092
 PrefabInstance:

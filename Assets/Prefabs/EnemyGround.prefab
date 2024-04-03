@@ -205,7 +205,7 @@ MonoBehaviour:
   CurrentHealth: 1
   DefaultHealth: 200
   iFrameSeconds: 0.1
-  enemyDamage: 1
+  enemyDamage: 40
   enemyDamageColor: {r: 0.31132078, g: 0.0044054748, b: 0.0044054748, a: 1}
   enemyDamageFlashSeconds: 0.15
   playerLocation: {fileID: 0}
