@@ -26,9 +26,14 @@ public class PlayerStats : MonoBehaviour
     [Tooltip("What percent of normal movement will get applied whilst moving in the air")]
     public float AirMovementMultiplier = 0.5f;
 
-
     [Tooltip("The max target speed")]
     public float MaxSpeed = 20f;
+
+    [Tooltip("How much player regens every second.")]
+    public int HealthRegen = 1;
+
+    [Tooltip("Seconds until player heals.")]
+    public int SecondsUntilHealing = 2;
 
     [Header("Jumps")]
     //[Tooltip("how much velocity is carried over from one frame to another")]
