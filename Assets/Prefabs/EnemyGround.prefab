@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 15
   SlowedSpeed: 10
-  PlayerSightDistance: 50
+  PlayerSightDistance: 65
   RequirePlayerSightToMove: 0
   viewMask:
     serializedVersion: 2
