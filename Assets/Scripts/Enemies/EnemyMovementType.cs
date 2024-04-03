@@ -16,9 +16,13 @@ using UnityEngine.UI;
 
 public class EnemyMovementType : MonoBehaviour
 {
+    [Header("Speed")]
     [Tooltip("Speed at which enemy moves")]
     [SerializeField] protected float Speed = 1.0f;
     [SerializeField] protected float SlowedSpeed = 0.5f;
+    [Tooltip("Leave -1 for no speedcap")]
+    [SerializeField] protected float MaxSpeed = -1f;
+    [Header("Other stuff")]
     [Tooltip("How far enemy can see")]
     [SerializeField] private float PlayerSightDistance=15; 
     [SerializeField] private bool RequirePlayerSightToMove=true;
@@ -50,6 +54,7 @@ public class EnemyMovementType : MonoBehaviour
         float speed = enemyType.slowed ? SlowedSpeed : Speed;
 
         Move(speed);
+        CapSpeed(speed);
     }
 
     /// <summary>
@@ -58,6 +63,19 @@ public class EnemyMovementType : MonoBehaviour
     protected virtual void Move(float speed)
     {
         throw new NotImplementedException();
+    }
+
+    protected virtual void CapSpeed(float speed)
+    {
+        if (MaxSpeed < 0) return;
+
+        Vector3 velocity = rb.velocity;
+
+        if(velocity.magnitude > MaxSpeed)
+        {
+            rb.velocity = velocity.normalized * MaxSpeed;
+            
+        }
     }
 
     private void RotateHealthBar()

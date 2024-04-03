@@ -232,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 15
   SlowedSpeed: 10
+  MaxSpeed: 20
   PlayerSightDistance: 50
   RequirePlayerSightToMove: 0
   viewMask:

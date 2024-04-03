@@ -31,6 +31,7 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("Pausing game...");
             FadePause(true);
             AudioManager.instance.Play("Pause");
+            Cursor.visible = true;
         }
         else
         {
@@ -39,6 +40,7 @@ public class PauseMenu : MonoBehaviour
             FadePause(false);
             AudioManager.instance.Play("Click");
             AudioManager.instance.Play("Unpause");
+            Cursor.visible = false;
         }
     }
 
