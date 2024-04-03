@@ -21,6 +21,7 @@ public class PlayerBehaviour : CharacterType
 {
     private PlayerStats stats;
     [SerializeField] private Image redVignette;
+    [SerializeField] private TMPro.TMP_Text enemyCountText;
     private float secondsSinceLastTookDamage;
     // Start is called before the first frame update
     protected override void Start()
@@ -40,6 +41,11 @@ public class PlayerBehaviour : CharacterType
         float t = CurrentHealth / stats.DefaultHealth;
         t = 1 - t;
         redVignette.color = new Color(redVignette.color.r, redVignette.color.g, redVignette.color.b, t * t);
+
+        if (EnemyManager.Instance != null && enemyCountText != null)
+        {
+            enemyCountText.text = $"Enemies Left: {EnemyManager.Instance.numberOfEnemies}";
+        }
     }
 
     public void SetStats()
