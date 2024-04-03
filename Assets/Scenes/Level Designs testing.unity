@@ -18139,7 +18139,7 @@ MonoBehaviour:
   - name: Shoot Default
     clip: {fileID: 8300000, guid: 8d4c34490c4153b46a0c54c4364b3cfc, type: 3}
     volume: 0.6
-    spatialBlend: 0.51
+    spatialBlend: 0
     loop: 0
     parent: {fileID: 0}
     source: {fileID: 0}
