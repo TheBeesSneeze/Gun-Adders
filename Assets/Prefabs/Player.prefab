@@ -50,7 +50,7 @@ Transform:
   - {fileID: 1544151863226725713}
   - {fileID: 498913349358759857}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6888475280479492071
 MonoBehaviour:
@@ -276,6 +276,8 @@ MonoBehaviour:
   gunFirePoint: {fileID: 4179539321219249981}
   gunFollowPoint: {fileID: 8931948955888214106}
   gunExitPoint: {fileID: 7673082348635512603}
+  Head: {fileID: 0}
+  BodyMaterial: {fileID: 2100000, guid: 1e8e23265e52540489424cd18d37b1cd, type: 2}
 --- !u!114 &3156066056495464734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossHairImage: {fileID: 8683969771477153558}
   newCrossHairImage: {fileID: 7084953203888305576}
+  crossHairHit: {fileID: 0}
   gunRange: 1000
   mask:
     serializedVersion: 2
@@ -2070,6 +2073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossHairImage: {fileID: 8683969771477153558}
   newCrossHairImage: {fileID: 7084953203888305576}
+  crossHairHit: {fileID: 0}
   gunRange: 1000
   mask:
     serializedVersion: 2
@@ -4141,7 +4145,7 @@ PrefabInstance:
     - target: {fileID: 7604870334526333957, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
       propertyPath: m_Size
-      value: 0.8474886
+      value: 0.84691364
       objectReference: {fileID: 0}
     - target: {fileID: 7604870334526333957, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
@@ -4331,7 +4335,7 @@ PrefabInstance:
     - target: {fileID: 9173208411425977550, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
       propertyPath: m_Size
-      value: 0.99999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9173208411425977550, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
