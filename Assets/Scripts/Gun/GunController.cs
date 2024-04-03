@@ -73,9 +73,13 @@ public class GunController : MonoBehaviour
         secondsSinceLastShoot = 0;
         animator.SetTrigger("Shoot");
 
+        /*
         Gun.TryGetComponent(out AudioSource source);
+
         if (source != null)
             source.Play();
+        */
+        AudioManager.instance.Play("Shoot Default");
 
         for (int i = 0; i < defaultShootingMode.BulletsPerShot; i++)
         {
