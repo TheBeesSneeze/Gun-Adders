@@ -840,7 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 1
-  DefaultHealth: 20
+  DefaultHealth: 100
   iFrameSeconds: 1
   enemyDamage: 1
   enemyDamageColor: {r: 0, g: 0, b: 0, a: 0}

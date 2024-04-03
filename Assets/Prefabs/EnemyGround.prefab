@@ -183,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 1651905046631748458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 3, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 415458240702346697}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 1
-  DefaultHealth: 100
+  DefaultHealth: 200
   iFrameSeconds: 0.1
   enemyDamage: 1
   enemyDamageColor: {r: 0.31132078, g: 0.0044054748, b: 0.0044054748, a: 1}
