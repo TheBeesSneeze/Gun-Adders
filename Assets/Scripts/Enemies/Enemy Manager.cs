@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     [Tooltip("This is multiplied by round number to calculate how many more enemies per round")]
     [SerializeField] public int roundExtraSpawn = 1;
     public GameObject[] enemyPrefabs;
+    private DynamicStage dynamicStage;
 
 
     public int numberOfEnemies;
@@ -53,6 +54,8 @@ public class EnemyManager : MonoBehaviour
          *      somehow destroy the gunUp and bullet up in the scene currently need to ask how these work 
          *  }
          */
+        dynamicStage = FindAnyObjectByType<DynamicStage>();
+        dynamicStage.ChangeStage();
         SpawnEnemies();
         ++roundNumber;
     }
