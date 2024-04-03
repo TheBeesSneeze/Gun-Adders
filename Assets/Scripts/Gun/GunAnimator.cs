@@ -36,7 +36,8 @@ public class GunAnimator : MonoBehaviour
 
     private void MoveEnd()
     {
-        animator.SetBool("Walking", false);
+        if (animator)
+            animator.SetBool("Walking", false);
     }
 
     private void ShootStart()

@@ -6,6 +6,7 @@ public class CrosshairScript : MonoBehaviour
 {
     public GameObject crossHairImage;
     public GameObject newCrossHairImage;
+    public GameObject crossHairHit;
     public float gunRange = 1000f;
     public LayerMask mask;
     void Update()
@@ -23,9 +24,13 @@ public class CrosshairScript : MonoBehaviour
             crossHairImage.SetActive(true);
         }
     }
-
-    public void ChangeCrosshairSprite(Sprite sprite)
+    public void hitEnemy()
     {
-
+        StartCoroutine(ShowCrossHairHit());
+    }
+    IEnumerator ShowCrossHairHit() {
+        crossHairHit.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        crossHairHit.SetActive(true);
     }
 }
