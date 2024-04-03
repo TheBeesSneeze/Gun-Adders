@@ -20,8 +20,6 @@ public class EnemyMovementType : MonoBehaviour
     [Tooltip("Speed at which enemy moves")]
     [SerializeField] protected float Speed = 1.0f;
     [SerializeField] protected float SlowedSpeed = 0.5f;
-    [Tooltip("Leave -1 for no speedcap")]
-    [SerializeField] protected float MaxSpeed = -1f;
     [Header("Other stuff")]
     [Tooltip("How far enemy can see")]
     [SerializeField] private float PlayerSightDistance=15; 
@@ -48,8 +46,6 @@ public class EnemyMovementType : MonoBehaviour
         RotateHealthBar();
 
         MoveEnemy = PlayerVisible(); //PlayerVisible returns true if RequirePlayerSightToMove = false
-
-        //CapSpeed(speed);
     }
     private void FixedUpdate()
     {
@@ -68,24 +64,6 @@ public class EnemyMovementType : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    protected virtual void CapSpeed(float speed)
-    {
-        /*
-        if (MaxSpeed < 0) return;
-
-        Vector3 velocity = rb.velocity;
-        float y = velocity.y;
-        velocity.y = 0;
-
-        if(velocity.magnitude > MaxSpeed)
-        {
-            velocity = velocity.normalized * MaxSpeed;
-            velocity.y = y;
-
-            rb.velocity = velocity;
-        }
-        */
-    }
 
     private void RotateHealthBar()
     {
