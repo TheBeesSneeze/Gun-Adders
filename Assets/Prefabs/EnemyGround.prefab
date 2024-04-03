@@ -238,6 +238,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7551
   MoveEnemy: 0
+  groundFriction: 0.3
 --- !u!33 &5290609480795805529
 MeshFilter:
   m_ObjectHideFlags: 0
