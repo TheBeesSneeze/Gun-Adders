@@ -45,8 +45,14 @@ public class CharacterType : MonoBehaviour
     {
         if (gameObject.GetComponent<EnemyType>() != null)
         {
-            enemyManager = FindAnyObjectByType<EnemyManager>();
-            --enemyManager.numberOfEnemies;
+            if(GameObject.FindAnyObjectByType<EnemyManager>() != null)
+            {
+                enemyManager = FindAnyObjectByType<EnemyManager>();
+                if (enemyManager.numberOfEnemies > 0)
+                {
+                    --enemyManager.numberOfEnemies;
+                }
+            }
         }
         Destroy(gameObject);
     }
