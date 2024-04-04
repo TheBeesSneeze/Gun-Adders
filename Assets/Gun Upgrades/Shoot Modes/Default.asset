@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunName: Pistol
   Crosshair: {fileID: 21300000, guid: f886b3dc672b2a2409b43b70b44b7149, type: 3}
-  GunColor: {r: 0.34901962, g: 0.3764706, b: 0.35686275, a: 1}
+  ModelPrefab: {fileID: 1947189329703348, guid: 3a1ce1837d448a242b176747029cb884,
+    type: 3}
   gunIcon: {fileID: 0}
   RPM: 300
   BulletsPerShot: 1

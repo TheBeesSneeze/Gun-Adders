@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunName: Sniper
   Crosshair: {fileID: 21300000, guid: 995d3bbb6105cd541b85c931161feec5, type: 3}
-  GunColor: {r: 0.034882545, g: 0, b: 1, a: 1}
+  ModelPrefab: {fileID: 0}
   gunIcon: {fileID: 0}
   RPM: 90
   BulletsPerShot: 1

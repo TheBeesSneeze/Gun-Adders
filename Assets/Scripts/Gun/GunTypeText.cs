@@ -9,6 +9,6 @@ public class GunTypeText : MonoBehaviour
     public TextMeshPro tb;
     public void Update()
     {
-        tb.text = gun.defaultShootingMode.GunName;
+        tb.text = gun.shootingMode.GunName;
     }
 }

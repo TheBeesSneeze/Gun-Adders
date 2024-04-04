@@ -9,7 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using NaughtyAttributes;
 
 [CreateAssetMenu(fileName = "ShootingMode", menuName = "ShootingMode")]
 public class ShootingMode : ScriptableObject
@@ -17,7 +17,9 @@ public class ShootingMode : ScriptableObject
     [Header("Display")]
     public string GunName;
     public Sprite Crosshair;
-    public Color GunColor = Color.white;
+    public GameObject ModelPrefab;
+    //[Tooltip("doesnt do anything anymore")]
+    //public Color GunColor = Color.white;
     public Sprite gunIcon;
     [Tooltip("RPM of bullets shot")] public float RPM = 120f;
     [Tooltip("# of bullets shot at one time (imagine a shotgun)")]
@@ -31,4 +33,13 @@ public class ShootingMode : ScriptableObject
     public float BulletDamage=1; //@TODO
     public float RecoilForce;
 
+    [Button]
+    public void CalculateDPS()
+    {
+        if (BulletsPerShot <= 1)
+            Debug.Log(RPM / 60 * BulletDamage + " damage per second");
+
+        if(BulletsPerShot > 1)
+            Debug.Log(RPM / 60 * BulletDamage * BulletsPerShot + " DPS across all bullets");
+    }
 }

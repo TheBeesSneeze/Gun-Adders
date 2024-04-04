@@ -18,8 +18,9 @@ using static Unity.VisualScripting.Member;
 public class GunController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] public ShootingMode defaultShootingMode;
+    [SerializeField] public ShootingMode shootingMode;
     [SerializeField] private GameObject BulletPrefab;
+    
     [Header("Unity Stuff")]
     public Transform Gun;
     public Transform bulletSpawnPoint;
@@ -32,6 +33,8 @@ public class GunController : MonoBehaviour
     private Rigidbody playerRB;
     private Camera playerCamera;
     private Animator animator;
+
+    [SerializeField] private GameObject gunModel;
 
     private bool canShoot;
 
@@ -47,22 +50,31 @@ public class GunController : MonoBehaviour
             Application.Quit();
         }
 
-        defaultShootingMode = shootMode;
-        
+        shootingMode = shootMode;
+
         //change color
-
-        Gun.GetChild(0).GetComponent<Renderer>().material.color = shootMode.GunColor;
-
-        //maybe put a sound effect here or something
+        //Gun.GetChild(0).GetComponent<Renderer>().material.color = shootMode.GunColor;
 
         canShoot = true;
 
-        // if(defaultShootingMode.Crosshair != null)
-        // {
-        //     CrosshairScript cross = GetComponent<CrosshairScript>();
-        //     cross.ChangeCrosshairSprite(defaultShootingMode.Crosshair);
-        // }
-        
+        SwapModel();
+    }
+
+    private void SwapModel()
+    {
+        if (shootingMode.ModelPrefab == null) return;
+
+        if (gunModel == null)
+        {
+            Debug.LogWarning("no gun model in " + shootingMode.name + " uh oh");
+            //gunModel = Instantiate(shootingMode.ModelPrefab, Gun.GetChild(0));
+            return;
+        }
+
+        //swap em out baby
+        Transform parent = gunModel.transform.parent;
+        Destroy(gunModel);
+        gunModel = Instantiate(shootingMode.ModelPrefab, parent);
     }
 
     /// <summary>
@@ -81,12 +93,12 @@ public class GunController : MonoBehaviour
         */
         AudioManager.instance.Play("Shoot Default");
 
-        for (int i = 0; i < defaultShootingMode.BulletsPerShot; i++)
+        for (int i = 0; i < shootingMode.BulletsPerShot; i++)
         {
             ShootBullet();
         }
 
-        playerRB.AddForce(-playerCamera.transform.forward * defaultShootingMode.RecoilForce, ForceMode.Impulse);
+        playerRB.AddForce(-playerCamera.transform.forward * shootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     /// <summary>
@@ -107,20 +119,17 @@ public class GunController : MonoBehaviour
         }
 
         destination += new Vector3(
-            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset),
-            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset),
-            Random.Range(-defaultShootingMode.BulletAccuracyOffset, defaultShootingMode.BulletAccuracyOffset));
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 dir = destination - bulletSpawnPoint.position;
         var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.transform.forward = dir.normalized;
         var bulletObj = bullet.GetComponent<Bullet>();
-        bulletObj.damageAmount = defaultShootingMode.BulletDamage;
-        bulletObj.bulletForce = defaultShootingMode.BulletSpeed;
+        bulletObj.damageAmount = shootingMode.BulletDamage;
+        bulletObj.bulletForce = shootingMode.BulletSpeed;
         bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
         bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
-        
-        
-        
     }
     
     private void Update()
@@ -133,9 +142,9 @@ public class GunController : MonoBehaviour
 
         if (!canShoot) return;
         if (!InputEvents.Instance.ShootPressed) return;
-        if (secondsSinceLastShoot < (60f / defaultShootingMode.RPM)) return;
+        if (secondsSinceLastShoot < (60f / shootingMode.RPM)) return;
 
-        if (!defaultShootingMode.HoldFire)
+        if (!shootingMode.HoldFire)
             canShoot = false;
 
         //shootin time
@@ -170,7 +179,7 @@ public class GunController : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
         animator = GetComponent<Animator>();
-        LoadShootingMode(defaultShootingMode);
+        LoadShootingMode(shootingMode);
         InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
     }
 
