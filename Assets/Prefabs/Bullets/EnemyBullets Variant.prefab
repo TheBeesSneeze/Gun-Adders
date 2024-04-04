@@ -8,6 +8,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4692532403504491137, guid: bb98eaf02be1e9e44939ac0716429f99,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692532403504491137, guid: bb98eaf02be1e9e44939ac0716429f99,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692532403504491137, guid: bb98eaf02be1e9e44939ac0716429f99,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692532403504491137, guid: bb98eaf02be1e9e44939ac0716429f99,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692532403504491137, guid: bb98eaf02be1e9e44939ac0716429f99,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 4841941193543511118, guid: bb98eaf02be1e9e44939ac0716429f99,
         type: 3}
       propertyPath: hitLayers.m_Bits
@@ -16,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 7335014191224061694, guid: bb98eaf02be1e9e44939ac0716429f99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7335014191224061694, guid: bb98eaf02be1e9e44939ac0716429f99,
         type: 3}

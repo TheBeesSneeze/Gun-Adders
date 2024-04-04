@@ -73,7 +73,8 @@ public class Bullet : MonoBehaviour
                 GameObject obj = null;
                 if (hitImpactEffectPrefab != null)
                 {
-                    obj = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    /// = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    obj = Instantiate(hitImpactEffectPrefab, hit.point, Camera.main.transform.rotation);
                 }
                 
                 AudioSource audio = obj.AddComponent<AudioSource>();
