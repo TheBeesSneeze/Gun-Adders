@@ -9328,6 +9328,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6888475280479492071, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: HealthRegen
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6974879785427474715, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -9466,6 +9471,11 @@ PrefabInstance:
     - target: {fileID: 8021842014947643627, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021842014947643627, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8090263674786533997, guid: 584bb12fffb6c834baf39d3290500c25,
