@@ -98,6 +98,8 @@ public class GrapplingHook : MonoBehaviour
 
     private void Update()
     {
+        if (joint == null) return;
+
         if(InputEvents.Instance.JumpPressed)
         {
             joint.spring = jumpingSpring;
