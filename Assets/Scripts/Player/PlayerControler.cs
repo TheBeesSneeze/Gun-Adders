@@ -96,9 +96,9 @@ public class PlayerControler : Singleton<PlayerControler>
 
         float maxSpeed = stats.MaxSpeed;
 
-        if (input.x > 0 && xMag > maxSpeed) input.x = 0;
+        if (input.x > 0 && xMag >  maxSpeed) input.x = 0;
         if (input.x < 0 && xMag < -maxSpeed) input.x = 0;
-        if (input.y > 0 && yMag > maxSpeed) input.y = 0;
+        if (input.y > 0 && yMag >  maxSpeed) input.y = 0;
         if (input.y < 0 && yMag < -maxSpeed) input.y = 0;
 
         float multiplier = 1f;
@@ -116,7 +116,7 @@ public class PlayerControler : Singleton<PlayerControler>
     private void Jump()
     {
         jumping = true;
-        if (airJumpCounter <= 0)
+        if (airJumpCounter <= 0 || GrapplingHook.isGrappling)
         {
             return;
         }

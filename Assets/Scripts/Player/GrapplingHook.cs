@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class GrapplingHook : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GrapplingHook : MonoBehaviour
     private float maxDist = 1000f;
     private LineRenderer hookRenderer;
     private Transform cam;
+
+    
 
     [Tooltip("How much of the distance between the grapple hook and the player will be used.")]
     public float maxDistanceFromPointMultiplier = 0.8f;
@@ -24,6 +27,12 @@ public class GrapplingHook : MonoBehaviour
     [Tooltip("Damper force of the joint.")]
     public float jointDamper = 7f;
 
+    [Tooltip("Spring for when player is holding space")]
+    public float jumpingSpring = 9;
+
+    [Tooltip("Damper for when player is holding space")]
+    public float jumpingDamper = 4f;
+
     [Tooltip("Scalar for mass of the player and potential connected objects.")]
     public float jointMassScale = 4.5f;
 
@@ -36,6 +45,8 @@ public class GrapplingHook : MonoBehaviour
     [Header("Snake town")]
     [SerializeField] private Transform Head;
     [SerializeField] private Material BodyMaterial;
+
+    [ReadOnly] public static bool isGrappling;
 
     void Start()
     {
@@ -85,10 +96,26 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(InputEvents.Instance.JumpPressed)
+        {
+            joint.spring = jumpingSpring;
+            joint.damper = jumpingDamper;
+        }
+        else
+        {
+            joint.spring = jointSpring;
+            joint.damper = jointDamper;
+        }
+    }
+
     private void StartGrapple()
     {
         if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, maxDist, shootLayers))
         {
+            isGrappling = true;
+
             hitPoint = hit.point;
             joint = gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -109,8 +136,9 @@ public class GrapplingHook : MonoBehaviour
 
     private void StopGrapple()
     {
+        isGrappling = false;
         if (joint)
-        {
+        { 
             Destroy(joint);
         }
     }
