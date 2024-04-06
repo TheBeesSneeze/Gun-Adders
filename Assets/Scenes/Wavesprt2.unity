@@ -1049,14 +1049,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6979316099898506054, guid: 584bb12fffb6c834baf39d3290500c25,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6514351247090857413, guid: 584bb12fffb6c834baf39d3290500c25,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 584bb12fffb6c834baf39d3290500c25, type: 3}
 --- !u!1001 &975949603
 PrefabInstance:
@@ -1271,6 +1263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
+        type: 3}
+      propertyPath: timeBetweenRounds
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4076308475334361730, guid: 0d91bc4da2f28bd479327116936175b2,
         type: 3}

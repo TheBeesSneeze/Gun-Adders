@@ -27,6 +27,11 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private int roundNumber;
 
+    private bool roundJustEnd;
+    [SerializeField]public float timeBetweenRounds = 5f;
+    private float currentTime;
+    private float goalTime; 
+
     /*
      * public Transform bulletUpgrade spawn
      * public Transform gunUpgrade spawn
@@ -43,6 +48,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void RoundStart()
     {
+        roundJustEnd = false;
         /*
          * if(round % roundsBetweenUpgradeSpawn) 
          * {
@@ -67,17 +73,26 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void RoundEnd()
     {
-        /*
-         * someohow wait a certain amount of time before next round start i don't know how to do 
-         */
+        roundJustEnd = true; 
+        if(currentTime > goalTime) { RoundStart(); }
+        else { currentTime = Time.time; }
 
-        RoundStart();
+        
     }
 
     public void Update()
     {
         if (enemyPrefabs == null) { return; }
-        if (numberOfEnemies == 0) { RoundEnd(); }
+        if (numberOfEnemies == 0) 
+        {
+            if (!roundJustEnd)
+            {
+                currentTime = Time.time;
+                goalTime = currentTime + timeBetweenRounds;
+            }
+            RoundEnd();
+            
+        }
 
     }
 
