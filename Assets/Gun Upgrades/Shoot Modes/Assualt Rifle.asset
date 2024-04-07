@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunName: Assault Rifle
   Crosshair: {fileID: 21300000, guid: 25c230a0a09e26e469b690c30590c2fe, type: 3}
-  ModelPrefab: {fileID: 1603989468733260, guid: 75df6968cc4572d4688a573414aa91e6,
+  ModelPrefab: {fileID: 159363343589617200, guid: 1528fe736fa5c11478dafb37a373b377,
     type: 3}
   gunIcon: {fileID: 0}
   RPM: 600
