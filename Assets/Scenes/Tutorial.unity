@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.53
+  m_AmbientIntensity: 1.49
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 4b19b9bc2b5415149be062a9e03e46fd, type: 2}
@@ -16139,7 +16139,7 @@ PrefabInstance:
     - target: {fileID: 3511402469773723600, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 123.99997
+      value: 0.000022888184
       objectReference: {fileID: 0}
     - target: {fileID: 3599212242092800361, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
@@ -16561,6 +16561,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8021842014947643627, guid: 584bb12fffb6c834baf39d3290500c25,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8082299681628309788, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -16725,7 +16730,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1153899163}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7124835933501473211, guid: 584bb12fffb6c834baf39d3290500c25,
+    - targetCorrespondingSourceObject: {fileID: 3962617243924348065, guid: 584bb12fffb6c834baf39d3290500c25,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
