@@ -4353,7 +4353,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Claire
+  m_text: Claire Noto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 883827dfa2a088742898d6389bdf762d, type: 2}
   m_sharedMaterial: {fileID: 7840694614855483648, guid: 883827dfa2a088742898d6389bdf762d,
@@ -15637,15 +15637,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Alec
+  m_text: 'Alec Pizziferro
 
-    Clare
+    Clare Grady
 
-    Claire
+    Claire Noto
 
     Sky Beal
 
     Toby
+    Schamberger
 
     Tyler Bouchard'
   m_isRightToLeft: 0
@@ -23811,6 +23812,11 @@ PrefabInstance:
     - target: {fileID: 8963741913490532039, guid: 7ec81f37473d4f7498a34acd997f0fb0,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8963741913490532039, guid: 7ec81f37473d4f7498a34acd997f0fb0,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
