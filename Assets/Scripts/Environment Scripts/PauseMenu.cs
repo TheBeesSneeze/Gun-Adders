@@ -17,8 +17,6 @@ public class PauseMenu : MonoBehaviour
 
     public static bool IsPaused = false;
 
-    public GameObject ResetConfirmationScreen;
-
     private void Start()
     {
         IsPaused = false;
@@ -27,9 +25,6 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
-        if(ResetConfirmationScreen!= null)
-            ResetConfirmationScreen.SetActive(false);
-
         IsPaused = !IsPaused;
         if (IsPaused)
         {

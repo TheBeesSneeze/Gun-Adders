@@ -13,8 +13,7 @@ namespace ModularOptions {
 		/// <summary>
 		/// Auto-assign editor reference, if suitable component is found.
 		/// </summary>
-		protected override void Reset()
-		{
+		protected override void Reset(){
 			OptionInstance.sensitivity = 100;
 			base.Reset();
 		}
@@ -24,8 +23,7 @@ namespace ModularOptions {
 			OptionInstance.sensitivity = _value;
 		}
 
-		public string OverrideFormatting(float _value)
-		{
+		public string OverrideFormatting(float _value){
 			return Mathf.RoundToInt(_value/10f).ToString();
 		}
     }
