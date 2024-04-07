@@ -15,7 +15,7 @@ public class Teleporter : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerBehaviour _))
         {
-            StartCoroutine(FindObjectOfType<PauseMenu>().Transition("Environment"));
+            StartCoroutine(FindObjectOfType<PauseMenu>().Transition("Level Designs testing"));
         }
     }
 }

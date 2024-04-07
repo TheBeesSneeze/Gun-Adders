@@ -200,8 +200,10 @@ public class PlayerControler : Singleton<PlayerControler>
     private void UpdateCamera()
     {
         var mouse = InputEvents.Instance.LookDelta;
-        float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
-        float mouseY = mouse.y * OptionInstance.sensitivity * Time.fixedDeltaTime;
+        //float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
+        //float mouseY = mouse.y * OptionInstance.sensitivity * Time.fixedDeltaTime;
+        float mouseX = mouse.x * 80 * Time.fixedDeltaTime;
+        float mouseY = mouse.y * 80 * Time.fixedDeltaTime;
         Vector3 rot = cameraHolder.localRotation.eulerAngles;
         xMovement = rot.y + mouseX;
         yMovement -= mouseY;
