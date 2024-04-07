@@ -22,6 +22,7 @@ public class PlayerBehaviour : CharacterType
     private PlayerStats stats;
     [SerializeField] private Image redVignette;
     [SerializeField] private TMPro.TMP_Text enemyCountText;
+    [SerializeField] private TMPro.TMP_Text roundNumberText; 
     private float secondsSinceLastTookDamage;
     // Start is called before the first frame update
     protected override void Start()
@@ -45,6 +46,7 @@ public class PlayerBehaviour : CharacterType
         if (EnemyManager.Instance != null && enemyCountText != null)
         {
             enemyCountText.text = $"Enemies Left: {EnemyManager.Instance.numberOfEnemies}";
+            roundNumberText.text = $"Current Round: {EnemyManager.Instance.roundNumber}"; 
         }
     }
 
