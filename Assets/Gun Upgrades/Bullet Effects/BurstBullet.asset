@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae486a9476a9e7245b85c4bf4dd47130, type: 3}
-  m_Name: WindBullet 2
+  m_Name: BurstBullet
   m_EditorClassIdentifier: 
-  TrailColor: {r: 1, g: 1, b: 1, a: 1}
-  UpgradeName: Player Propulsion
+  TrailColor: {r: 0.9339623, g: 0.82976145, b: 0.18855463, a: 1}
+  UpgradeName: Burst Bullet
   DamageMultiplier: 0.5
   KnockBackForce: 5
   PlayerKnockBackForce: 100
