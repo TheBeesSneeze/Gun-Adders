@@ -26,11 +26,13 @@ public class EnemyManager : Singleton<EnemyManager>
     public int numberOfEnemies;
 
     public int roundNumber;
+    
 
-    private bool roundJustEnd;
+    public bool roundJustEnd;
     [SerializeField]public float timeBetweenRounds = 5f;
     private float currentTime;
-    private float goalTime; 
+    private float goalTime;
+    public float timeTillRoundStart; 
 
     /*
      * public Transform bulletUpgrade spawn
@@ -49,6 +51,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public void RoundStart()
     {
         roundJustEnd = false;
+        timeTillRoundStart = 0; 
         /*
          * if(round % roundsBetweenUpgradeSpawn) 
          * {
@@ -75,7 +78,11 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         roundJustEnd = true; 
         if(currentTime > goalTime) { RoundStart(); }
-        else { currentTime = Time.time; }
+        else 
+        {
+            currentTime = Time.time;
+            timeTillRoundStart = goalTime - currentTime; 
+        }
 
         
     }
