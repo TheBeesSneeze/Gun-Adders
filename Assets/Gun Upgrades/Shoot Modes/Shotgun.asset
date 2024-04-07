@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunName: Shotgun
   Crosshair: {fileID: 21300000, guid: 2a55c153401b9644bbf019a07f547a6b, type: 3}
-  ModelPrefab: {fileID: 0}
+  ModelPrefab: {fileID: 7222374448599939630, guid: 44e27aa0c7f7191488ec1d99364c2c0b,
+    type: 3}
   gunIcon: {fileID: 0}
   RPM: 60
   BulletsPerShot: 12

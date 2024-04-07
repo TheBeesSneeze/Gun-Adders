@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunName: Roulette Gun
   Crosshair: {fileID: 21300000, guid: a0a8cacbf9766ab4ca6449ed614f03a1, type: 3}
-  ModelPrefab: {fileID: 0}
+  ModelPrefab: {fileID: 1947189329703348, guid: 3a1ce1837d448a242b176747029cb884,
+    type: 3}
   gunIcon: {fileID: 0}
   RPM: 777
   BulletsPerShot: 7
