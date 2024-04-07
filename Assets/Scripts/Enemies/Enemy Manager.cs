@@ -25,7 +25,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public int numberOfEnemies;
 
-    private int roundNumber;
+    public int roundNumber;
 
     private bool roundJustEnd;
     [SerializeField]public float timeBetweenRounds = 5f;
