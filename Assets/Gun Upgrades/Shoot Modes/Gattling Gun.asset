@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunName: Gattling
   Crosshair: {fileID: 21300000, guid: a0a8cacbf9766ab4ca6449ed614f03a1, type: 3}
-  ModelPrefab: {fileID: 153910, guid: 38bfbc17c12c7f848a6af6f0edf3d1b5, type: 3}
+  ModelPrefab: {fileID: 159363343589617200, guid: 1528fe736fa5c11478dafb37a373b377,
+    type: 3}
   gunIcon: {fileID: 0}
   RPM: 900
   BulletsPerShot: 1
